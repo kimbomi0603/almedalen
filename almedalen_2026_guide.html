@@ -28,6 +28,9 @@ header.hero{position:relative;color:#fff;text-align:center;padding:64px 20px 56p
 .hero .dday{display:inline-block;margin-top:20px;background:var(--gold);color:#22324a;font-weight:800;
   font-size:18px;padding:9px 22px;border-radius:30px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .hero .dday small{font-weight:600;font-size:13px;opacity:.85}
+.hero .ddayrow{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
+.hero .ddayrow .dday{margin-top:0}
+.hero .ddayrow .pdfbtn{margin-top:0}
 .brandbar{background:#15263d;color:#cbd5e2;text-align:center;font-size:12.5px;padding:7px 12px;letter-spacing:.5px}
 .brandbar b{color:var(--gold)}
 .hero .meta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
@@ -140,6 +143,14 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .modal .mbd .tipbox b{color:var(--green)}
 .modal .mbd .warnbox{background:#fbf0ee;border:1px solid #e6c3bd;border-radius:8px;padding:12px 15px;margin-top:8px;font-size:13.5px}
 .modal .mbd .warnbox b{color:var(--red)}
+.modal .mbd .mgal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:10px 0}
+.modal .mbd .mgal figure{margin:0}
+.modal .mbd .mgal img{width:100%;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.modal .mbd .mgal figcaption{font-size:11px;color:var(--sub);margin-top:4px;text-align:center;line-height:1.3}
+.modal .mbd .links{list-style:none;padding:0;margin:6px 0}
+.modal .mbd .links li{padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--line);font-size:13.5px}
+.modal .mbd .links li::before{content:"📰";position:absolute;left:0;top:6px;font-size:12px}
+.modal .mbd .links a{font-weight:600}
 
 footer{background:var(--navy);color:#aeb9c6;text-align:center;padding:26px 18px;font-size:12.5px;line-height:1.8}
 footer b{color:#fff}
@@ -198,19 +209,20 @@ footer b{color:#fff}
   <div class="badge">ALMEDALSVECKAN 2026 · SWEDEN</div>
   <h1>2026 스웨덴 알메달렌 정치축제<br>대한민국 참관단 상세 가이드</h1>
   <div class="sub">북유럽 최대 정치축제 · 고틀란드 비스뷔 · 민주주의 · AI전환 · 사회통합 · 복지</div>
-  <div class="dday" id="dday">출발까지 계산 중…</div>
+  <div class="ddayrow">
+    <div class="dday" id="dday">출발까지 계산 중…</div>
+    <a class="pdfbtn" href="almedalen_schedule.pdf" download>📄 일정표 PDF 다운로드</a>
+  </div>
   <div class="meta">
     <span>📅 2026.6.20(토)~6.27(토) · 5박8일</span>
     <span>👥 참관단 10명</span>
     <span>📍 스톡홀름 · 고틀란드 비스뷔</span>
     <span>🏛 주최 브레인파크·노민호아카데미·자치분권연구소</span>
   </div>
-  <div><a class="pdfbtn" href="almedalen_schedule.pdf" download>📄 일정표 PDF 다운로드</a></div>
 </header>
 
 <nav><div class="wrap" id="navwrap">
   <button class="active" data-t="overview">개요</button>
-  <button data-t="host">주최·기획</button>
   <button data-t="map">지도·동선</button>
   <button data-t="schedule">전체일정</button>
   <button data-t="policy">정책투어</button>
@@ -256,42 +268,6 @@ footer b{color:#fff}
     <div class="card" onclick="openModal('ev_seminar')"><div class="bd"><h3>🇰🇷 국제세미나</h3><p>'민주주의의 다양성과 청년정치' 한-스웨덴 청년 토론</p><div class="more">자세히 보기 ›</div></div></div>
     <div class="card" onclick="openModal('ev_ksession')"><div class="bd"><h3>🇰🇷 한국세션</h3><p>'북유럽 복지 모델은 한국의 미래인가?'</p><div class="more">자세히 보기 ›</div></div></div>
     <div class="card" onclick="openModal('ev_speech')"><div class="bd"><h3>🇰🇷 광장연설</h3><p>'지방선거와 대한민국 민주주의', 'AI시대의 시민참여'</p><div class="more">자세히 보기 ›</div></div></div>
-  </div>
-</section>
-
-<!-- HOST -->
-<section class="tab" id="host">
-  <h2 class="sec">주최 · 기획</h2>
-  <p class="sec-desc">대한민국 정책연수의 새로운 기준 — 이번 참관단을 기획·총괄하는 기관과 리더를 소개합니다.</p>
-
-  <div class="info-card" style="border-left:5px solid var(--gold)">
-    <h3><span class="ic">🏆</span>브레인파크 (BRAINPARK)</h3>
-    <p style="font-size:14.5px;color:#333">정식명칭 <b>(주)글로벌앤로컬브레인파크(Global &amp; Local Brainpark)</b> · 대표이사 <b>박동완</b>. <b>국가 정책연구 전문기관</b>으로, 정부부처와 지방자치단체를 대상으로 한 <b>정책 컨설팅</b>, 공공기관 임직원의 <b>국내외 교육·훈련·연수 기획 및 집행</b>, 그리고 지자체·정부의 <b>학술연구용역</b>을 주력 사업으로 수행합니다. <b>군산형 한국판 뉴딜 정책</b>을 제시하고, <b>충남테크노파크와 '충남지역 수소기술협력 세미나'</b>를 공동 개최하는 등 지역과 국가를 잇는 정책 의제를 직접 설계해 온 <b>대한민국 대표 정책연수 기획기관</b>입니다. "보고 끝나는 연수"가 아니라 <b>"정책으로 남는 연수"</b> — 사전자료집·정책보고서·연설 기록까지 완결하는 것이 브레인파크의 기준입니다. <small style="color:#888">(홈페이지 brainpark.co.kr)</small></p>
-  </div>
-
-  <div class="grid two">
-    <div class="info-card"><h3><span class="ic">🌟</span>박동완 · 브레인파크 대표이사</h3><ul>
-      <li><b>(주)글로벌앤로컬브레인파크 대표이사</b>로서 국가 정책연구·국제연수를 이끄는 리더</li>
-      <li><b>군산형 한국판 뉴딜 정책</b>을 제시한 정책 기획가 — 지역과 국가를 잇는 비전</li>
-      <li>이번 <b>알메달렌 2026 대한민국 참관단</b>을 처음부터 끝까지 <b>총괄 기획·인솔</b></li>
-      <li>2,758개 세미나 중 핵심만 가려내 동선·일정·네트워킹까지 설계하는 <b>정밀한 연수 설계자</b></li>
-      <li><b>문의·인솔</b> ☎ 010-3838-6218</li>
-    </ul></div>
-    <div class="info-card"><h3><span class="ic">🌟</span>노민호아카데미 · 노민호</h3><ul>
-      <li>복지·사회정책 분야의 <b>비전을 제시하는 정책 아카데미</b></li>
-      <li>이번 참관단의 핵심 한국세션 <b>'북유럽 복지 모델은 한국의 미래인가?'</b>를 직접 주관</li>
-      <li>초고령사회 대한민국의 지속가능한 사회 안전망을 설계하는 <b>복지정책 담론의 선도자</b></li>
-      <li>스웨덴 복지 모델을 한국 현실에 맞게 재해석하는 <b>깊이 있는 통찰</b></li>
-      <li><small style="color:#888">※ 공개 검색에서 기관 상세정보가 확인되지 않아 역할 중심으로 소개 — 실제 약력 제공 시 보강</small></li>
-    </ul></div>
-  </div>
-
-  <div class="info-card"><h3><span class="ic">🏛</span>자치분권연구소</h3>
-    <p style="font-size:14px;color:#333">지방자치와 분권의 가치를 연구·확산하는 전문 연구기관. 풀뿌리 민주주의와 지역 정책 혁신의 관점에서 이번 참관단의 학술적·정책적 깊이를 더합니다. 브레인파크·노민호아카데미와 함께 <b>'민주주의 · 자치 · 복지'</b>라는 세 축으로 본 참관단을 완성하는 공동주최 파트너입니다. <small style="color:#888">(공개 검색 상세정보 미확인 — 실제 정보 제공 시 보강)</small></p>
-  </div>
-
-  <div class="notice" style="background:#eef3f8;border-color:#bcd0e3;border-left-color:var(--sky);color:#2b4a66">
-    📌 브레인파크·박동완 대표 소개는 <b>공개 검색으로 확인된 사실</b>(국가 정책연구 전문기관, 대표이사 박동완, 군산형 뉴딜·수소 세미나 등)에 기반했습니다. 노민호아카데미·자치분권연구소는 공개 정보가 확인되지 않아 역할 중심으로 작성했으니, 정확한 약력·성과를 주시면 사실 그대로 보강합니다.
   </div>
 </section>
 
@@ -420,12 +396,28 @@ footer b{color:#fff}
   <h2 class="sec">먹거리</h2>
   <p class="sec-desc">스웨덴 대표 음식과 고틀란드 특산을 정리했습니다. 카드를 클릭하면 상세 설명이 열립니다.</p>
   <div class="grid three" id="foodgrid"></div>
-  <div class="info-card" style="margin-top:22px"><h3><span class="ic">🍽</span>추천 현지 식당 (고틀란드)</h3><ul>
-    <li><b>Lilla Bjers</b> 비스뷔 남쪽 약 7km. 자체 유기농 농장 채소로 만드는 팜투테이블</li>
-    <li><b>Krakas Krog</b> 고틀란드 동부 크레클링보. 미쉐린 가이드 등재 레스토랑</li>
-    <li><b>비스뷔 푸드코트·카페</b> 일정 중 점심 다수가 푸드코트. 사프란팬케이크·시나몬롤은 시내 대부분 카페에 있음</li>
-    <li>※ 고틀란드 현지 양조장·맥주는 존재하나 명칭·정보는 별도 확인 권장</li>
-  </ul></div>
+  <div class="info-card" style="margin-top:22px"><h3><span class="ic">🔥</span>요즘 핫한 곳 — 고틀란드/비스뷔 (꼭 가볼 곳)</h3><ul>
+    <li><b>Vår Fru</b> 배우 리아 보이센 &amp; Fotografiska 창립자가 옛 액자공방을 개조 — 유기농 사워도우 와플·내추럴와인, 오랑제리 정원석이 인기인 비스뷔 핫플</li>
+    <li><b>Bageriet</b> 비스뷔 스토라 토리에트(중앙광장)의 레스토랑·바. 제철 메뉴 + 글라스 내추럴와인 (연중 영업)</li>
+    <li><b>Volare</b> 고틀란드 대표 와인바 — 비스뷔 구시가 수백 년 된 건물 1층, 항구로 내려가는 자갈길 옆</li>
+    <li><b>Restaurant Bolaget</b> 중앙광장. 프렌치 파인다이닝 + 고틀란드 식재료의 결합</li>
+    <li><b>Mille Lire</b> 로마·팔레르모 출신 셰프의 정통 화덕피자 (연중 영업)</li>
+    <li><b>Krönet</b> 여름 한정 — 비스뷔 최고 전망 포인트의 지중해풍 타파스·상그리아 바</li>
+    <li><b>Själsö Bageri</b> 비스뷔 북쪽 20분, 옛 선원 오두막의 석가마 베이커리 (사워도우·카다멈번)</li>
+    <li><b>Tofta Beach House</b> 서해안 해변 레스토랑 — 일몰 명소</li>
+    <li><b>Lilla Bjers</b>(유기농 팜투테이블)·<b>Krakas Krog</b>(미쉐린 가이드 등재)도 추천</li>
+  </ul>
+  <p class="sec-desc" style="margin:8px 0 0">근거: Visit Sweden, Tripadvisor(2025·26 갱신), Star Wine List, Anders Husa, Thatsup 등 여행·미식 매체 종합</p>
+  </div>
+  <div class="info-card"><h3><span class="ic">🔥</span>요즘 핫한 곳 — 스톡홀름 (경유 시)</h3><ul>
+    <li><b>Slussen·Gondolen</b> 2026년 재개장 — 카타리나 엘리베이터 아래 33m 상공에 매달린 아이코닉 레스토랑(주변 Freya+Söder, Slussporten 등 신규 핫플)</li>
+    <li><b>Village Bagels</b>(바사스탄, 2025.8 오픈) — 줄 서는 뉴욕식 수제 베이글</li>
+    <li><b>Bubs 플래그십</b>(노를란드스가탄, 2025말 오픈) — 인기 스웨덴 캔디 브랜드, 픽앤믹스</li>
+    <li><b>Aira</b>(미쉐린)·<b>Rosendal 정원카페</b> — 유르고르덴 녹지</li>
+    <li><b>Stockholm Archipelago Trail</b> — Time '2025 세계 최고의 장소' 선정 군도 트레일</li>
+  </ul>
+  <p class="sec-desc" style="margin:8px 0 0">근거: Visit Stockholm, Time Out Stockholm, The Nordic Nomad(2025 핫리스트), Time 'World's Greatest Places 2025'</p>
+  </div>
 </section>
 
 <!-- NEARBY -->
@@ -540,6 +532,24 @@ const D={
   <p>주제 비중순: ①지속가능성 9% ②안보·국방 7.6% ③보건·복지 6.3% ④민주주의 6.1%. 정당 연설 최다 청중은 마그달레나 안데르손(사민당) 3,700명이었습니다.</p>
   <h4>2026년 (참관 연도)</h4>
   <p>공식 개최 <b>6월 22일(월)~26일(금)</b>. 6/23(화)부터 의회 정당들이 순서대로 알메달렌 무대를 차지합니다.</p>
+  <h4>📸 축제 현장 사진 (이해를 돕기 위한 실제 모습)</h4>
+  <div class="mgal">
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Almedalen_July_2019.jpg" alt="알메달렌 공원"><figcaption>알메달렌 공원 전경 (행사 무대가 설치되는 곳)</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Almedalen_Park%2C_juli_2018.jpg" alt="알메달렌 세미나"><figcaption>공원에 모인 시민·참가자들</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Almedalen_2016.jpg" alt="알메달렌 2016"><figcaption>축제 주간의 비스뷔 거리</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Almedalen_2014_%2816932174943%29.jpg" alt="알메달렌 2014"><figcaption>야외 정당 행사 부스</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Almedalen_20150630_185731.jpg" alt="알메달렌 저녁 연설"><figcaption>저녁 시간대 연설 무대</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Regnb%C3%A5ge_%C3%B6ver_Almedalen.jpg" alt="알메달렌 무지개"><figcaption>알메달렌 위로 뜬 무지개 ('다양성'의 상징)</figcaption></figure>
+  </div>
+  <h4>📰 작년(2025) 관련 기사·영상</h4>
+  <ul class="links">
+    <li><a href="https://almedalsveckan.info/rg/almedalsveckan/nyheter/nyheter/2025-06-17-bjorn-ulvaeus-och-hanna-gerdes-inviger-almedalsveckan-2025" target="_blank" rel="noopener">[Region Gotland 공식] 비에른 울바에우스·한나 예르데스, 2025 알메달렌 개막</a></li>
+    <li><a href="https://www.tv4.se/artikel/1zvvpw4YYkNpWscEIojsld/bjoern-ulvaeus-invigningstalar-i-almedalen-2025" target="_blank" rel="noopener">[TV4] 비에른 울바에우스, 2025 알메달렌 개막 연설</a></li>
+    <li><a href="https://www.sverigesradio.se/artikel/ulveus-invigde-almedalen-star-har-for-att-jag-ar-radd" target="_blank" rel="noopener">[Sveriges Radio] 울바에우스 "두렵기 때문에 이 자리에 섰다" — 민주주의 수호 메시지</a></li>
+    <li><a href="https://www.svt.se/nyheter/lokalt/ost/politik-prat-och-moten-almedalsveckan-ar-tillbaka" target="_blank" rel="noopener">[SVT] 정치·대화·만남 — 알메달렌 주간이 돌아왔다</a></li>
+    <li><a href="https://tidningensyre.se/2025/23-juni-2025/mangfaldsparaden-drog-igang-almedalsveckan/" target="_blank" rel="noopener">[Syre] 다양성 퍼레이드로 시작된 알메달렌 주간</a></li>
+    <li><a href="https://almedalsveckan.info" target="_blank" rel="noopener">[공식 홈페이지] almedalsveckan.info — 프로그램·세미나 검색</a></li>
+  </ul>
   <div class="tipbox"><b>알메달렌 공원</b>은 스웨덴어로 "느릅나무 골짜기". 중세엔 항구였으나 지반 융기로 항구 기능을 잃었고, 1870년대 느릅나무를 심으며 현재 이름이 붙었습니다. 옆에 고틀란드 도서관·컨퍼런스센터·캠퍼스 고틀란드가 있습니다.</div>`},
 
  gamlastan:{kd:'문화탐방 · STOCKHOLM',t:'감라스탄 (구시가지)',img:IMG.gamlastan,html:`
