@@ -975,6 +975,15 @@ function openModal(id){
 function closeModal(){document.getElementById('overlay').classList.remove('show');document.body.style.overflow='';}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
+/* 이미지 로딩 실패 시 깨진 아이콘 대신 자연스럽게 숨김(견고성) */
+document.addEventListener('error',function(e){
+ const t=e.target;
+ if(t&&t.tagName==='IMG'){
+  const fig=t.closest('figure');
+  if(fig){fig.style.display='none';}else{t.style.opacity='0';}
+ }
+},true);
+
 /* D-DAY */
 (function(){
  const dep=new Date('2026-06-20T00:00:00+09:00');
