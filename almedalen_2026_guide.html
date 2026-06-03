@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 스웨덴 알메달렌 정치축제 참관단 · 상세 가이드</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{
+  --navy:#1d3a5f; --navy2:#27496d; --gold:#c8a24a; --sky:#3a7ca5;
+  --bg:#f5f3ee; --card:#ffffff; --ink:#222; --sub:#5a6573; --line:#e3ddd0;
+  --red:#b3433a; --green:#3f7a52;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Malgun Gothic','Apple SD Gothic Neo',-apple-system,'Noto Sans KR',sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--sky)}
+
+header.hero{position:relative;color:#fff;text-align:center;padding:64px 20px 56px;
+  background:linear-gradient(rgba(20,40,70,.72),rgba(20,40,70,.82)),
+  url('https://upload.wikimedia.org/wikipedia/commons/6/6c/Visby_ringmur_September_2020_01.jpg') center/cover}
+.hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  padding:5px 16px;border-radius:30px;font-size:13px;letter-spacing:2px;margin-bottom:18px}
+.hero h1{font-size:34px;font-weight:800;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero .sub{font-size:16px;margin-top:14px;opacity:.95}
+.hero .dday{display:inline-block;margin-top:20px;background:var(--gold);color:#22324a;font-weight:800;
+  font-size:18px;padding:9px 22px;border-radius:30px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.hero .dday small{font-weight:600;font-size:13px;opacity:.85}
+.brandbar{background:#15263d;color:#cbd5e2;text-align:center;font-size:12.5px;padding:7px 12px;letter-spacing:.5px}
+.brandbar b{color:var(--gold)}
+.hero .meta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero .meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
+  padding:7px 15px;border-radius:8px;font-size:13.5px;backdrop-filter:blur(4px)}
+
+nav{position:sticky;top:0;z-index:50;background:var(--navy);box-shadow:0 2px 10px rgba(0,0,0,.2)}
+nav .wrap{max-width:1080px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;background:none;border:none;color:#cdd6e0;padding:15px 17px;
+  font-size:14.5px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;font-family:inherit}
+nav button:hover{color:#fff}
+nav button.active{color:#fff;border-bottom-color:var(--gold)}
+
+main{max-width:1080px;margin:0 auto;padding:34px 18px 80px}
+section.tab{display:none;animation:fade .3s ease}
+section.tab.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+h2.sec{font-size:25px;color:var(--navy);font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:6px;height:26px;background:var(--gold);border-radius:3px;display:inline-block}
+.sec-desc{color:var(--sub);font-size:14.5px;margin-bottom:24px}
+
+.notice{background:#fff4e8;border:1px solid #e9c89a;border-left:5px solid var(--gold);
+  padding:14px 18px;border-radius:8px;margin-bottom:24px;font-size:14px;color:#6b4e1e}
+.notice b{color:#8a5a12}
+
+.grid{display:grid;gap:16px}
+.grid.two{grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.grid.three{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  cursor:pointer;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(30,50,80,.13)}
+.card .ph{height:155px;background:#dfe4ea center/cover;position:relative}
+.card .ph .tag{position:absolute;top:10px;left:10px;background:var(--navy);color:#fff;
+  font-size:11.5px;padding:4px 10px;border-radius:6px;font-weight:600}
+.card .bd{padding:14px 16px;flex:1;display:flex;flex-direction:column}
+.card .bd h3{font-size:16.5px;color:var(--navy);margin-bottom:5px;line-height:1.4}
+.card .bd p{font-size:13px;color:var(--sub);flex:1}
+.card .bd .more{margin-top:10px;color:var(--sky);font-size:12.5px;font-weight:700}
+
+.day{margin-bottom:30px}
+.day-h{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--navy);padding-bottom:8px;margin-bottom:4px}
+.day-h .d{font-size:20px;font-weight:800;color:var(--navy)}
+.day-h .dow{font-size:14px;color:var(--sub)}
+.day-h .loc{margin-left:auto;font-size:13px;color:var(--sky);font-weight:600}
+.row{display:flex;gap:14px;padding:13px 6px;border-bottom:1px solid var(--line);align-items:flex-start}
+.row .t{flex:0 0 60px;font-weight:700;color:var(--navy2);font-size:14px;padding-top:1px}
+.row .c{flex:1}
+.row .c .ttl{font-size:15px;font-weight:600}
+.row .c .ds{font-size:13px;color:var(--sub);margin-top:2px}
+.row .kind{flex:0 0 auto;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:700;align-self:center}
+.k-move{background:#eef1f4;color:#6a7686}.k-cult{background:#e9f3ec;color:var(--green)}
+.k-pol{background:#eaf1f7;color:var(--sky)}.k-kr{background:#fbeeec;color:var(--red)}
+.k-event{background:#f6efe0;color:#a07b1f}.k-work{background:#f0ecf6;color:#6f519e}
+.k-meal{background:#f7f3ec;color:#9a7d3c}.k-stay{background:#eceff2;color:#5a6573}
+.row.clk{cursor:pointer}.row.clk:hover{background:#faf8f3}
+.row.clk .ttl::after{content:" ›";color:var(--gold);font-weight:800}
+
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--navy);color:#fff;font-weight:700}
+tr:last-child td{border-bottom:none}
+tr.total td{background:#fff4e8;font-weight:800;color:var(--navy)}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+
+.info-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px}
+.info-card h3{color:var(--navy);font-size:18px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.info-card h3 .ic{font-size:20px}
+.info-card ul{list-style:none;padding:0}
+.info-card li{padding:7px 0 7px 22px;position:relative;font-size:14px;border-bottom:1px dashed var(--line)}
+.info-card li:last-child{border-bottom:none}
+.info-card li::before{content:"▪";color:var(--gold);position:absolute;left:4px;top:7px}
+.info-card li b{color:var(--navy2)}
+
+#leafmap{height:460px;border-radius:12px;border:1px solid var(--line);box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1}
+.mapbtn{background:#fff;border:1px solid var(--line);color:var(--navy2);padding:8px 14px;border-radius:8px;
+  font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.mapbtn.active,.mapbtn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.maplegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--sub)}
+.maplegend i{display:inline-block;width:22px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.leaflet-popup-content{font-family:inherit;font-size:13.5px;margin:12px 14px}
+.leaflet-popup-content b{color:var(--navy)}
+.gmap{display:inline-block;margin-top:7px;background:var(--sky);color:#fff;padding:5px 11px;border-radius:6px;
+  font-size:12.5px;font-weight:700;text-decoration:none}
+.gmap:hover{background:var(--navy)}
+.modal .mbd .gmap{margin-bottom:6px}
+
+.overlay{position:fixed;inset:0;background:rgba(20,30,45,.6);z-index:100;display:none;
+  align-items:flex-start;justify-content:center;padding:30px 14px;overflow-y:auto;backdrop-filter:blur(3px)}
+.overlay.show{display:flex}
+.modal{background:#fff;max-width:720px;width:100%;border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.modal .mph{height:230px;background:#cfd6dd center/cover;position:relative}
+.modal .mph .cls{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;
+  background:rgba(0,0,0,.45);color:#fff;border:none;font-size:22px;cursor:pointer;line-height:1}
+.modal .mph .cap{position:absolute;bottom:0;left:0;right:0;padding:30px 22px 12px;
+  background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff}
+.modal .mph .cap .kd{font-size:12px;color:var(--gold);font-weight:700;letter-spacing:1px}
+.modal .mph .cap h3{font-size:23px;font-weight:800;margin-top:3px}
+.modal .mbd{padding:22px 26px 28px}
+.modal .mbd h4{color:var(--navy);font-size:15.5px;margin:18px 0 7px;padding-left:11px;border-left:4px solid var(--gold)}
+.modal .mbd h4:first-child{margin-top:0}
+.modal .mbd p{font-size:14.5px;margin-bottom:9px;color:#333}
+.modal .mbd .kv{display:flex;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--line)}
+.modal .mbd .kv .k{flex:0 0 90px;color:var(--sub);font-weight:700}
+.modal .mbd .tipbox{background:#f3f7f4;border:1px solid #cfe0d5;border-radius:8px;padding:12px 15px;margin-top:8px;font-size:13.5px}
+.modal .mbd .tipbox b{color:var(--green)}
+.modal .mbd .warnbox{background:#fbf0ee;border:1px solid #e6c3bd;border-radius:8px;padding:12px 15px;margin-top:8px;font-size:13.5px}
+.modal .mbd .warnbox b{color:var(--red)}
+
+footer{background:var(--navy);color:#aeb9c6;text-align:center;padding:26px 18px;font-size:12.5px;line-height:1.8}
+footer b{color:#fff}
+
+/* INTRO SPLASH */
+#intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,#26344f,#0d1626 70%);overflow:hidden;transition:opacity 1.2s ease}
+#intro.hide{opacity:0;pointer-events:none}
+#fw{position:absolute;inset:0;width:100%;height:100%}
+.intro-inner{position:relative;z-index:2;text-align:center;padding:20px;animation:introPop 1s cubic-bezier(.2,.8,.3,1.2)}
+@keyframes introPop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
+.intro-photo{width:230px;height:230px;border-radius:50%;object-fit:cover;border:6px solid var(--gold);
+  box-shadow:0 0 0 10px rgba(200,162,74,.25),0 0 60px 10px rgba(255,210,120,.55);animation:glow 1.6s ease-in-out infinite alternate}
+@keyframes glow{from{box-shadow:0 0 0 10px rgba(200,162,74,.2),0 0 40px 6px rgba(255,210,120,.4)}
+  to{box-shadow:0 0 0 14px rgba(200,162,74,.32),0 0 80px 18px rgba(255,225,150,.75)}}
+.intro-t1{color:#ffd86b;font-size:30px;font-weight:800;margin-top:26px;text-shadow:0 2px 14px rgba(0,0,0,.5);letter-spacing:1px}
+.intro-t2{color:#fff;font-size:20px;font-weight:700;margin-top:10px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.intro-sub{color:#cdd6e0;font-size:13.5px;margin-top:18px}
+.intro-skip{position:absolute;top:18px;right:20px;z-index:3;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);
+  color:#fff;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit}
+.intro-skip:hover{background:rgba(255,255,255,.28)}
+.pdfbtn{display:inline-block;margin-top:18px;background:#fff;color:var(--navy);font-weight:800;font-size:14px;
+  padding:10px 20px;border-radius:30px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);border:2px solid var(--gold)}
+.pdfbtn:hover{background:var(--gold);color:#22324a}
+@media(max-width:600px){.intro-photo{width:170px;height:170px}.intro-t1{font-size:23px}.intro-t2{font-size:16px}}
+.src{font-size:11.5px;color:#9aa5b1;margin-top:14px}
+.src a{color:#b9c6d4}
+@media(max-width:600px){
+  .hero h1{font-size:25px}.modal .mbd{padding:18px}.row .t{flex-basis:50px}#leafmap{height:380px}
+  main{padding:24px 12px 70px}.hero{padding:42px 16px 38px}
+  nav button{padding:13px 13px;font-size:13.5px}
+  table{font-size:12.5px}th,td{padding:8px 9px}
+  .grid.two,.grid.three{grid-template-columns:1fr}
+  .row{flex-wrap:wrap}.row .kind{align-self:flex-start}
+  h2.sec{font-size:21px}.hero .dday{font-size:15px;padding:8px 16px}
+  .modal{border-radius:12px}.modal .mph{height:180px}
+}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <canvas id="fw"></canvas>
+  <button class="intro-skip" onclick="hideIntro()">건너뛰기 ✕</button>
+  <div class="intro-inner">
+    <img class="intro-photo" src="parkdw.jpg" alt="박동완 대표님">
+    <div class="intro-t1">🎉 믿습니다 박동완 대표님! 🎉</div>
+    <div class="intro-t2">존경하고 사랑합니다 ❤️</div>
+    <div class="intro-sub">2026 알메달렌 정치축제 대한민국 참관단 · 브레인파크</div>
+  </div>
+</div>
+
+<div class="brandbar">주최 · 기획 <b>브레인파크(BRAINPARK)</b> · 노민호아카데미 · 자치분권연구소</div>
+
+<header class="hero">
+  <div class="badge">ALMEDALSVECKAN 2026 · SWEDEN</div>
+  <h1>2026 스웨덴 알메달렌 정치축제<br>대한민국 참관단 상세 가이드</h1>
+  <div class="sub">북유럽 최대 정치축제 · 고틀란드 비스뷔 · 민주주의 · AI전환 · 사회통합 · 복지</div>
+  <div class="dday" id="dday">출발까지 계산 중…</div>
+  <div class="meta">
+    <span>📅 2026.6.20(토)~6.27(토) · 5박8일</span>
+    <span>👥 참관단 10명</span>
+    <span>📍 스톡홀름 · 고틀란드 비스뷔</span>
+    <span>🏛 주최 브레인파크·노민호아카데미·자치분권연구소</span>
+  </div>
+  <div><a class="pdfbtn" href="almedalen_schedule.pdf" download>📄 일정표 PDF 다운로드</a></div>
+</header>
+
+<nav><div class="wrap" id="navwrap">
+  <button class="active" data-t="overview">개요</button>
+  <button data-t="host">주최·기획</button>
+  <button data-t="map">지도·동선</button>
+  <button data-t="schedule">전체일정</button>
+  <button data-t="policy">정책투어</button>
+  <button data-t="culture">문화탐방</button>
+  <button data-t="events">한국행사·이벤트</button>
+  <button data-t="cost">비용·교통</button>
+  <button data-t="info">날씨·복장·주의</button>
+  <button data-t="food">먹거리</button>
+  <button data-t="nearby">근처 가볼 곳</button>
+  <button data-t="prep">준비·안전</button>
+</div></nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<section class="tab show" id="overview">
+  <h2 class="sec">참관단 개요</h2>
+  <p class="sec-desc">북유럽 최대 정치축제 참여를 통한 미래 정책 트렌드 발굴 · 한국 청년정치인과 해외 정당의 글로벌 정책협력 네트워크 구축</p>
+  <div class="grid two" style="margin-bottom:26px">
+    <div class="info-card"><h3><span class="ic">🎯</span>목적</h3><ul>
+      <li>북유럽 최대 정치축제 참여를 통한 <b>미래 정책 트렌드 발굴</b></li>
+      <li>민주주의 회복·AI전환·사회통합·복지제도 주제 <b>국제세미나·한국세션</b></li>
+      <li>광장에서 직접 정책을 발표하는 <b>광장연설</b></li>
+      <li>한국 청년정치인과 해외 정당의 <b>글로벌 정책협력 네트워크</b> 구축</li>
+    </ul></div>
+    <div class="info-card"><h3><span class="ic">📋</span>핵심 정보</h3><ul>
+      <li><b>기간</b> 2026.6.20(토)~6.27(토), 5박8일</li>
+      <li><b>인원</b> 10명 / <b>국가</b> 스웨덴 / <b>도시</b> 고틀란드 비스뷔</li>
+      <li><b>연수시간</b> 총 36시간(한국행사·이벤트·정책투어·워크숍·문화탐방)</li>
+      <li><b>성과물</b> 사전자료집 · 정책보고서(200쪽 이상) · 연설 동영상</li>
+      <li><b>담당</b> 브레인파크 박동완 (010-3838-6218)</li>
+    </ul></div>
+  </div>
+  <div class="notice">
+    ⚠️ <b>중요:</b> 알메달렌 주간 2026 공식 개최는 <b>6월 22일(월)~26일(금)</b>으로 본 일정과 겹칩니다.
+    이 기간 비스뷔는 스웨덴 전역의 정치인·기관·언론이 모이는 <b>연중 최대 성수기</b>로 숙박·페리가 빠르게 매진되고 요금이 평소의 2~4배로 급등합니다. <b>숙박·페리·항공은 조속히 예약하세요.</b>
+  </div>
+  <div class="info-card" style="cursor:pointer" onclick="openModal('almedalen')">
+    <h3><span class="ic">🏛</span>알메달렌 주간이란? <span style="margin-left:auto;color:var(--sky);font-size:13px;font-weight:700">자세히 ›</span></h3>
+    <p style="font-size:14px;color:#444">1968년 올로프 팔메가 비스뷔의 공원에서 트럭 짐칸에 올라 연설한 것이 기원이 된 스웨덴 최대의 개방형 정치축제입니다. 매년 6월 말 7일간(현재 월~금), 의회 8개 정당 대표가 번갈아 연설하며 약 3만 명·1,300여 단체·2,400여 개 행사가 무료로 열립니다. <b style="color:var(--sky)">클릭하면 역사·운영방식·작년(2025) 실제 사례를 볼 수 있습니다.</b></p>
+  </div>
+  <div class="grid three" style="margin-top:18px">
+    <div class="card" onclick="openModal('ev_seminar')"><div class="bd"><h3>🇰🇷 국제세미나</h3><p>'민주주의의 다양성과 청년정치' 한-스웨덴 청년 토론</p><div class="more">자세히 보기 ›</div></div></div>
+    <div class="card" onclick="openModal('ev_ksession')"><div class="bd"><h3>🇰🇷 한국세션</h3><p>'북유럽 복지 모델은 한국의 미래인가?'</p><div class="more">자세히 보기 ›</div></div></div>
+    <div class="card" onclick="openModal('ev_speech')"><div class="bd"><h3>🇰🇷 광장연설</h3><p>'지방선거와 대한민국 민주주의', 'AI시대의 시민참여'</p><div class="more">자세히 보기 ›</div></div></div>
+  </div>
+</section>
+
+<!-- HOST -->
+<section class="tab" id="host">
+  <h2 class="sec">주최 · 기획</h2>
+  <p class="sec-desc">대한민국 정책연수의 새로운 기준 — 이번 참관단을 기획·총괄하는 기관과 리더를 소개합니다.</p>
+
+  <div class="info-card" style="border-left:5px solid var(--gold)">
+    <h3><span class="ic">🏆</span>브레인파크 (BRAINPARK)</h3>
+    <p style="font-size:14.5px;color:#333">정식명칭 <b>(주)글로벌앤로컬브레인파크(Global &amp; Local Brainpark)</b> · 대표이사 <b>박동완</b>. <b>국가 정책연구 전문기관</b>으로, 정부부처와 지방자치단체를 대상으로 한 <b>정책 컨설팅</b>, 공공기관 임직원의 <b>국내외 교육·훈련·연수 기획 및 집행</b>, 그리고 지자체·정부의 <b>학술연구용역</b>을 주력 사업으로 수행합니다. <b>군산형 한국판 뉴딜 정책</b>을 제시하고, <b>충남테크노파크와 '충남지역 수소기술협력 세미나'</b>를 공동 개최하는 등 지역과 국가를 잇는 정책 의제를 직접 설계해 온 <b>대한민국 대표 정책연수 기획기관</b>입니다. "보고 끝나는 연수"가 아니라 <b>"정책으로 남는 연수"</b> — 사전자료집·정책보고서·연설 기록까지 완결하는 것이 브레인파크의 기준입니다. <small style="color:#888">(홈페이지 brainpark.co.kr)</small></p>
+  </div>
+
+  <div class="grid two">
+    <div class="info-card"><h3><span class="ic">🌟</span>박동완 · 브레인파크 대표이사</h3><ul>
+      <li><b>(주)글로벌앤로컬브레인파크 대표이사</b>로서 국가 정책연구·국제연수를 이끄는 리더</li>
+      <li><b>군산형 한국판 뉴딜 정책</b>을 제시한 정책 기획가 — 지역과 국가를 잇는 비전</li>
+      <li>이번 <b>알메달렌 2026 대한민국 참관단</b>을 처음부터 끝까지 <b>총괄 기획·인솔</b></li>
+      <li>2,758개 세미나 중 핵심만 가려내 동선·일정·네트워킹까지 설계하는 <b>정밀한 연수 설계자</b></li>
+      <li><b>문의·인솔</b> ☎ 010-3838-6218</li>
+    </ul></div>
+    <div class="info-card"><h3><span class="ic">🌟</span>노민호아카데미 · 노민호</h3><ul>
+      <li>복지·사회정책 분야의 <b>비전을 제시하는 정책 아카데미</b></li>
+      <li>이번 참관단의 핵심 한국세션 <b>'북유럽 복지 모델은 한국의 미래인가?'</b>를 직접 주관</li>
+      <li>초고령사회 대한민국의 지속가능한 사회 안전망을 설계하는 <b>복지정책 담론의 선도자</b></li>
+      <li>스웨덴 복지 모델을 한국 현실에 맞게 재해석하는 <b>깊이 있는 통찰</b></li>
+      <li><small style="color:#888">※ 공개 검색에서 기관 상세정보가 확인되지 않아 역할 중심으로 소개 — 실제 약력 제공 시 보강</small></li>
+    </ul></div>
+  </div>
+
+  <div class="info-card"><h3><span class="ic">🏛</span>자치분권연구소</h3>
+    <p style="font-size:14px;color:#333">지방자치와 분권의 가치를 연구·확산하는 전문 연구기관. 풀뿌리 민주주의와 지역 정책 혁신의 관점에서 이번 참관단의 학술적·정책적 깊이를 더합니다. 브레인파크·노민호아카데미와 함께 <b>'민주주의 · 자치 · 복지'</b>라는 세 축으로 본 참관단을 완성하는 공동주최 파트너입니다. <small style="color:#888">(공개 검색 상세정보 미확인 — 실제 정보 제공 시 보강)</small></p>
+  </div>
+
+  <div class="notice" style="background:#eef3f8;border-color:#bcd0e3;border-left-color:var(--sky);color:#2b4a66">
+    📌 브레인파크·박동완 대표 소개는 <b>공개 검색으로 확인된 사실</b>(국가 정책연구 전문기관, 대표이사 박동완, 군산형 뉴딜·수소 세미나 등)에 기반했습니다. 노민호아카데미·자치분권연구소는 공개 정보가 확인되지 않아 역할 중심으로 작성했으니, 정확한 약력·성과를 주시면 사실 그대로 보강합니다.
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="tab" id="map">
+  <h2 class="sec">지도 · 전체 동선</h2>
+  <p class="sec-desc">인천 출발부터 귀국까지 전 여정을 한눈에. 아래 버튼으로 구간을 확대하고, 지도 위 핀을 클릭하면 구글맵으로 바로 열 수 있습니다.</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px" id="mapbtns">
+    <button class="mapbtn active" data-z="all">🌏 전체 여정</button>
+    <button class="mapbtn" data-z="se">🇸🇪 스웨덴(스톡홀름~비스뷔)</button>
+    <button class="mapbtn" data-z="got">🏝 고틀란드 상세</button>
+  </div>
+  <div id="leafmap"></div>
+  <div class="maplegend">
+    <span><i style="background:#b3433a"></i>항공</span>
+    <span><i style="background:#3a7ca5"></i>육로(렌터카)</span>
+    <span><i style="background:#3f7a52"></i>페리</span>
+    <span><i style="background:#c8a24a"></i>고틀란드 현지</span>
+  </div>
+  <div class="info-card" style="margin-top:18px"><h3><span class="ic">🧭</span>동선 요약</h3><ul>
+    <li><b>6/20~21 (이동)</b> 인천(ICN) → 코펜하겐(CPH) → 스톡홀름 알란다(ARN) → 감라스탄 → 뉘네스함 → <b>페리</b> → 비스뷔 (총 약 24시간 여정)</li>
+    <li><b>6/22~25 (비스뷔 체류)</b> 알메달렌 정책투어·한국행사 중심. 비스뷔↔리케르스함(약 30km)·브루세보(약 10km) 근교 문화탐방</li>
+    <li><b>6/26~27 (귀국)</b> 비스뷔 → <b>페리</b> → 뉘네스함 → 스톡홀름(감라스탄 재방문) → 알란다(ARN) → 코펜하겐 → 인천</li>
+  </ul></div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="tab" id="schedule">
+  <h2 class="sec">전체 일정표</h2>
+  <p class="sec-desc">각 행에서 <b style="color:var(--gold)">›</b> 표시가 있는 항목을 클릭하면 상세정보(역사·정책·관람 팁·사진·구글맵)가 열립니다.</p>
+  <div id="timeline"></div>
+</section>
+
+<!-- POLICY -->
+<section class="tab" id="policy">
+  <h2 class="sec">정책투어 심화 분석</h2>
+  <p class="sec-desc">2,758개 세미나 중 참가자 희망 행사 중심으로 선별. 각 세미나의 <b>정책 배경 · 스웨덴 제도 · 한국 시사점 · 주최기관</b>을 분석했습니다. 카드를 클릭하세요.</p>
+  <div class="notice">일부 소규모 주최기관·담당자는 공개 검색으로 개별 확인되지 않아 "참관단 제공 정보 기준"으로 표기했습니다. 출국 전 공식 프로그램(almedalsveckan.info)에서 재확인을 권장합니다.</div>
+  <div class="grid two" id="policygrid"></div>
+</section>
+
+<!-- CULTURE -->
+<section class="tab" id="culture">
+  <h2 class="sec">문화탐방 가이드</h2>
+  <p class="sec-desc">700년 역사의 구시가지부터 발트해 라우크 절경까지. 각 명소의 역사·유래·관람 팁을 가이드북 수준으로 정리했습니다. 사진·구글맵과 함께 클릭해 확인하세요.</p>
+  <div class="grid two" id="culturegrid"></div>
+</section>
+
+<!-- EVENTS -->
+<section class="tab" id="events">
+  <h2 class="sec">한국행사 · 이벤트 참여</h2>
+  <p class="sec-desc">참관단이 직접 진행·참여하는 한국행사 3회와 알메달렌 현지 이벤트 3회입니다.</p>
+  <h3 style="color:var(--navy);margin:6px 0 14px">🇰🇷 한국행사</h3>
+  <div class="grid two" id="krgrid" style="margin-bottom:30px"></div>
+  <h3 style="color:var(--navy);margin:6px 0 14px">🎉 이벤트 참여</h3>
+  <div class="grid two" id="eventgrid"></div>
+</section>
+
+<!-- COST -->
+<section class="tab" id="cost">
+  <h2 class="sec">비용 · 교통편</h2>
+  <p class="sec-desc">10명 단체 기준 1인 예상비용입니다. 환율 가정: 1 SEK≈140원, 1 USD≈1,400원, 1 EUR≈1,500원 (실제 환율·예약시점에 따라 변동).</p>
+  <div class="notice">⚠️ 가격·시간표는 변동성이 큽니다. 모두 <b>예약 직전 공식 사이트에서 재확인</b>이 필요하며, 특히 알메달렌 기간 숙박·페리는 즉시 예약하세요.</div>
+  <h3 style="color:var(--navy);margin:8px 0 12px">💰 1인 예상 총비용 (KRW)</h3>
+  <table style="margin-bottom:8px">
+    <tr><th>항목</th><th class="num">절약형</th><th class="num">중상급형</th><th>비고</th></tr>
+    <tr><td>항공 왕복 (인천-스톡홀름 경유)</td><td class="num">130만</td><td class="num">220만</td><td>SAS/핀에어 경유, 6월 성수기</td></tr>
+    <tr><td>페리 왕복 (승객, 차량 별도)</td><td class="num">10만</td><td class="num">24만</td><td>뉘네스함-비스뷔 편도 약 3h15m</td></tr>
+    <tr><td>렌터카 분담 (밴 2대 7일 ÷10)</td><td class="num">25만</td><td class="num">31만</td><td>10명은 9인승 밴 2대 권장</td></tr>
+    <tr><td>숙박 5박 (성수기)</td><td class="num">175만</td><td class="num">300만</td><td>단체 아파트/호스텔 시 절감</td></tr>
+    <tr><td>식비 8일</td><td class="num">35만</td><td class="num">60만</td><td>점심 100~150 SEK 등</td></tr>
+    <tr><td>기타·보험·잡비</td><td class="num">15만</td><td class="num">30만</td><td>입장료·교통·유심·보험</td></tr>
+    <tr class="total"><td>합계 (1인)</td><td class="num">약 390만</td><td class="num">약 665만</td><td>숙박 절감 시 300만대도 가능</td></tr>
+  </table>
+  <p class="sec-desc" style="margin-bottom:26px">※ 차량을 고틀란드까지 페리로 가져가면 차량 운임(왕복 약 100만원/대) 추가. 비스뷔 구시가는 보행 중심이라 <b>차량은 본토 뉘네스함에 두고 페리 승객으로만 이동</b>하는 편이 비용·편의 모두 유리할 수 있습니다.</p>
+  <div class="grid two">
+    <div class="card" onclick="openModal('cost_air')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg')"><span class="tag">항공</span></div><div class="bd"><h3>항공편 (인천→스톡홀름)</h3><p>SAS 코펜하겐 경유 / 핀에어 헬싱키 경유. 직항·가격·소요시간</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_ferry')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg')"><span class="tag">페리</span></div><div class="bd"><h3>페리 (뉘네스함→비스뷔)</h3><p>Destination Gotland · 약 3시간 15분 · 요금·예약 팁</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_car')"><div class="ph" style="background:linear-gradient(135deg,#27496d,#3a7ca5)"><span class="tag">렌터카</span></div><div class="bd"><h3>렌터카 (10명 이동)</h3><p>알란다공항 픽업 · 9인승 밴 2대 · 요금·연료·차량 페리</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_stay')"><div class="ph" style="background:linear-gradient(135deg,#1d3a5f,#27496d)"><span class="tag">숙박</span></div><div class="bd"><h3>숙박 (비스뷔 5박)</h3><p>알메달렌 성수기 요금 급등 · 숙소 주소 · 예약 팁</p><div class="more">자세히 ›</div></div></div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="tab" id="info">
+  <h2 class="sec">날씨 · 복장 · 주의사항</h2>
+  <p class="sec-desc">6월 말 스웨덴은 백야에 가까운 긴 낮과 큰 일교차가 특징입니다. 날짜별 활동에 맞춘 준비를 정리했습니다.</p>
+  <div class="grid two">
+    <div class="info-card"><h3><span class="ic">🌤</span>6월 말 날씨</h3><ul>
+      <li><b>비스뷔(고틀란드)</b> 평균 최고 18~19°C / 최저 10~13°C. 맑고 햇빛 강하나 <b>섬이라 바람이 강함</b></li>
+      <li><b>스톡홀름</b> 최고 17~21°C / 최저 11°C. 비 오는 날 월 10일 안팎</li>
+      <li><b>강수</b> 6월은 연중 비가 적은 편 (한 달 약 8~10일). 접이식 우산 권장</li>
+      <li><b>해안(리케르스함 등)</b> 바람 막을 지형 없어 체감 더 추움 → <b>방풍 필수</b></li>
+    </ul></div>
+    <div class="info-card"><h3><span class="ic">☀️</span>백야 (긴 낮)</h3><ul>
+      <li><b>비스뷔 하지(6/21)</b> 일조 약 18시간 5분</li>
+      <li>일출 약 <b>새벽 3:46</b> / 일몰 약 <b>밤 9:51</b> (6월 말 기준)</li>
+      <li>스톡홀름도 일조 약 18.5시간 (일출 3:33 / 일몰 22:01)</li>
+      <li>해 진 뒤에도 한동안 밝음 → <b>수면안대</b>를 챙기면 숙면에 도움</li>
+    </ul></div>
+  </div>
+  <div class="info-card"><h3><span class="ic">🧥</span>복장 가이드 — 레이어링 + 방풍</h3>
+    <p style="font-size:14px;color:#444;margin-bottom:10px">낮 18~21°C로 쾌적하지만 아침·저녁 일교차가 크고(최저 10°C), 해안 바람으로 체감이 더 내려갑니다. "껴입고 벗기 쉬운" 3겹 레이어링이 정답입니다.</p>
+    <ul>
+      <li><b>이너</b> 반팔/얇은 긴팔 · <b>미들</b> 가디건·얇은 니트·경량 플리스 · <b>아우터</b> 방풍·방수 재킷(필수)</li>
+      <li><b>신발</b> 비스뷔는 중세 자갈길·언덕이 많음 → 굽 없는 편한 워킹화/스니커즈 (하이힐·얇은 밑창 ✕)</li>
+      <li><b>공식행사(세미나·연설·리셉션)</b> 비즈니스 캐주얼~정장. 냉방·저녁 한기 대비 재킷 상시 휴대</li>
+      <li><b>야외 문화탐방·산책</b> 방풍 재킷 + 워킹화 + 모자/선글라스 + 자외선 차단제</li>
+    </ul>
+  </div>
+  <div class="info-card"><h3><span class="ic">⚠️</span>한국인 여행자 주의사항</h3><ul>
+    <li><b>고물가</b> 스톡홀름 1일 여행자 지출 약 210~240 USD. 중급 식당 1인 250~350 SEK, 맥주 55~60 SEK</li>
+    <li><b>무현금 사회</b> 대부분 카드·모바일 결제만. <b>컨택리스 신용/체크카드 필수</b>, 현금 거의 불필요. 통화는 크로나(SEK), 유로 통용 안 됨</li>
+    <li><b>팁</b> 의무 아님(서비스료 포함). 만족 시 반올림 또는 5~10% 정도면 충분</li>
+    <li><b>전기</b> 230V·50Hz, 플러그 타입 C/F → <b>유럽형 어댑터</b> 필요(변압기 불필요)</li>
+    <li><b>시차</b> 한국보다 <b>7시간 느림</b>(6월 서머타임 CEST). 한국 정오 = 스웨덴 오전 5시</li>
+    <li><b>긴급번호 112</b> (경찰·소방·구급 통합, 영어 가능). 관광지 소매치기 주의</li>
+    <li><b>수돗물 음용 가능</b>(수질 우수). 상비약(소화제·진통제·멀미약)은 한국에서 미리 준비</li>
+    <li><b>페리 멀미</b> 승선 30분~1시간 전 멀미약 복용, 갑판 중앙·창가 좌석 권장</li>
+    <li><b>여권·솅겐</b> 무비자 단기체류(90일). 여권 잔여 6개월 이상. <b>ETIAS 시행 여부는 출발 전 외교부·EU 공식 안내 재확인</b></li>
+  </ul></div>
+</section>
+
+<!-- FOOD -->
+<section class="tab" id="food">
+  <h2 class="sec">먹거리</h2>
+  <p class="sec-desc">스웨덴 대표 음식과 고틀란드 특산을 정리했습니다. 카드를 클릭하면 상세 설명이 열립니다.</p>
+  <div class="grid three" id="foodgrid"></div>
+  <div class="info-card" style="margin-top:22px"><h3><span class="ic">🍽</span>추천 현지 식당 (고틀란드)</h3><ul>
+    <li><b>Lilla Bjers</b> 비스뷔 남쪽 약 7km. 자체 유기농 농장 채소로 만드는 팜투테이블</li>
+    <li><b>Krakas Krog</b> 고틀란드 동부 크레클링보. 미쉐린 가이드 등재 레스토랑</li>
+    <li><b>비스뷔 푸드코트·카페</b> 일정 중 점심 다수가 푸드코트. 사프란팬케이크·시나몬롤은 시내 대부분 카페에 있음</li>
+    <li>※ 고틀란드 현지 양조장·맥주는 존재하나 명칭·정보는 별도 확인 권장</li>
+  </ul></div>
+</section>
+
+<!-- NEARBY -->
+<section class="tab" id="nearby">
+  <h2 class="sec">근처 가볼 곳</h2>
+  <p class="sec-desc">일정 여유 시간이나 자유시간에 들러볼 만한 비스뷔/고틀란드·스톡홀름의 추가 명소입니다.</p>
+  <h3 style="color:var(--navy);margin:6px 0 14px">🏝 비스뷔 · 고틀란드</h3>
+  <div class="grid three" id="nearby_g" style="margin-bottom:30px"></div>
+  <h3 style="color:var(--navy);margin:6px 0 14px">🏙 스톡홀름</h3>
+  <div class="grid three" id="nearby_s"></div>
+</section>
+
+<!-- PREP -->
+<section class="tab" id="prep">
+  <h2 class="sec">준비 · 안전</h2>
+  <p class="sec-desc">출국 전 챙길 것, 현지 생활·안전 정보, 긴급 연락처를 모았습니다.</p>
+  <div class="notice">
+    🌸 <b>미드솜마르(하지 축제) 주의 — 출발 시점과 겹칩니다!</b> 스웨덴 최대 명절 미드솜마르는 <b>2026년 6월 19일(금, 이브)·20일(토)</b>입니다.
+    이브(6/19)·토요일(6/20)에는 <b>상점·식당·마트·관광지가 대거 문을 닫고 대중교통·페리가 축소 운행</b>되며 도심이 한산해집니다(사람들이 시골·별장으로 떠남).
+    참관단은 6/21(일) 스톡홀름 도착이라 명절 직후이지만 <b>일요일까지도 일부 상점·식당 영업이 제한될 수 있으니</b>, 도착 첫날 식사·물품 구매는 공항·대형시설 위주로 계획하세요.
+  </div>
+  <div class="info-card"><h3><span class="ic">🚨</span>긴급 연락처</h3><ul>
+    <li><b>스웨덴 긴급(경찰·소방·구급) 112</b> · 비응급 경찰 11414 (영어 가능)</li>
+    <li><b>주스웨덴 대한민국 대사관</b> Laboratoriegatan 10, 115 27 Stockholm · ☎ +46-8-5458-9400</li>
+    <li><b>대사관 긴급(사건사고)</b> +46-73-330-1616 / 당직 +46-73-564-1648</li>
+    <li><b>외교부 영사콜센터(서울, 24시간)</b> +82-2-3210-0404 (무료통화앱·카카오톡 상담도 가능)</li>
+    <li><b>여권 분실 시</b> 가까운 경찰서 분실신고 → 대사관에서 단수여권/여행증명서 발급</li>
+    <li><b>인솔·주최 담당</b> 브레인파크 박동완 010-3838-6218</li>
+  </ul></div>
+  <div class="grid two">
+    <div class="info-card"><h3><span class="ic">🎒</span>준비물 체크리스트</h3><ul>
+      <li><b>여권</b>(잔여 6개월↑)·여권 사본·증명사진 2매·여행자보험</li>
+      <li><b>ETIAS</b> 시행 시 사전 발급 필요 → 출발 전 외교부·EU 공식 안내 재확인</li>
+      <li><b>유럽형 멀티 어댑터</b>(타입 C/F)·보조배터리·멀티탭</li>
+      <li><b>방풍·방수 재킷</b>·레이어링 의류·편한 워킹화·공식행사용 단정한 복장</li>
+      <li><b>수면안대</b>(백야)·멀미약·상비약·자외선차단제·선글라스·접이식 우산</li>
+      <li><b>명함</b>(영문 병기)·발표/연설 자료 백업·노트북·충전기</li>
+      <li>소액 현금(SEK)은 비상용 정도 — 결제는 카드 위주</li>
+    </ul></div>
+    <div class="info-card"><h3><span class="ic">📱</span>통신 · 유용한 앱</h3><ul>
+      <li><b>통신</b> 유럽 eSIM 또는 현지 유심. 호텔·카페 와이파이 보편</li>
+      <li><b>Destination Gotland</b> 페리 예약·승선권 앱</li>
+      <li><b>SL / Res i Sthlm</b> 스톡홀름 대중교통(지하철·버스·트램)</li>
+      <li><b>Google Maps</b> 도보·운전 길찾기(오프라인 지도 미리 저장 권장)</li>
+      <li><b>Bolt / Uber</b> 스톡홀름 차량 호출</li>
+      <li><b>almedalsveckan.info</b> 알메달렌 공식 프로그램(세미나 검색·일정)</li>
+      <li><b>환율·번역</b> 환율 계산기, 파파고/구글 번역(스웨덴어 메뉴 대응)</li>
+    </ul></div>
+  </div>
+  <div class="info-card"><h3><span class="ic">🤝</span>스웨덴 문화 · 에티켓</h3><ul>
+    <li><b>시간 엄수</b> 약속·회의 정시 도착이 기본 매너. 세미나·미팅은 시간에 맞춰</li>
+    <li><b>라곰(lagom)</b> "넘치지도 모자라지도 않게"의 절제·균형 문화. 겸손하고 과시하지 않는 태도가 호감</li>
+    <li><b>얀텔라겐(Jantelagen)</b> 자기 자랑·과도한 경쟁을 꺼리는 평등주의 정서. 토론에서도 경청·합의를 중시</li>
+    <li><b>피카(fika)</b> 커피·간식과 함께하는 휴식·교류. 네트워킹의 자연스러운 기회로 활용</li>
+    <li><b>평등·격식 없음</b> 직함보다 이름을 부르는 수평 문화. 단 공식 자리에서는 예의 갖춘 복장</li>
+    <li><b>환경의식</b> 분리수거·재활용·대중교통이 일상. 일회용품 자제</li>
+    <li><b>영어</b> 대부분 영어 소통 원활. 인사 "Hej(헤이)" "Tack(탁, 감사합니다)"는 호감</li>
+  </ul></div>
+  <div class="info-card"><h3><span class="ic">🗓</span>출국 전 준비 타임라인</h3><ul>
+    <li><b>D-60↑</b> 항공권(단체)·페리·숙박 예약 — 알메달렌 성수기라 조기 확보 필수</li>
+    <li><b>D-30</b> 여행자보험 가입, ETIAS 등 입국요건 확인, 발표·연설 자료 준비 시작</li>
+    <li><b>D-14</b> 환전(소액)·해외결제 카드 점검, eSIM/유심 준비, 상비약 구비</li>
+    <li><b>D-7</b> 일기예보 확인 후 복장 최종 점검, 사전자료집 숙지, 명함·발표자료 인쇄</li>
+    <li><b>D-1</b> 여권·항공권·예약확인서·어댑터 최종 점검, 로밍/eSIM 활성화 테스트</li>
+  </ul></div>
+</section>
+
+</main>
+
+<footer>
+  <b>2026 스웨덴 알메달렌 정치축제 대한민국 참관단 상세 가이드</b><br>
+  주최 브레인파크 · 노민호아카데미 · 자치분권연구소 | 담당 브레인파크 박동완 (010-3838-6218)<br>
+  <div class="src">
+  본 가이드는 공개 자료를 종합해 작성했으며, 가격·일정·운영정보는 변동될 수 있어 예약·방문 전 재확인이 필요합니다.<br>
+  주요 출처: almedalsveckan.info · UNESCO · Wikipedia · Länsstyrelsen Gotland · visitsweden.com · International IDEA · SLU · OECD · Destination Gotland · 주스웨덴 대한민국 대사관 · 지도 © OpenStreetMap · 이미지 © Wikimedia Commons
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+const IMG={
+ gamlastan:'https://upload.wikimedia.org/wikipedia/commons/7/78/Stortorget_i_Gamla_Stan_i_Stockholm-2.JPG',
+ palace:'https://upload.wikimedia.org/wikipedia/commons/4/47/Kungliga_Slottet_%2812820900495%29.jpg',
+ wall:'https://upload.wikimedia.org/wikipedia/commons/6/6c/Visby_ringmur_September_2020_01.jpg',
+ powder:'https://upload.wikimedia.org/wikipedia/commons/2/26/Visby-Kruttornet.jpg',
+ jungfrun:'https://upload.wikimedia.org/wikipedia/commons/1/19/Jungfrun_rauk_Lickershamn.JPG',
+ brucebo:'https://upload.wikimedia.org/wikipedia/commons/f/fc/Brucebo_naturreservat_September_2021_01.jpg',
+ almedalen:'https://upload.wikimedia.org/wikipedia/commons/0/07/Almedalen_July_2019.jpg',
+ ferry:'https://upload.wikimedia.org/wikipedia/commons/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg',
+ vasa:'https://upload.wikimedia.org/wikipedia/commons/1/15/The_Vasa_from_the_Bow.jpg',
+ cityhall:'https://upload.wikimedia.org/wikipedia/commons/e/e6/Stockholms_stadshus_september_2011.jpg',
+ skansen:'https://upload.wikimedia.org/wikipedia/commons/e/e8/Skansen%2C_Stockholm_%28by_Pudelek%29_1.JPG',
+ meatball:'https://upload.wikimedia.org/wikipedia/commons/3/30/K%C3%B6ttbullar_-_Swedish_meatballs.jpg',
+ cinnamon:'https://upload.wikimedia.org/wikipedia/commons/0/0e/Cinnamon_bun_-_Black_Mocha_2024-01-08.jpg',
+ saffron:'https://upload.wikimedia.org/wikipedia/commons/d/df/Saffranspannkaka.jpg',
+ skagen:'https://upload.wikimedia.org/wikipedia/commons/2/27/Toast_Skagen_on_a_plate.jpg',
+ arlanda:'https://upload.wikimedia.org/wikipedia/commons/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg'
+};
+
+const D={
+ almedalen:{kd:'ALMEDALSVECKAN',t:'알메달렌 주간',img:IMG.almedalen,html:`
+  <h4>역사와 유래</h4>
+  <p><b>1968년 7월 25일</b>, 당시 교육부 장관이자 사회민주당 당대표 후보였던 <b>올로프 팔메(Olof Palme)</b>가 비스뷔 알메달렌 공원의 화약탑 근처에서 평상형 트럭 짐칸 위에 올라 즉흥 연설을 한 것이 시작입니다. 가족이 인근 포뢰(Fårö)섬에서 여름을 보냈기에 비스뷔에 있었습니다. 1974년까지 팔메가 유일한 연설자여서 "팔메달렌"이라 불리기도 했습니다.</p>
+  <p>첫 공식 알메달렌 주간은 <b>1982년</b> 사회민주당 경제 세미나로 시작됐고, <b>1991년</b> 특정 정당으로부터 독립해 모든 의회 정당이 참여하는 행사가 됐습니다.</p>
+  <h4>운영 방식</h4>
+  <p>매년 6월 말(연중 26주차) 개최. 2022년부터 의회 8개 정당에 반나절씩 배정하는 방식으로 <b>월~금 5일간</b> 진행됩니다. 정당 연설은 보통 정오·저녁(19시). <b>모든 공식 행사는 무료·개방형</b>이며, 개방성·접근성·상호존중의 "알메달렌 정신"을 표방합니다. 공식 호스트는 고틀란드 지역(Region Gotland).</p>
+  <h4>2025년(작년) 실제 사례</h4>
+  <p>2025.6.23(월)~27(금) 개최. 개막 연사로 <b>아바(ABBA)의 비에른 울바에우스</b>가 무대에 섰습니다. 공식 행사 <b>2,421건</b>(전년比 15%↑), 주최 단체 1,373곳, 고유 방문객 약 3~4만 명.</p>
+  <p>주제 비중순: ①지속가능성 9% ②안보·국방 7.6% ③보건·복지 6.3% ④민주주의 6.1%. 정당 연설 최다 청중은 마그달레나 안데르손(사민당) 3,700명이었습니다.</p>
+  <h4>2026년 (참관 연도)</h4>
+  <p>공식 개최 <b>6월 22일(월)~26일(금)</b>. 6/23(화)부터 의회 정당들이 순서대로 알메달렌 무대를 차지합니다.</p>
+  <div class="tipbox"><b>알메달렌 공원</b>은 스웨덴어로 "느릅나무 골짜기". 중세엔 항구였으나 지반 융기로 항구 기능을 잃었고, 1870년대 느릅나무를 심으며 현재 이름이 붙었습니다. 옆에 고틀란드 도서관·컨퍼런스센터·캠퍼스 고틀란드가 있습니다.</div>`},
+
+ gamlastan:{kd:'문화탐방 · STOCKHOLM',t:'감라스탄 (구시가지)',img:IMG.gamlastan,html:`
+  <div class="kv"><span class="k">소요시간</span><span>핵심 도보 1.5~2시간 (왕궁 내부 +1.5~2시간)</span></div>
+  <div class="kv"><span class="k">방문일</span><span>6/21(일) 11:00, 6/26(금) 14:30</span></div>
+  <h4>역사와 유래</h4>
+  <p>스톡홀름 발상지로, 13세기에 형성된 중세 구시가지입니다. 대부분 스타스홀멘 섬 위에 자리하며 약 700년에 걸쳐 좁은 골목·자갈길·고건축이 보존돼 왔습니다. 건물 다수는 1600~1700년대 것으로 북독일(한자) 건축 양식의 영향이 강합니다.</p>
+  <h4>주요 볼거리</h4>
+  <p><b>왕궁(Kungliga Slottet)</b> 현 국왕의 공식 거처. 18세기 바로크 양식, 약 600실. 보물실·무기고·왕실 아파트먼트 관람. <b>여름 근위병 교대식</b>은 보통 매일 12:15(일요일 13:15).<br>
+  <b>스토르토리에트(Stortorget)</b> 스톡홀름에서 가장 오래된 광장. 색색의 파사드가 대표 포토스폿이며, 1520년 '스톡홀름 피바다' 사건의 현장이자 현재 노벨상 박물관이 있는 곳.<br>
+  <b>대성당(Storkyrkan)</b> 14세기 초 건립, '성 게오르기우스와 용' 조각상 소장.<br>
+  <b>모르텐 트로치그스 그랜드</b> 스톡홀름에서 가장 좁은 골목(폭 약 90cm).</p>
+  <div class="tipbox"><b>관람 팁</b> 자갈길이 많아 편한 신발 필수. 메인 골목은 한낮 혼잡 → 이른 오전이 한적. 근위병 교대식 시간을 일정 중심으로 배치하면 효율적.</div>`},
+
+ wall:{kd:'문화탐방 · VISBY',t:'비스뷔 성벽 (Visby ringmur)',img:IMG.wall,html:`
+  <div class="kv"><span class="k">소요시간</span><span>외곽 도보 일주 약 1~1.5시간</span></div>
+  <div class="kv"><span class="k">방문일</span><span>6/22(월) 9:00 (행사장 현장 점검 겸 산책)</span></div>
+  <div class="kv"><span class="k">유산등재</span><span>1995년 '비스뷔 한자도시' 유네스코 세계문화유산</span></div>
+  <h4>역사와 유래</h4>
+  <p>고틀란드 비스뷔를 둘러싼 중세 환상(環狀) 성벽. 13~14세기에 2단계로 축조됐으며, 동문은 1286년 이후·북문은 약 1289년 건설. 1350년대 대규모 증축으로 높아졌습니다. 가장 오래된 부분인 <b>크루트토르네트(화약탑)</b>는 12세기 항구 입구에 세워진, 스칸디나비아 현존 최고(最古)의 비종교 건축물로 평가됩니다.</p>
+  <h4>한자동맹과의 관계</h4>
+  <p>비스뷔는 12~14세기 발트해 한자동맹의 핵심 중심지였습니다. 성벽과 같은 시기의 200여 채 창고·상인 저택이 함께 남아, 북유럽에서 가장 잘 보존된 요새형 상업도시로 꼽힙니다.</p>
+  <h4>규모·보존</h4>
+  <p>원래 약 3.6km 중 약 3.44km 현존(≈3.5km). 탑은 대형 27개·소형 9개가 남아 있습니다. 스칸디나비아에서 가장 강력하고 잘 보존된 중세 성벽입니다.</p>
+  <div class="tipbox"><b>관람 팁</b> 성벽은 야외 무료. 식물원(Botaniska) 쪽 외곽 산책로에서 성벽·탑 전경이 좋습니다. 비스뷔는 "장미와 폐허의 도시"로 불리며, 6월 백야로 저녁 산책에도 유리합니다.</div>`},
+
+ jungfrun:{kd:'문화탐방 · LICKERSHAMN',t:'리케르스함 · 융프룬 라우크',img:IMG.jungfrun,html:`
+  <div class="kv"><span class="k">소요시간</span><span>주차장~라우크 왕복 약 30분~1시간</span></div>
+  <div class="kv"><span class="k">방문일</span><span>6/24(수) 17:30 (식사 겸 일몰 절경 산책)</span></div>
+  <div class="kv"><span class="k">주소</span><span>624 42 Lickershamn (고틀란드 서북부)</span></div>
+  <h4>지질학적 의미</h4>
+  <p>라우카르(raukar)는 석회암 해안이 파도·풍화로 침식되어 단단한 부분만 기둥처럼 남은 카르스트성 해식 지형으로, 고틀란드의 대표 자연경관입니다. 그중 <b>융프룬(Jungfrun)</b>은 <b>고틀란드 최대 라우크</b>로, 평탄면 위 약 12m(해수면 기준 약 26m) 높이입니다.</p>
+  <h4>전설·문화</h4>
+  <p>'융프룬(처녀)'이라는 이름은 처녀 욀레가르드와 연인 헬게가 이곳 바다에 몸을 던졌다는 비극적 전설에서 유래합니다. 매년 여름 일몰 시각 해변에서 이를 극화한 야외극 '융프루스펠레트'가 상연됩니다(상연 일정은 현지 확인 권장).</p>
+  <h4>하이킹</h4>
+  <p>융프룬 자연보호구역은 가파른 해안 절벽 약 700m 구간을 포함합니다. 장거리 트레일 <b>클린트쿠스트레덴</b>(약 30km, 주황색 표식)이 일대를 통과합니다.</p>
+  <div class="warnbox"><b>주의</b> 절벽 가장자리이므로 안전 유의, 미끄럼 방지 신발 권장. 6월 일몰이 밤 9시 이후로 매우 늦으니 일몰 관람 시 <b>귀가 동선을 사전 점검</b>하세요. 해안 바람이 강해 방풍 필수.</div>`},
+
+ brucebo:{kd:'문화탐방 · GOTLAND',t:'브루세보 자연보호구역',img:IMG.brucebo,html:`
+  <div class="kv"><span class="k">소요시간</span><span>숲·해안 산책 약 1~2시간</span></div>
+  <div class="kv"><span class="k">방문일</span><span>6/25(목) 17:30</span></div>
+  <div class="kv"><span class="k">위치</span><span>비스뷔 북쪽 약 5~10km (셸쇠 인근)</span></div>
+  <h4>자연 의미</h4>
+  <p>1970년부터 약 35헥타르 해안을 보호. 침엽수림·해변 초지·절벽과 동굴·시내·습지·돌해변·모래해변이 한 곳에 모여 "미니어처 고틀란드"로 불립니다. 석회암 해안과 발트해 전망이 핵심 경관입니다.</p>
+  <h4>화가 부부의 유래</h4>
+  <p>'브루세보'는 캐나다 화가 <b>윌리엄 블레어 브루스(1859~1906)</b>와 스웨덴 조각가 부인 <b>카롤리나 베네딕스-브루스</b>가 1900~06년 조성한 예술가 저택에서 유래합니다("브루스가 사는 집"). 고틀란드의 빛에 매료돼 바다를 향한 큰 창의 아틀리에를 갖춘 본채를 지었습니다.</p>
+  <p>브루스 사후 카롤리나가 머물며 예술가·음악가·과학자의 사교 거점이 됐고, 유언에 따라 1972년 <b>브루세보 미술 장학재단</b>이 설립돼 캐나다·스웨덴 젊은 예술가 레지던시로 운영됩니다. 본채는 2012년 미술관으로 개관.</p>
+  <div class="tipbox"><b>관람 팁</b> 미술관(Konstnärshemmet Brucebo) 내부 관람은 단체 사전예약 필수. 자연 그대로의 해안·숲이므로 표식을 따라 이동하고 우천 시 미끄럼 주의.</div>`},
+
+ ev_seminar:{kd:'한국행사 · 국제세미나',t:'민주주의의 다양성과 청년정치',img:IMG.almedalen,html:`
+  <div class="kv"><span class="k">일시</span><span>6/25(목) 15:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>한국 연수단 부스(333번)</span></div>
+  <div class="kv"><span class="k">담당</span><span>브레인파크</span></div>
+  <p>알메달렌 2026의 핵심 가치인 '민주주의 속 다양성'을 중심으로 한국과 스웨덴의 차세대 리더들이 모여 포용적 거버넌스 전략을 교류합니다. 양국 정치 현장에서 다양성 확보가 왜 시급한 과제인지 짚어보며, 갈등 대신 설득과 합의를 가능하게 하는 제도적 솔루션과 포용의 가치를 토론합니다.</p>`},
+ ev_ksession:{kd:'한국행사 · 한국세션',t:'북유럽 복지 모델은 한국의 미래인가?',img:IMG.cityhall,html:`
+  <div class="kv"><span class="k">일시</span><span>6/25(목) 13:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>한국 연수단 부스(333번)</span></div>
+  <div class="kv"><span class="k">담당</span><span>노민호아카데미</span></div>
+  <p>세계에서 가장 빠른 속도로 초고령 사회에 진입 중인 대한민국에서 지속 가능한 사회 안전망 구축은 국가적 사활이 걸린 이슈입니다. 세계적 표준으로 인정받아온 스웨덴 모델이 인구 절벽과 경제적 양극화라는 새 위기를 맞아 여전히 유효한지, 한국 현실에 어떻게 적용·혁신될 수 있는지 현실적 정책 대안을 논의합니다.</p>`},
+ ev_speech:{kd:'한국행사 · 광장연설',t:'지방선거와 민주주의 · AI시대 시민참여',img:IMG.almedalen,html:`
+  <div class="kv"><span class="k">일시</span><span>6/24(수) 14:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>Palarplats 광장</span></div>
+  <div class="kv"><span class="k">담당</span><span>브레인파크</span></div>
+  <p>광장 연설을 희망하는 참가자의 신청을 받아 1인당 30분씩 자유 주제로 민주주의·AI, 또는 한국 자치단체 정책을 소개하는 연설을 합니다. 연설 장면은 동영상으로 촬영해 편집 후 참가자에게 제공합니다.</p>
+  <div class="tipbox"><b>참고</b> 알메달렌의 기원 자체가 1968년 팔메의 '광장 연설'입니다. 공원 무대에서 직접 연설하는 것은 알메달렌 정신의 핵심을 체험하는 일입니다.</div>`},
+
+ ev_table:{kd:'이벤트 · 100미터 테이블',t:'100미터 테이블',img:IMG.almedalen,html:`
+  <div class="kv"><span class="k">일시</span><span>6/22(월) 15:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>Almedalen, Scen</span></div>
+  <p>참관단 전원이 공원에 배치된 100미터 길이의 긴 테이블에 착석해 진행하는 개방형 토론입니다. 2026 스웨덴 민주주의 보고서를 기반으로 민주주의 발전과 청년 참여 확대 방안을 논의한 뒤, 현지 시민·청년 모더레이터들과 테이블에 둘러앉아 토론합니다.</p>
+  <div class="warnbox"><b>확인 필요</b> '100미터 테이블'이라는 명칭의 공식 행사는 공개 검색으로 확인되지 않았습니다. 현지 프로그램에서 정확한 행사명·시간·장소를 재확인하세요.</div>`},
+ ev_parade:{kd:'이벤트 · 다양성 퍼레이드',t:'다양성 퍼레이드',img:IMG.almedalen,html:`
+  <div class="kv"><span class="k">일시</span><span>6/22(월) 16:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>Almedalens, Scen</span></div>
+  <p>모든 신체와 영혼이 존재하고 자신의 삶을 살아갈 권리를 위해, 세계에서 온 시민들과 함께 행진합니다. 참관단은 쇠데르토리에 모여 주최측 연설을 들은 후 알메달렌 공원을 향해 출발, 공원 무대에서 연설과 함께 마무리할 계획입니다.</p>
+  <div class="warnbox"><b>확인 필요</b> 고틀란드 프라이드 퍼레이드는 통상 5월에 별도 개최됩니다. 알메달렌 주간 내 '퍼레이드'가 공식 프로그램에 포함되는지 현지 확인을 권장합니다.</div>`},
+ ev_youth:{kd:'이벤트 · 청년정치의 밤',t:'청년정치의 밤',img:IMG.almedalen,html:`
+  <div class="kv"><span class="k">일시</span><span>6/22(월) 19:00</span></div>
+  <div class="kv"><span class="k">장소</span><span>Almedalen, Scen</span></div>
+  <p>청년층의 정치 신뢰 회복 방안과 각 청년 정당의 핵심 공약을 주제로, 스웨덴 주요 정당 청년 대표들이 무대에 올라 연설하고 토론합니다. 이후 전 세계 청년 정치인과 한국 참관단이 네트워킹하는 시간을 갖습니다.</p>
+  <div class="tipbox"><b>배경</b> 2025년 알메달렌에서 청년조직은 31건의 행사에 참여했고, 25개 청년조직이 'Boka en Ung Expert(청년 전문가 예약)' 등 네트워킹 이니셔티브에 참여했습니다.</div>`},
+
+ cost_air:{kd:'비용 · 항공',t:'항공편 (인천→스톡홀름)',img:IMG.arlanda,html:`
+  <h4>노선</h4>
+  <p>인천(ICN)–스톡홀름(ARN) <b>상시 직항은 없음</b>(대한항공 주 1회 직항 운항하나 편수 적음). 사실상 경유편이 표준입니다.</p>
+  <p><b>SAS(요청 노선)</b> ICN→코펜하겐(SAS 직항, 2025.9 취항)→ARN. 비행 ICN-CPH 약 13시간 25분 + 환승 + CPH-ARN 약 1시간 15분.<br>
+  <b>핀에어</b> 헬싱키 경유, ICN→ARN 주 48편으로 최다 → <b>단체 좌석 확보에 가장 유리</b>.</p>
+  <h4>요금 (이코노미)</h4>
+  <div class="kv"><span class="k">편도</span><span>약 49만원~ (비수기 최저)</span></div>
+  <div class="kv"><span class="k">왕복</span><span>약 74만원~ (비수기). <b>6월 성수기·단체 현실 추정 130만~220만원</b></span></div>
+  <div class="warnbox"><b>확인 필요</b> 6월 단체 정확 운임·시간표는 항공사/여행사 견적 필수. 핀에어(헬싱키)·SAS(코펜하겐) 모두 견적 비교 권장.</div>`},
+ cost_ferry:{kd:'비용 · 페리',t:'페리 (뉘네스함→비스뷔)',img:IMG.ferry,html:`
+  <div class="kv"><span class="k">운항사</span><span>Destination Gotland (유일 운영사)</span></div>
+  <div class="kv"><span class="k">소요</span><span>약 3시간 15분 (여름 하루 최대 18회)</span></div>
+  <div class="kv"><span class="k">터미널</span><span>뉘네스함: Nynäsvägen 2, 149 40 / 비스뷔: Färjeleden 14, 621 58</span></div>
+  <h4>요금</h4>
+  <p><b>승객 1인 편도</b> 최저 약 €25~, 성수기 현실 추정 약 5만~12만원 / 왕복 약 10만~24만원.<br>
+  <b>차량 동반</b>은 별도 부과(편도 평균 약 48만원, 밴은 길이별 가산) → 정확액 확인 필요.</p>
+  <div class="warnbox"><b>예약 팁</b> 알메달렌 주간과 겹쳐 좌석·차량 슬롯이 가장 먼저 매진됩니다. 단체 10명은 같은 편으로 묶어 즉시 예약하세요. 멀미약은 승선 전 복용.</div>`},
+ cost_car:{kd:'비용 · 렌터카',t:'렌터카 (10명 이동)',img:IMG.arlanda,html:`
+  <p>10명 + 짐은 9인승 1대로 부족 → <b>9인승 밴 2대</b>(또는 밴+소형차) 권장. 픽업은 스톡홀름 알란다공항(ARN).</p>
+  <div class="kv"><span class="k">밴 1대</span><span>약 17만~22만원/일 (성수기 공항 픽업)</span></div>
+  <div class="kv"><span class="k">주간(7일)</span><span>1대 약 112만~154만원 → 2대 약 224만~308만원</span></div>
+  <div class="kv"><span class="k">연료</span><span>휘발유 약 2,500~2,800원/L (확인 필요)</span></div>
+  <div class="tipbox"><b>절감 팁</b> 공항 외 시내 픽업이 평균 약 54% 저렴. <b>비스뷔 구시가는 보행 중심</b>이라 차량을 본토(뉘네스함)에 두고 페리 승객으로만 이동하면 차량 페리 운임(왕복 약 100만원/대)을 아낄 수 있습니다.</div>`},
+ cost_stay:{kd:'비용 · 숙박',t:'숙박 (비스뷔 5박)',img:IMG.wall,html:`
+  <div class="kv"><span class="k">숙소 주소</span><span>Gelbgjutargatan 6, 62153 Visby (일정표 기재 숙소)</span></div>
+  <h4>요금</h4>
+  <p><b>평상시</b> 비스뷔 호텔 3성 약 6~12만원/박, 4성+ 약 11~16만원/박.<br>
+  <b>알메달렌 성수기(6/22~26)</b> 1박 SEK 3,000~4,500 이상(약 42~63만원↑)으로 급등하며 객실 자체가 희소.</p>
+  <div class="kv"><span class="k">호텔 1인</span><span>1박 약 35~60만원 → 5박 약 175~300만원</span></div>
+  <div class="kv"><span class="k">단체 절감</span><span>아파트 통대여·호스텔 시 1박 1인 약 15~30만원까지</span></div>
+  <div class="warnbox"><b>최대 변수</b> 알메달렌과 정면으로 겹쳐 연중 최고가 + 조기 매진. 비스뷔 만실 시 고틀란드 외곽·본토 숙박+페리 통근도 대안. <b>지금 즉시 예약 필수.</b></div>`},
+
+ f_meatball:{kd:'먹거리 · 스웨덴 대표',t:'쾨트불라르 (스웨덴 미트볼)',img:IMG.meatball,html:`<p>스웨덴을 대표하는 요리. 소·돼지 혼합 고기에 올스파이스로 양념하고, <b>링곤베리 잼·으깬 감자·크림 그레이비</b>와 함께 냅니다. 가정식부터 레스토랑까지 어디서나 맛볼 수 있습니다.</p>`},
+ f_cinnamon:{kd:'먹거리 · 피카 문화',t:'시나몬롤 & 피카(Fika)',img:IMG.cinnamon,html:`<p>카다멈·시나몬 향의 번에 펄슈거를 뿌린 <b>카넬불레(kanelbulle)</b>. <b>피카</b>는 커피에 달콤한 빵을 곁들여 잠시 쉬는 스웨덴식 사회적 의례로, 업무·일상의 중요한 휴식 문화입니다. 여행 중 꼭 경험해 보세요.</p>`},
+ f_saffron:{kd:'먹거리 · 고틀란드 특산',t:'사프란스판카카 (사프란 팬케이크)',img:IMG.saffron,html:`<p>쌀로 만든 사프란 팬케이크에 휘핑크림과 살미베리(dewberry) 잼을 곁들인 <b>고틀란드 대표 디저트</b>. 비스뷔 거의 모든 카페·식당에서 맛볼 수 있습니다. 고틀란드 양고기·트러플·아스파라거스도 이 지역 특산입니다.</p>`},
+ f_skagen:{kd:'먹거리 · 스웨덴 대표',t:'토스트 스카겐 / 새우 샌드위치',img:IMG.skagen,html:`<p><b>토스트 스카겐</b>은 버터에 구운 토스트 위에 새우·딜·마요네즈·레몬·곤들매기 알을 올린 1950년대 창작 요리. <b>새우 샌드위치(räksmörgås)</b>는 호밀빵에 새우·삶은 달걀·채소를 듬뿍 올린 인기 메뉴입니다.</p>`},
+ f_herring:{kd:'먹거리 · 스웨덴 대표',t:'절인 청어(Sill) & 그라브락스',img:IMG.meatball,html:`<p><b>실(Sill)</b>은 식초에 절인 청어로, 호밀빵·삶은 감자·딜과 함께 냅니다. 하지(미드솜마르) 필수 음식이라 6월 여행과 시기가 맞습니다. <b>그라브락스</b>는 소금·설탕·딜에 절여 얇게 저민 연어입니다.</p>`},
+
+ n_botan:{kd:'근처 · 비스뷔',t:'DBW 보타니컬 가든',img:IMG.wall,html:`<p>1855년 조성된 식물원. 고틀란드의 온화한 미기후 덕에 무화과·뽕나무·손수건나무 등 스웨덴에서 보기 드문 식물을 재배합니다. 성벽 전경을 보기 좋은 시내 오아시스입니다.</p>`},
+ n_gotmus:{kd:'근처 · 비스뷔',t:'고틀란드 박물관',img:IMG.wall,html:`<p>스웨덴 최대 지역 박물관 중 하나. 8세기 픽처스톤과 함께 <b>세계 최대 은 보물 더미 '스필링스 트레저(약 70kg)'</b>를 전시합니다.</p>`},
+ n_faro:{kd:'근처 · 고틀란드',t:'포뢰(Fårö)섬 & 베리만',img:IMG.jungfrun,html:`<p>비스뷔 북쪽, <b>라우크 절경</b>(랑함마르스 자연보호구역)으로 유명한 섬. 거장 영화감독 <b>잉마르 베리만</b>의 거주지로, 베리만 센터에서 그의 생애·작품을 탐방할 수 있습니다.</p>`},
+ n_vasa:{kd:'근처 · 스톡홀름',t:'바사 박물관 (Vasamuseet)',img:IMG.vasa,html:`<p>1628년 처녀항해 20분 만에 침몰, 1961년 인양한 17세기 군함 '바사호'를 통째로 전시. <b>세계에서 가장 잘 보존된 옛 목조 군함</b>으로 스톡홀름 최고 명소입니다.</p>`},
+ n_cityhall:{kd:'근처 · 스톡홀름',t:'스톡홀름 시청사',img:IMG.cityhall,html:`<p>매년 12월 <b>노벨상 만찬</b>이 열리는 곳. 블루홀과 황금빛 모자이크의 골든홀이 백미입니다.</p>`},
+ n_skansen:{kd:'근처 · 스톡홀름',t:'스칸센 (Skansen)',img:IMG.skansen,html:`<p>1891년 개관한 <b>세계 최초의 야외 박물관</b>(유르고르덴 섬). 스웨덴 각지에서 옮겨온 150여 채 역사 건물과 북유럽 동물원(곰·늑대·순록)을 갖췄습니다.</p>`}
+};
+
+const POLICY=[
+ {id:'p1',t:'청년의 민주주의 참여와 사회적 지속가능성',org:'D-EFFECT (EU 청년참여 프로젝트)',
+  bg:'유럽 전역 청년 투표율·정당 가입률 저하, 정치 냉소가 민주주의 지속가능성 위협 요인으로 부각.',
+  se:'스웨덴은 청년 결사·조직화를 제도 지원. 전국청소년·청년단체협의회(LSU)는 81개 독립 청년단체 연합으로 정부 보조금·정례 협의 채널을 가짐. 단 지자체 청년위원회는 290개 중 47%만 존재해 지역 편차.',
+  kr:'한국도 청년기본법·청년정책조정위원회 틀은 갖췄으나 실질 권한·예산 안정성이 과제. "정부 보조금+정례 협의"를 결합한 자율적 청년단체 생태계 모델이 참고.',
+  note:'D-EFFECT는 공개 검색으로 단체 실체 미확인. 담당 Ella Burazerovic.'},
+ {id:'p2',t:'정신적·신체적 건강을 위한 미래지향적 해결책',org:'건강의정원(Hälsans Trädgård)·Self Love By Visby',
+  bg:'코로나 이후 정신건강·번아웃·고립이 보건정책 핵심 의제. 예방·웰빙·자기돌봄을 의료체계 부담 경감과 연결.',
+  se:'스웨덴은 정신건강을 공공보건 핵심 축으로 다루며 지역(region) 차원 예방 프로그램과 원예치료 등 보완적 접근 활용.',
+  kr:'한국은 정신건강 서비스 접근성·낙인이 과제. 예방·웰빙 중심 지역밀착 프로그램, 비약물적 접근의 제도 편입 검토 가치.',
+  note:'두 주최기관 모두 공개 검색 미확인. 원예·자기돌봄 성격으로 추정.'},
+ {id:'p3',t:'법적 규제 속에서 디지털 주권 확보',org:'오픈소스스웨덴·디지털리스트클라우드',
+  bg:'EU 데이터 주권 강화(GDPR·데이터법·NIS2)와 미국 빅테크 클라우드 의존 우려가 맞물려 "디지털 주권"이 핵심 의제. 오픈소스·개방표준이 수단.',
+  se:'디지털정부청(Digg)이 공공부문 오픈소스를 조정. Kivos·NOSAD·eSam 등이 활동하며 eSam은 유럽 법제에 맞는 자체 호스팅 협업도구 도입 검토 중.',
+  kr:'한국 공공부문도 외산 클라우드·데이터 국외이전 우려. "오픈소스+개방표준+정부 조정기관" 모델은 디지털 주권 전략의 참고 사례.',
+  note:'오픈소스스웨덴(Björn Lundell 교수 등 주도) 실체 확인. Digitalist Cloud·담당자는 미확인.'},
+ {id:'p4',t:'문화와 사람들을 위한 공공 환경 조성',org:'Bbeabridge (교육·이주민통합)',
+  bg:'이주민 통합·사회통합과 공공공간의 역할이 의제. 문화·공공환경이 다양한 배경을 연결하는 통합 도구라는 관점.',
+  se:'이민자 비중이 높은 스웨덴은 통합이 핵심 정책. 문화·교육·지역 공공공간을 통한 통합 시도.',
+  kr:'한국도 이주민·다문화 증가로 사회통합이 과제. 분리·동화가 아닌 공공공간·문화 기반 상호 통합 접근이 시사점.',
+  note:'Bbeabridge·담당 Anne Charlotte Andersson 공개 검색 미확인.'},
+ {id:'p5',t:'지역경제와 지속가능한 사회 발전',org:'SLU·웁살라대·생태은행(Ekobanken)',
+  bg:'농촌 쇠퇴·인구 유출 속 지역경제 지속가능성과 자원 거버넌스가 의제. 윤리적 금융이 지역·생태 발전 재원으로 주목.',
+  se:'SLU(스웨덴농업과학대)는 농업·환경·농촌개발 특화 대학. 담당 Emil Sandström은 SLU 선임강사(자원 거버넌스 연구). Ekobanken은 1996년 설립 회원소유 윤리은행으로 전 투자내역을 공개하는 투명성 모델.',
+  kr:'지방소멸·농촌 활성화 과제에 ▲농업특화 연구중심대학의 정책 연계 ▲사회적금융·지역 윤리은행을 통한 지역 자본 순환 모델이 시사점.',
+  note:'SLU·웁살라대·Ekobanken·담당자 모두 실체 확인.'},
+ {id:'p6',t:'시민참여를 통한 책임의 실행',org:'스칸디아그룹 사회공헌재단(Idéer för livet)',
+  bg:'예방적 사회투자와 민간의 사회적 책임 실행이 의제. 사회성과연계채권(SIB) 등 사회적 투자 도구 포함.',
+  se:'스칸디아 재단 "Idéer för livet"는 약 40년간 4,600여 예방 프로젝트에 2.9억 SEK 이상 지원. 펀드 가입자가 가치의 2%를 매년 기부, 대학과 협력해 예방효과를 측정.',
+  kr:'한국 기업 사회공헌이 일회성에 그치기 쉬운 점과 대비. ▲예방의 사회·경제적 가치 측정 ▲금융상품과 사회투자 연계 ▲대학 협력 근거기반 모델이 ESG 고도화에 참고.',
+  note:'스칸디아 재단 실체 확인. 담당 Jonatan Ohlin 개별 미확인.'},
+ {id:'p7',t:'디지털 혁신을 통한 지속가능·포용 사회',org:'Microsoft',
+  bg:'AI·클라우드 등 디지털 혁신을 지속가능성(탄소·자원)과 포용성(디지털 격차 해소)에 연결하는 빅테크 사회정책 담론.',
+  se:'스웨덴은 2025–2030 디지털화 전략(역량·산업·행정·복지·연결성 5대 영역)을 추진하며 AI·데이터·보안을 횡단적으로 다룸. MS는 주요 기업 행위자.',
+  kr:'디지털 혁신이 격차를 줄이고(포용) 환경부하를 키우지 않는(지속가능) 방향으로 설계돼야 하며, 정부-빅테크 협력 거버넌스 설계가 시사점.',
+  note:'Microsoft 확인. 참여 Frida Orring(MS 사회정책 담당이사) 개별 직함 미확인.'},
+ {id:'p8',t:'복지 발전을 위한 국가·지역 디지털화 상호작용',org:'PwC Sverige',
+  bg:'고령화·재정압박 속 복지서비스 디지털화가 핵심. 스웨덴은 국가·지역·지자체가 각각 IT를 결정하는 고도 분권 구조라 "상호작용·표준화"가 과제.',
+  se:'2025–2030 디지털화 전략은 지자체·지역을 핵심 행위자로 명시하고 공통 인프라·리더십·법·데이터 기반 혁신을 조건으로 제시. 분권 구조상 공통 인프라 부재가 약점.',
+  kr:'한국은 상대적으로 중앙집권적 전자정부(세계 최상위권)이나 지자체-중앙 시스템 연계·데이터 표준이 과제. 스웨덴은 "분권+공통표준" 균형의 반면교사.',
+  note:'PwC Sverige 확인. 담당 Ola Johnsson 개별 미확인.'},
+ {id:'p9',t:'인공지능과 민주주의, 2026 스웨덴 선거',org:'International IDEA·Microsoft·스웨덴선관위',
+  bg:'생성형 AI·딥페이크·허위정보가 선거 정보환경을 위협. 2026년 9월 스웨덴 총선을 앞둔 시의적 주제.',
+  se:'International IDEA는 스톡홀름 소재 민주주의·선거지원 정부간기구. 2024년 보고서에서 정보환경 오염을 핵심 위협으로 진단. 담당 Kevin Casas-Zamora는 2019년 이래 사무총장(코스타리카 前 부통령).',
+  kr:'한국도 선거 딥페이크 규제·정보환경 보호가 과제. ▲선관위-빅테크-국제기구 협력 ▲딥페이크 규제 ▲AI 활용 선거관리의 양면성이 시사점.',
+  note:'International IDEA·인물 확인. 사무총장 재임 여부는 임기 일정상 변동 가능.'},
+ {id:'p10',t:'가정에서 더 나은 돌봄·요양 (ASIH)',org:'북스톡홀름 ASIH',
+  bg:'고령화로 병원 외 돌봄 수요 급증. 병원 수준 의료를 가정에서 제공하는 모델이 핵심.',
+  se:'ASIH(가정형 전문의료)는 정맥주사·산소·항생제·수혈 등 병원급 의료를 가정에서 제공. 전 연령·복합질환 대상이며 말기엔 가정형 완화의료로 전환. 지역(region) 관리 하에 운영.',
+  kr:'한국의 가정형 호스피스·재택의료 시범사업과 직결. ▲병원급 의료의 가정 제공 인프라 ▲다학제 팀 ▲지역 단위 통합관리가 직접적 벤치마크.',
+  note:'북스톡홀름 ASIH 실재 확인. 담당 Rikard Höse 개별 미확인.'},
+ {id:'p11',t:'고기와 기후 – 지속가능한 식품시스템',org:'웁살라대학교',
+  bg:'육류(특히 소고기)의 높은 온실가스 집약도로 식생활 전환이 기후·보건·공정성 의제로 부상.',
+  se:'스웨덴 식품생산은 전체 온실가스의 약 14%(농업 12~13%). 영양지침에 맞춘 약 25% 육류 감축·콩류 재배 확대가 전환 경로로 제시. 2017년 기후법상 2045년 기후중립 목표.',
+  kr:'한국도 식품 부문 배출·식생활 전환 논의가 시작 단계. ▲기후·건강·공정성을 함께 보는 식품시스템 접근 ▲단백질 전환(콩류·대체단백) 정책이 시사점.',
+  note:'담당 Mikael Karlsson은 웁살라대 환경과학 부교수·기후리더십 연구그룹 책임자.'},
+ {id:'p12',t:'주택 부족인가 책임 부족인가 – 주택정책',org:'웁살라대 주택도시연구소(IBF)·KTH',
+  bg:'스웨덴은 만성적 주택 부족이 핵심 사회문제. "공급 부족이냐 정책 책임 부족이냐"라는 도발적 프레임.',
+  se:'스웨덴은 OECD 내 가장 엄격한 임대료 규제 운영. 핵심은 사용가치(bruksvärde) 원칙(면적·표준·품질로 합리적 임대료 산정). 2016년 290개 지자체 중 255개가 주택부족 보고, 규제가 신규건설 위축·암시장·대기열 등 왜곡을 낳는다는 비판.',
+  kr:'한국 임대차 3법·공급 논쟁과 직접 대응. ▲강한 임차인 보호가 공급·이동성에 미치는 부작용 ▲규제와 공급의 균형이라는 정책 딜레마.',
+  note:'IBF·KTH 실체 확인. 담당 Nils Hertting은 IBF 소속 정치학·주택정책 연구자.'},
+ {id:'p13',t:'스웨덴 최초의 국가기후·취약성 분석 (NKSA)',org:'국가기후적응전문가위원회',
+  bg:'기후위기 적응을 위해 국가 차원의 체계적 취약성 진단이 필요. NKSA는 스웨덴 최초의 종합 국가기후·취약성 분석.',
+  se:'국가기후적응전문가위원회는 정부 임명, 5년마다 기후적응 작업을 평가(SMHI 사무국 연계). 2024년 확대 권한으로 NKSA 작성, 2025년 작업·2026년 12월 정부 보고 예정. 약 125명 전문가 참여.',
+  kr:'한국도 기후위기 적응대책을 수립하나 국가 단위 통합 취약성 분석·독립 전문가위원회 평가체계는 보강 여지. ▲5년 주기 독립 평가 ▲기상기관 연계 과학기반 분석이 시사점.',
+  note:'위원회(SMHI 연계) 실체 확인. 담당 Therése Sjöberg 개별 미확인.'}
+];
+
+const TL=[
+ {d:'6.20',dow:'토',loc:'인천 출발',rows:[
+  {t:'20:00',ttl:'인천국제공항(ICN) 제2터미널 집합 및 공항설명회',ds:'',k:'move'},
+  {t:'23:35',ttl:'SK988 인천 출발 (비행 약 13h25m)',ds:'',k:'move'}]},
+ {d:'6.21',dow:'일',loc:'스톡홀름',rows:[
+  {t:'06:00',ttl:'코펜하겐 카스트럽 공항(CPH) 도착',ds:'',k:'move'},
+  {t:'07:00',ttl:'SK402 코펜하겐 출발 (1h15m)',ds:'',k:'move'},
+  {t:'08:15',ttl:'스톡홀름 알란다 공항(ARN) 도착',ds:'',k:'move'},
+  {t:'09:30',ttl:'렌터카 픽업',ds:'',k:'move'},
+  {t:'11:00',ttl:'문화탐방 · 감라스탄 (스톡홀름 구시가지)',ds:'700년 역사의 중세 구시가지',k:'cult',m:'gamlastan'},
+  {t:'13:00',ttl:'점심',ds:'',k:'meal'},
+  {t:'16:00',ttl:'뉘네스함 페리 터미널 도착',ds:'',k:'move'},
+  {t:'17:45',ttl:'페리 출발 (뉘네스함→비스뷔, 3h15m)',ds:'Destination Gotland',k:'move',m:'cost_ferry'},
+  {t:'21:00',ttl:'비스뷔 터미널 도착 → 숙소',ds:'Gelbgjutargatan 6, 62153 Visby',k:'move',m:'cost_stay'},
+  {t:'22:00',ttl:'현지워크숍 · 참관계획 점검 및 동선 확인',ds:'',k:'work'}]},
+ {d:'6.22',dow:'월',loc:'비스뷔',rows:[
+  {t:'09:00',ttl:'문화탐방 · 비스뷔 성벽',ds:'유네스코 세계문화유산, 행사장 현장 점검 겸 산책',k:'cult',m:'wall'},
+  {t:'10:00',ttl:'정책투어 · 청년의 민주주의 참여와 사회적 지속가능성',ds:'D-EFFECT',k:'pol',m:'pol:p1'},
+  {t:'11:00',ttl:'정책투어 · 정신적·신체적 건강을 위한 미래지향적 해결책',ds:'건강의정원',k:'pol',m:'pol:p2'},
+  {t:'13:00',ttl:'정책투어 · 법적 규제 속 디지털 주권 확보',ds:'오픈소스스웨덴',k:'pol',m:'pol:p3'},
+  {t:'15:00',ttl:'정책투어 · 문화와 사람들을 위한 공공 환경 조성',ds:'Bbeabridge',k:'pol',m:'pol:p4'},
+  {t:'15:00',ttl:'이벤트 · 100미터 테이블',ds:'개방형 토론',k:'event',m:'ev_table'},
+  {t:'16:00',ttl:'이벤트 · 다양성 퍼레이드',ds:'민주주의의 다양성 행진',k:'event',m:'ev_parade'},
+  {t:'19:00',ttl:'이벤트 · 청년정치의 밤',ds:'정당 청년조직 네트워킹',k:'event',m:'ev_youth'}]},
+ {d:'6.23',dow:'화',loc:'비스뷔',rows:[
+  {t:'10:00',ttl:'정책투어 · 지역경제와 지속가능한 사회 발전',ds:'SLU·웁살라대·Ekobanken',k:'pol',m:'pol:p5'},
+  {t:'10:30',ttl:'정책투어 · 시민참여를 통한 책임의 실행',ds:'스칸디아 재단',k:'pol',m:'pol:p6'},
+  {t:'11:00',ttl:'정책투어 · 디지털 혁신을 통한 지속가능·포용 사회',ds:'Microsoft',k:'pol',m:'pol:p7'},
+  {t:'13:00',ttl:'정책투어 · 복지 발전을 위한 국가·지역 디지털화',ds:'PwC Sverige',k:'pol',m:'pol:p8'},
+  {t:'15:00',ttl:'정책투어 · 인공지능과 민주주의, 2026 스웨덴 선거',ds:'International IDEA·MS·선관위',k:'pol',m:'pol:p9'},
+  {t:'18:00',ttl:'현지워크숍 · 한국행사 실무 준비 및 발표 연습',ds:'',k:'work'}]},
+ {d:'6.24',dow:'수',loc:'비스뷔·리케르스함',rows:[
+  {t:'09:00',ttl:'정책투어 · 가정에서 더 나은 돌봄·요양(ASIH)',ds:'북스톡홀름 ASIH',k:'pol',m:'pol:p10'},
+  {t:'10:00',ttl:'정책투어 · 고기와 기후, 지속가능한 식품시스템',ds:'웁살라대',k:'pol',m:'pol:p11'},
+  {t:'14:00',ttl:'한국행사 · 광장연설 (지방선거와 민주주의·AI시대 시민참여)',ds:'Palarplats 광장',k:'kr',m:'ev_speech'},
+  {t:'17:30',ttl:'문화탐방 · 리케르스함 (융프룬 라우크)',ds:'발트해 최고의 해안 지질경관',k:'cult',m:'jungfrun'},
+  {t:'18:30',ttl:'저녁 (리케르스함 전망 식당)',ds:'',k:'meal'}]},
+ {d:'6.25',dow:'목',loc:'비스뷔·브루세보',rows:[
+  {t:'10:00',ttl:'정책투어 · 주택 부족인가 책임 부족인가',ds:'웁살라대 IBF·KTH',k:'pol',m:'pol:p12'},
+  {t:'10:00',ttl:'정책투어 · 스웨덴 최초 국가기후·취약성 분석(NKSA)',ds:'국가기후적응전문가위원회',k:'pol',m:'pol:p13'},
+  {t:'13:00',ttl:'한국행사 · 한국세션 (북유럽 복지 모델은 한국의 미래인가?)',ds:'한국 연수단 부스(333번)',k:'kr',m:'ev_ksession'},
+  {t:'15:00',ttl:'한국행사 · 국제세미나 (민주주의의 다양성과 청년정치)',ds:'한국 연수단 부스(333번)',k:'kr',m:'ev_seminar'},
+  {t:'17:30',ttl:'문화탐방 · 브루세보 자연보호구역',ds:'숲과 바다가 만나는 산책길',k:'cult',m:'brucebo'},
+  {t:'20:00',ttl:'현지간담회 · 우리는 알메달렌에서 무엇을 배울 것인가?',ds:'',k:'work'}]},
+ {d:'6.26',dow:'금',loc:'비스뷔→스톡홀름→귀국',rows:[
+  {t:'08:25',ttl:'페리 출발 (비스뷔→뉘네스함, 3h15m)',ds:'',k:'move',m:'cost_ferry'},
+  {t:'13:00',ttl:'스톡홀름 도착 · 점심',ds:'',k:'move'},
+  {t:'14:30',ttl:'문화탐방 · 감라스탄 (재방문)',ds:'',k:'cult',m:'gamlastan'},
+  {t:'17:30',ttl:'스톡홀름 알란다 공항(ARN) 도착 · 차량 반납',ds:'',k:'move'},
+  {t:'21:00',ttl:'SK1427 스톡홀름 출발',ds:'',k:'move'},
+  {t:'23:55',ttl:'SK988 코펜하겐 출발 (11h40m)',ds:'',k:'move'}]},
+ {d:'6.27',dow:'토',loc:'인천 도착',rows:[
+  {t:'18:35',ttl:'인천국제공항(ICN) 제2터미널 도착',ds:'',k:'move'}]}
+];
+
+const FOOD=[['f_meatball','쾨트불라르 (미트볼)',IMG.meatball,'스웨덴 대표 요리'],
+ ['f_cinnamon','시나몬롤 & 피카',IMG.cinnamon,'스웨덴식 휴식 문화'],
+ ['f_saffron','사프란 팬케이크',IMG.saffron,'고틀란드 대표 디저트'],
+ ['f_skagen','토스트 스카겐',IMG.skagen,'새우 토스트'],
+ ['f_herring','절인 청어 & 연어',IMG.meatball,'미드솜마르 음식']];
+const NEAR_G=[['n_botan','DBW 보타니컬 가든',IMG.wall],['n_gotmus','고틀란드 박물관',IMG.wall],['n_faro','포뢰섬 & 베리만',IMG.jungfrun]];
+const NEAR_S=[['n_vasa','바사 박물관',IMG.vasa],['n_cityhall','스톡홀름 시청사',IMG.cityhall],['n_skansen','스칸센',IMG.skansen]];
+
+const GEO={
+ incheon:[37.4602,126.4407,'인천국제공항 (ICN)','Incheon International Airport'],
+ cph:[55.6181,12.6561,'코펜하겐 카스트럽 공항 (CPH)','Copenhagen Airport Kastrup'],
+ arn:[59.6519,17.9186,'스톡홀름 알란다 공항 (ARN)','Stockholm Arlanda Airport'],
+ gamlastan:[59.3257,18.0717,'감라스탄 (스톡홀름 구시가지)','Gamla Stan Stockholm'],
+ nynashamn:[58.9036,17.9490,'뉘네스함 페리 터미널','Nynashamn ferry terminal'],
+ visby:[57.6348,18.2948,'비스뷔 (숙소·터미널)','Visby Gotland'],
+ wall:[57.6404,18.2939,'비스뷔 성벽','Visby ringmur'],
+ almedalen:[57.6396,18.2870,'알메달렌 공원','Almedalen Visby'],
+ jungfrun:[57.8330,18.5160,'리케르스함 융프룬 라우크','Lickershamn Jungfrun rauk'],
+ brucebo:[57.6920,18.3360,'브루세보 자연보호구역','Brucebo naturreservat']
+};
+function gurl(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);}
+const MGMAP={
+ almedalen:'Almedalen, Visby',gamlastan:'Gamla Stan, Stockholm',wall:'Visby ringmur',
+ jungfrun:'Lickershamn Jungfrun rauk',brucebo:'Brucebo naturreservat',
+ ev_seminar:'Almedalen, Visby',ev_ksession:'Almedalen, Visby',ev_speech:'Almedalen, Visby',
+ ev_table:'Almedalen, Visby',ev_parade:'Almedalen, Visby',ev_youth:'Almedalen, Visby',
+ cost_ferry:'Nynashamn ferry terminal',cost_air:'Stockholm Arlanda Airport',
+ cost_stay:'Gelbgjutargatan 6, 62153 Visby',
+ n_botan:'Botaniska tradgarden Visby',n_gotmus:'Gotlands Museum Visby',n_faro:'Faro, Gotland',
+ n_vasa:'Vasamuseet Stockholm',n_cityhall:'Stockholms stadshus',n_skansen:'Skansen Stockholm'
+};
+
+function el(h){const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild;}
+function kindLabel(k){return {move:'이동',cult:'문화탐방',pol:'정책투어',kr:'한국행사',event:'이벤트',work:'워크숍',meal:'식사',stay:'숙박'}[k]||k;}
+
+const tl=document.getElementById('timeline');
+TL.forEach(day=>{
+ let h=`<div class="day"><div class="day-h"><span class="d">${day.d}</span><span class="dow">(${day.dow})</span><span class="loc">📍 ${day.loc}</span></div>`;
+ day.rows.forEach(r=>{
+  const clk=r.m?`class="row clk" onclick="openModal('${r.m}')"`:'class="row"';
+  h+=`<div ${clk}><div class="t">${r.t}</div><div class="c"><div class="ttl">${r.ttl}</div>${r.ds?`<div class="ds">${r.ds}</div>`:''}</div><span class="kind k-${r.k}">${kindLabel(r.k)}</span></div>`;
+ });
+ h+='</div>';
+ tl.appendChild(el(h));
+});
+
+const pg=document.getElementById('policygrid');
+POLICY.forEach(p=>{pg.appendChild(el(`<div class="card" onclick="openModal('pol:${p.id}')"><div class="bd"><h3>${p.t}</h3><p>${p.org}</p><div class="more">정책 분석 보기 ›</div></div></div>`));});
+
+const cg=document.getElementById('culturegrid');
+[['gamlastan','감라스탄 (구시가지)',IMG.gamlastan,'스톡홀름 · 700년 중세도시'],
+ ['wall','비스뷔 성벽',IMG.wall,'유네스코 세계문화유산'],
+ ['jungfrun','리케르스함 · 융프룬 라우크',IMG.jungfrun,'발트해 해안 지질경관'],
+ ['brucebo','브루세보 자연보호구역',IMG.brucebo,'숲과 바다의 산책길']].forEach(c=>{
+ cg.appendChild(el(`<div class="card" onclick="openModal('${c[0]}')"><div class="ph" style="background-image:url('${c[2]}')"><span class="tag">문화탐방</span></div><div class="bd"><h3>${c[1]}</h3><p>${c[3]}</p><div class="more">역사·관람 팁 보기 ›</div></div></div>`));
+});
+
+document.getElementById('krgrid').append(
+ el(`<div class="card" onclick="openModal('ev_ksession')"><div class="ph" style="background-image:url('${IMG.cityhall}')"><span class="tag">한국세션</span></div><div class="bd"><h3>북유럽 복지 모델은 한국의 미래인가?</h3><p>6/25 13:00 · 부스 333</p><div class="more">자세히 ›</div></div></div>`),
+ el(`<div class="card" onclick="openModal('ev_seminar')"><div class="ph" style="background-image:url('${IMG.almedalen}')"><span class="tag">국제세미나</span></div><div class="bd"><h3>민주주의의 다양성과 청년정치</h3><p>6/25 15:00 · 부스 333</p><div class="more">자세히 ›</div></div></div>`),
+ el(`<div class="card" onclick="openModal('ev_speech')"><div class="ph" style="background-image:url('${IMG.almedalen}')"><span class="tag">광장연설</span></div><div class="bd"><h3>지방선거와 민주주의 · AI시대 시민참여</h3><p>6/24 14:00 · Palarplats</p><div class="more">자세히 ›</div></div></div>`)
+);
+document.getElementById('eventgrid').append(
+ el(`<div class="card" onclick="openModal('ev_table')"><div class="ph" style="background-image:url('${IMG.almedalen}')"><span class="tag">이벤트</span></div><div class="bd"><h3>100미터 테이블</h3><p>6/22 15:00 · 개방형 토론</p><div class="more">자세히 ›</div></div></div>`),
+ el(`<div class="card" onclick="openModal('ev_parade')"><div class="ph" style="background-image:url('${IMG.almedalen}')"><span class="tag">이벤트</span></div><div class="bd"><h3>다양성 퍼레이드</h3><p>6/22 16:00 · 민주주의의 다양성 행진</p><div class="more">자세히 ›</div></div></div>`),
+ el(`<div class="card" onclick="openModal('ev_youth')"><div class="ph" style="background-image:url('${IMG.almedalen}')"><span class="tag">이벤트</span></div><div class="bd"><h3>청년정치의 밤</h3><p>6/22 19:00 · 정당 청년조직 네트워킹</p><div class="more">자세히 ›</div></div></div>`)
+);
+
+const fg=document.getElementById('foodgrid');
+FOOD.forEach(f=>fg.appendChild(el(`<div class="card" onclick="openModal('${f[0]}')"><div class="ph" style="background-image:url('${f[2]}')"><span class="tag">먹거리</span></div><div class="bd"><h3>${f[1]}</h3><p>${f[3]}</p><div class="more">자세히 ›</div></div></div>`)));
+const ng=document.getElementById('nearby_g'),ns=document.getElementById('nearby_s');
+NEAR_G.forEach(n=>ng.appendChild(el(`<div class="card" onclick="openModal('${n[0]}')"><div class="ph" style="background-image:url('${n[2]}')"><span class="tag">고틀란드</span></div><div class="bd"><h3>${n[1]}</h3><div class="more">자세히 ›</div></div></div>`)));
+NEAR_S.forEach(n=>ns.appendChild(el(`<div class="card" onclick="openModal('${n[0]}')"><div class="ph" style="background-image:url('${n[2]}')"><span class="tag">스톡홀름</span></div><div class="bd"><h3>${n[1]}</h3><div class="more">자세히 ›</div></div></div>`)));
+
+/* MAP */
+let MAP=null,BOUNDS={};
+function initMap(){
+ if(MAP||typeof L==='undefined')return;
+ MAP=L.map('leafmap',{scrollWheelZoom:false}).setView([58,18],5);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap'}).addTo(MAP);
+ Object.keys(GEO).forEach(k=>{const g=GEO[k];
+  L.marker([g[0],g[1]]).addTo(MAP).bindPopup(`<b>${g[2]}</b><br><a class="gmap" target="_blank" rel="noopener" href="${gurl(g[3])}">📍 구글맵 열기</a>`);
+ });
+ const A=GEO;
+ L.polyline([[A.incheon[0],A.incheon[1]],[A.cph[0],A.cph[1]],[A.arn[0],A.arn[1]]],{color:'#b3433a',dashArray:'8,8',weight:2.5}).addTo(MAP);
+ L.polyline([[A.arn[0],A.arn[1]],[A.gamlastan[0],A.gamlastan[1]],[A.nynashamn[0],A.nynashamn[1]]],{color:'#3a7ca5',weight:3}).addTo(MAP);
+ L.polyline([[A.nynashamn[0],A.nynashamn[1]],[A.visby[0],A.visby[1]]],{color:'#3f7a52',dashArray:'6,6',weight:2.5}).addTo(MAP);
+ L.polyline([[A.visby[0],A.visby[1]],[A.jungfrun[0],A.jungfrun[1]]],{color:'#c8a24a',weight:2.5}).addTo(MAP);
+ L.polyline([[A.visby[0],A.visby[1]],[A.brucebo[0],A.brucebo[1]]],{color:'#c8a24a',weight:2.5}).addTo(MAP);
+ BOUNDS.se=L.latLngBounds([[A.nynashamn[0],A.nynashamn[1]],[A.arn[0],A.arn[1]],[A.visby[0],A.visby[1]]]);
+ BOUNDS.got=L.latLngBounds([[A.visby[0],A.visby[1]],[A.jungfrun[0],A.jungfrun[1]]]);
+ zoomMap('all');
+}
+function zoomMap(z){
+ if(!MAP)return;
+ if(z==='all')MAP.fitBounds(L.latLngBounds([[37.46,126.44],[57.6,17.9]]),{padding:[20,20]});
+ else if(z==='se')MAP.fitBounds(BOUNDS.se.pad(0.3));
+ else MAP.fitBounds(BOUNDS.got.pad(0.3));
+}
+const mb=document.getElementById('mapbtns');
+if(mb)mb.addEventListener('click',e=>{
+ if(e.target.tagName!=='BUTTON')return;
+ document.querySelectorAll('.mapbtn').forEach(b=>b.classList.remove('active'));
+ e.target.classList.add('active');zoomMap(e.target.dataset.z);
+});
+
+/* TABS */
+document.getElementById('navwrap').addEventListener('click',e=>{
+ if(e.target.tagName!=='BUTTON')return;
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ e.target.classList.add('active');
+ document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('show'));
+ document.getElementById(e.target.dataset.t).classList.add('show');
+ if(e.target.dataset.t==='map'){setTimeout(()=>{initMap();if(MAP)MAP.invalidateSize();},80);}
+ window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* MODAL */
+function openModal(id){
+ let data;
+ if(id.startsWith('pol:')){
+  const p=POLICY.find(x=>x.id===id.slice(4));
+  if(!p)return;
+  data={kd:'정책투어 분석',t:p.t,img:IMG.almedalen,html:`
+   <div class="kv"><span class="k">주최기관</span><span>${p.org}</span></div>
+   <h4>① 정책 이슈 배경</h4><p>${p.bg}</p>
+   <h4>② 스웨덴의 제도·현황</h4><p>${p.se}</p>
+   <h4>③ 한국 시사점</h4><p>${p.kr}</p>
+   <div class="warnbox"><b>주최기관 확인</b> ${p.note}</div>`};
+ } else { data=D[id]; }
+ if(!data)return;
+ const gq=id.startsWith('pol:')?'Almedalen, Visby':MGMAP[id];
+ const glink=gq?`<a class="gmap" target="_blank" rel="noopener" href="${gurl(gq)}">📍 구글맵에서 위치 보기</a>`:'';
+ document.getElementById('modal').innerHTML=`
+  <div class="mph" style="background-image:url('${data.img}')">
+   <button class="cls" onclick="closeModal()">×</button>
+   <div class="cap"><div class="kd">${data.kd}</div><h3>${data.t}</h3></div>
+  </div>
+  <div class="mbd">${glink}${data.html}</div>`;
+ document.getElementById('overlay').classList.add('show');
+ document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('overlay').classList.remove('show');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* D-DAY */
+(function(){
+ const dep=new Date('2026-06-20T00:00:00+09:00');
+ const ret=new Date('2026-06-27T23:59:59+09:00');
+ const box=document.getElementById('dday');
+ function upd(){
+  const now=new Date();
+  const day=24*60*60*1000;
+  const d=Math.ceil((dep-now)/day);
+  if(d>0) box.innerHTML=`✈️ 출발 <b>D-${d}</b> <small>(2026.6.20 토)</small>`;
+  else if(now<=ret) box.innerHTML=`🇸🇪 <b>여행 중</b> <small>(6.20~6.27)</small>`;
+  else box.innerHTML=`🏁 <b>여행 종료</b> <small>다녀오셨습니다</small>`;
+ }
+ upd(); setInterval(upd,60*60*1000);
+})();
+
+/* INTRO FIREWORKS */
+(function(){
+ const intro=document.getElementById('intro');
+ if(!intro)return;
+ const cv=document.getElementById('fw'),ctx=cv.getContext('2d');
+ let W,H,parts=[],running=true;
+ function size(){W=cv.width=intro.clientWidth;H=cv.height=intro.clientHeight;}
+ size(); window.addEventListener('resize',size);
+ const colors=['#ffd86b','#ff7a59','#5ad1ff','#b388ff','#7CFC8A','#ff6bcb','#fff'];
+ function burst(x,y){
+  const n=42+Math.floor(Math.random()*26),c=colors[Math.floor(Math.random()*colors.length)];
+  for(let i=0;i<n;i++){const a=Math.PI*2*i/n,sp=2+Math.random()*4.2;
+   parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:60+Math.random()*30,age:0,c:Math.random()<.3?colors[Math.floor(Math.random()*colors.length)]:c,r:1.5+Math.random()*1.8});}
+ }
+ function loop(){
+  if(!running)return;
+  ctx.fillStyle='rgba(13,22,38,0.22)';ctx.fillRect(0,0,W,H);
+  for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.age++;p.vy+=0.045;p.vx*=0.99;p.vy*=0.99;p.x+=p.vx;p.y+=p.vy;
+   const al=Math.max(0,1-p.age/p.life);
+   ctx.globalAlpha=al;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();
+   if(p.age>=p.life)parts.splice(i,1);}
+  ctx.globalAlpha=1;
+  requestAnimationFrame(loop);
+ }
+ loop();
+ const fireTimer=setInterval(()=>{burst(W*(0.15+Math.random()*0.7),H*(0.18+Math.random()*0.45));},520);
+ // initial volley
+ burst(W*0.3,H*0.32);burst(W*0.7,H*0.3);setTimeout(()=>burst(W*0.5,H*0.25),350);
+ window._introStop=function(){running=false;clearInterval(fireTimer);};
+ // auto fade after 6s
+ window._introAuto=setTimeout(hideIntro,6000);
+})();
+function hideIntro(){
+ const intro=document.getElementById('intro');
+ if(!intro)return;
+ if(window._introAuto)clearTimeout(window._introAuto);
+ intro.classList.add('hide');
+ if(window._introStop)setTimeout(window._introStop,400);
+ setTimeout(()=>{if(intro&&intro.parentNode)intro.parentNode.removeChild(intro);},1400);
+}
+</script>
+</body>
+</html>
