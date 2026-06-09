@@ -19,7 +19,7 @@ img{max-width:100%;display:block}
 a{color:var(--sky)}
 
 header.hero{position:relative;color:#fff;text-align:center;padding:64px 20px 56px;
-  background:linear-gradient(rgba(20,40,70,.72),rgba(20,40,70,.82)),
+  background:linear-gradient(160deg,rgba(26,66,135,.90),rgba(15,42,90,.95)),
   url('https://upload.wikimedia.org/wikipedia/commons/6/6c/Visby_ringmur_September_2020_01.jpg') center/cover}
 .hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);
   padding:5px 16px;border-radius:30px;font-size:13px;letter-spacing:2px;margin-bottom:18px}
@@ -53,6 +53,15 @@ section.tab.show{display:block}
 h2.sec{font-size:25px;color:var(--navy);font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:10px}
 h2.sec::before{content:"";width:6px;height:26px;background:var(--gold);border-radius:3px;display:inline-block}
 .sec-desc{color:var(--sub);font-size:14.5px;margin-bottom:24px}
+.hosts{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:8px 0 18px}
+.host{flex:1;min-width:210px;max-width:300px;background:linear-gradient(160deg,#eef5fd,#e2edfb);border:1px solid #c6d9f0;border-radius:16px;padding:20px 16px 18px;text-align:center;box-shadow:0 6px 18px rgba(29,58,95,.10)}
+.host-photo{width:108px;height:108px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);box-shadow:0 4px 16px rgba(29,58,95,.28);margin:0 auto 12px;display:block}
+.host-ph-ph{width:108px;height:108px;border-radius:50%;border:4px solid var(--gold);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;background:radial-gradient(circle at 50% 40%,#3a7ca5,#1d3a5f)}
+.host-name{font-size:19px;font-weight:800;color:var(--navy)}
+.host-role{font-size:12.5px;color:var(--sky);font-weight:700;margin-top:4px}
+.host-tel{display:inline-block;margin-top:11px;background:var(--navy);color:#fff;font-weight:700;font-size:14px;padding:8px 16px;border-radius:22px;text-decoration:none}
+.host-tel:hover{background:var(--sky)}
+.members{font-size:14.5px;color:#333;line-height:2;text-align:center}
 
 .notice{background:#fff4e8;border:1px solid #e9c89a;border-left:5px solid var(--gold);
   padding:14px 18px;border-radius:8px;margin-bottom:24px;font-size:14px;color:#6b4e1e}
@@ -157,12 +166,16 @@ footer b{color:#fff}
 
 /* INTRO SPLASH */
 #intro{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 50% 40%,#26344f,#0d1626 70%);overflow:hidden;transition:opacity 1.2s ease}
+  background:radial-gradient(circle at 50% 38%,#1f4c8c,#0c2148 72%);overflow:hidden;transition:opacity 1.2s ease}
 #intro.hide{opacity:0;pointer-events:none}
 #fw{position:absolute;inset:0;width:100%;height:100%}
 .intro-inner{position:relative;z-index:2;text-align:center;padding:20px;animation:introPop 1s cubic-bezier(.2,.8,.3,1.2)}
+.intro-photos{display:flex;gap:30px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.intro-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.intro-ph-ph{width:210px;height:210px;border-radius:50%;border:6px solid var(--gold);display:flex;align-items:center;justify-content:center;color:#ffd86b;font-weight:800;font-size:22px;background:radial-gradient(circle at 50% 40%,#2a3a57,#16233a);box-shadow:0 0 40px 6px rgba(255,210,120,.35)}
+.intro-fig figcaption{color:#ffd86b;font-weight:800;font-size:16px;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
 @keyframes introPop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
-.intro-photo{width:230px;height:230px;border-radius:50%;object-fit:cover;border:6px solid var(--gold);
+.intro-photo{width:210px;height:210px;border-radius:50%;object-fit:cover;border:6px solid var(--gold);
   box-shadow:0 0 0 10px rgba(200,162,74,.25),0 0 60px 10px rgba(255,210,120,.55);animation:glow 1.6s ease-in-out infinite alternate}
 @keyframes glow{from{box-shadow:0 0 0 10px rgba(200,162,74,.2),0 0 40px 6px rgba(255,210,120,.4)}
   to{box-shadow:0 0 0 14px rgba(200,162,74,.32),0 0 80px 18px rgba(255,225,150,.75)}}
@@ -175,18 +188,38 @@ footer b{color:#fff}
 .pdfbtn{display:inline-block;margin-top:18px;background:#fff;color:var(--navy);font-weight:800;font-size:14px;
   padding:10px 20px;border-radius:30px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25);border:2px solid var(--gold)}
 .pdfbtn:hover{background:var(--gold);color:#22324a}
-@media(max-width:600px){.intro-photo{width:170px;height:170px}.intro-t1{font-size:23px}.intro-t2{font-size:16px}}
+@media(max-width:600px){.intro-photo{width:150px;height:150px}.intro-photos{gap:16px}.intro-ph-ph{width:150px;height:150px;font-size:18px}.intro-fig figcaption{font-size:15px}.intro-t1{font-size:23px}.intro-t2{font-size:15.5px}}
 .src{font-size:11.5px;color:#9aa5b1;margin-top:14px}
 .src a{color:#b9c6d4}
 @media(max-width:600px){
-  .hero h1{font-size:25px}.modal .mbd{padding:18px}.row .t{flex-basis:50px}#leafmap{height:380px}
-  main{padding:24px 12px 70px}.hero{padding:42px 16px 38px}
-  nav button{padding:13px 13px;font-size:13.5px}
-  table{font-size:12.5px}th,td{padding:8px 9px}
+  body{font-size:15.5px;line-height:1.7}
+  .hero h1{font-size:24px}.modal .mbd{padding:18px}.row .t{flex-basis:48px}#leafmap{height:360px}
+  main{padding:22px 12px 80px}.hero{padding:36px 14px 32px}
+  nav .wrap{scroll-snap-type:x proximity}
+  nav button{padding:15px 16px;font-size:14.5px;scroll-snap-align:start}
+  .hero .ddayrow{flex-direction:column;gap:10px;width:100%;margin-top:18px}
+  .hero .ddayrow>*{width:100%;max-width:340px}
+  .hero .dday{font-size:16px;padding:13px 16px}
+  .pdfbtn{display:block;width:100%;max-width:340px;margin:0 auto;font-size:15px;padding:15px 18px;text-align:center}
+  .hero .meta{gap:8px}
+  .meta span{font-size:13.5px;padding:9px 14px;width:100%;text-align:center}
   .grid.two,.grid.three{grid-template-columns:1fr}
+  .card .bd h3{font-size:17px}.card .bd p{font-size:14px}
+  .card .bd{padding:15px 16px}
+  .info-card{padding:18px 18px}
+  .info-card h3{font-size:17px}
+  .info-card li{font-size:14.5px;padding:10px 0 10px 22px}
+  .host{min-width:140px;padding:16px 12px 14px}.host-photo,.host-ph-ph{width:92px;height:92px}.host-name{font-size:17px}
+  table{font-size:13px}th,td{padding:9px 8px}
   .row{flex-wrap:wrap}.row .kind{align-self:flex-start}
-  h2.sec{font-size:21px}.hero .dday{font-size:15px;padding:8px 16px}
-  .modal{border-radius:12px}.modal .mph{height:180px}
+  .row.clk{padding:15px 6px}.row .c .ttl{font-size:15.5px}
+  h2.sec{font-size:21px}
+  .notice{font-size:14px;padding:14px 15px}
+  .modal{border-radius:14px}.modal .mph{height:175px}
+  .modal .mph .cls{width:46px;height:46px;font-size:25px}
+  .modal .mbd p{font-size:15px}
+  .info-card a[href^="tel:"]{display:inline-block;padding:6px 4px;font-size:15px}
+  .gmap{padding:9px 14px;font-size:13.5px}
 }
 </style>
 </head>
@@ -196,10 +229,13 @@ footer b{color:#fff}
   <canvas id="fw"></canvas>
   <button class="intro-skip" onclick="hideIntro()">건너뛰기 ✕</button>
   <div class="intro-inner">
-    <img class="intro-photo" src="parkdw.jpg" alt="박동완 대표님">
-    <div class="intro-t1">🎉 믿습니다 박동완 대표님! 🎉</div>
-    <div class="intro-t2">존경하고 사랑합니다 ❤️</div>
-    <div class="intro-sub">2026 알메달렌 정치축제 대한민국 참관단 · 브레인파크</div>
+    <div class="intro-photos">
+      <figure class="intro-fig"><img class="intro-photo" src="parkdw.jpg" alt="박동완"><figcaption>박동완</figcaption></figure>
+      <figure class="intro-fig"><img class="intro-photo" src="nmh.jpg" alt="노민호" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=&quot;intro-ph-ph&quot;>노민호</div>')"><figcaption>노민호</figcaption></figure>
+    </div>
+    <div class="intro-t1">🎉 함께합니다! 🎉</div>
+    <div class="intro-t2">북유럽 최대 정치축제 알메달렌으로 떠나는<br>2026 대한민국 참관단 여러분, 진심으로 환영합니다</div>
+    <div class="intro-sub">브레인파크(박동완) · 노민호아카데미 · 자치분권연구소 &nbsp;|&nbsp; ALMEDALSVECKAN 2026 · SWEDEN</div>
   </div>
 </div>
 
@@ -212,10 +248,11 @@ footer b{color:#fff}
   <div class="ddayrow">
     <div class="dday" id="dday">출발까지 계산 중…</div>
     <a class="pdfbtn" href="almedalen_schedule.pdf" download>📄 일정표 PDF 다운로드</a>
+    <a class="pdfbtn" href="https://drive.google.com/file/d/1R5arGqKIyoIJzXIy3i0RUyVpYdqpQ1_W/view" target="_blank" rel="noopener">📑 2025 연수보고서 열기</a>
   </div>
   <div class="meta">
     <span>📅 2026.6.20(토)~6.27(토) · 5박8일</span>
-    <span>👥 참관단 10명</span>
+    <span>👥 참관단 11명</span>
     <span>📍 스톡홀름 · 고틀란드 비스뷔</span>
     <span>🏛 주최 브레인파크·노민호아카데미·자치분권연구소</span>
   </div>
@@ -250,11 +287,29 @@ footer b{color:#fff}
     </ul></div>
     <div class="info-card"><h3><span class="ic">📋</span>핵심 정보</h3><ul>
       <li><b>기간</b> 2026.6.20(토)~6.27(토), 5박8일</li>
-      <li><b>인원</b> 10명 / <b>국가</b> 스웨덴 / <b>도시</b> 고틀란드 비스뷔</li>
+      <li><b>인원</b> 11명 / <b>국가</b> 스웨덴 / <b>도시</b> 고틀란드 비스뷔</li>
       <li><b>연수시간</b> 총 36시간(한국행사·이벤트·정책투어·워크숍·문화탐방)</li>
       <li><b>성과물</b> 사전자료집 · 정책보고서(200쪽 이상) · 연설 동영상</li>
       <li><b>담당</b> 브레인파크 박동완 (010-3838-6218)</li>
     </ul></div>
+  </div>
+  <div class="info-card" style="margin-bottom:26px"><h3><span class="ic">👥</span>참관단 명단 <span style="font-size:13px;color:var(--sub);font-weight:600">(가나다순)</span> <span style="margin-left:auto;color:var(--sub);font-size:13px;font-weight:700">총 11명</span></h3>
+    <div class="hosts">
+      <div class="host">
+        <img class="host-photo" src="parkdw.jpg" alt="박동완">
+        <div class="host-name">박동완</div>
+        <div class="host-role">브레인파크 대표</div>
+        <a class="host-tel" href="tel:01038386218">📞 010-3838-6218</a>
+      </div>
+      <div class="host">
+        <img class="host-photo" src="nmh.jpg" alt="노민호" onerror="this.outerHTML='&lt;div class=&quot;host-ph-ph&quot;&gt;노민호&lt;/div&gt;'">
+        <div class="host-name">노민호</div>
+        <div class="host-role">노민호아카데미</div>
+        <a class="host-tel" href="tel:01052240241">📞 010-5224-0241</a>
+      </div>
+    </div>
+    <div class="members">곽태영 · 김보미 · 박용국 · 박지현 · 백혜숙 · 정진호 · 황대호 · Lee SangHee · S CS</div>
+    <p style="font-size:12.5px;color:var(--sub);margin-top:8px;text-align:center">📞 번호를 누르면(모바일) 바로 전화 연결됩니다.</p>
   </div>
   <div class="notice">
     ⚠️ <b>중요:</b> 알메달렌 주간 2026 공식 개최는 <b>6월 22일(월)~26일(금)</b>으로 본 일정과 겹칩니다.
@@ -329,24 +384,24 @@ footer b{color:#fff}
 <!-- COST -->
 <section class="tab" id="cost">
   <h2 class="sec">비용 · 교통편</h2>
-  <p class="sec-desc">10명 단체 기준 1인 예상비용입니다. 환율 가정: 1 SEK≈140원, 1 USD≈1,400원, 1 EUR≈1,500원 (실제 환율·예약시점에 따라 변동).</p>
+  <p class="sec-desc">11명 단체 기준 1인 예상비용입니다. 환율 가정: 1 SEK≈140원, 1 USD≈1,400원, 1 EUR≈1,500원 (실제 환율·예약시점에 따라 변동).</p>
   <div class="notice">⚠️ 가격·시간표는 변동성이 큽니다. 모두 <b>예약 직전 공식 사이트에서 재확인</b>이 필요하며, 특히 알메달렌 기간 숙박·페리는 즉시 예약하세요.</div>
   <h3 style="color:var(--navy);margin:8px 0 12px">💰 1인 예상 총비용 (KRW)</h3>
   <table style="margin-bottom:8px">
     <tr><th>항목</th><th class="num">절약형</th><th class="num">중상급형</th><th>비고</th></tr>
     <tr><td>항공 왕복 (인천-스톡홀름 경유)</td><td class="num">130만</td><td class="num">220만</td><td>SAS/핀에어 경유, 6월 성수기</td></tr>
     <tr><td>페리 왕복 (승객, 차량 별도)</td><td class="num">10만</td><td class="num">24만</td><td>뉘네스함-비스뷔 편도 약 3h15m</td></tr>
-    <tr><td>렌터카 분담 (밴 2대 7일 ÷10)</td><td class="num">25만</td><td class="num">31만</td><td>10명은 9인승 밴 2대 권장</td></tr>
+    <tr><td>렌터카 분담 (밴 2대 7일 ÷11)</td><td class="num">23만</td><td class="num">28만</td><td>11명은 9인승 밴 2대 권장</td></tr>
     <tr><td>숙박 5박 (성수기)</td><td class="num">175만</td><td class="num">300만</td><td>단체 아파트/호스텔 시 절감</td></tr>
-    <tr><td>식비 8일</td><td class="num">35만</td><td class="num">60만</td><td>점심 100~150 SEK 등</td></tr>
+    <tr><td>식비 8일</td><td class="num">25만</td><td class="num">45만</td><td>숙소 자취(마트 장보기) 위주, 외식 일부</td></tr>
     <tr><td>기타·보험·잡비</td><td class="num">15만</td><td class="num">30만</td><td>입장료·교통·유심·보험</td></tr>
-    <tr class="total"><td>합계 (1인)</td><td class="num">약 390만</td><td class="num">약 665만</td><td>숙박 절감 시 300만대도 가능</td></tr>
+    <tr class="total"><td>합계 (1인)</td><td class="num">약 378만</td><td class="num">약 647만</td><td>숙소 자취·숙박 절감 시 300만대도 가능</td></tr>
   </table>
   <p class="sec-desc" style="margin-bottom:26px">※ 차량을 고틀란드까지 페리로 가져가면 차량 운임(왕복 약 100만원/대) 추가. 비스뷔 구시가는 보행 중심이라 <b>차량은 본토 뉘네스함에 두고 페리 승객으로만 이동</b>하는 편이 비용·편의 모두 유리할 수 있습니다.</p>
   <div class="grid two">
     <div class="card" onclick="openModal('cost_air')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg')"><span class="tag">항공</span></div><div class="bd"><h3>항공편 (인천→스톡홀름)</h3><p>SAS 코펜하겐 경유 / 핀에어 헬싱키 경유. 직항·가격·소요시간</p><div class="more">자세히 ›</div></div></div>
     <div class="card" onclick="openModal('cost_ferry')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg')"><span class="tag">페리</span></div><div class="bd"><h3>페리 (뉘네스함→비스뷔)</h3><p>Destination Gotland · 약 3시간 15분 · 요금·예약 팁</p><div class="more">자세히 ›</div></div></div>
-    <div class="card" onclick="openModal('cost_car')"><div class="ph" style="background:linear-gradient(135deg,#27496d,#3a7ca5)"><span class="tag">렌터카</span></div><div class="bd"><h3>렌터카 (10명 이동)</h3><p>알란다공항 픽업 · 9인승 밴 2대 · 요금·연료·차량 페리</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_car')"><div class="ph" style="background:linear-gradient(135deg,#27496d,#3a7ca5)"><span class="tag">렌터카</span></div><div class="bd"><h3>렌터카 (11명 이동)</h3><p>알란다공항 픽업 · 9인승 밴 2대 · 요금·연료·차량 페리</p><div class="more">자세히 ›</div></div></div>
     <div class="card" onclick="openModal('cost_stay')"><div class="ph" style="background:linear-gradient(135deg,#1d3a5f,#27496d)"><span class="tag">숙박</span></div><div class="bd"><h3>숙박 (비스뷔 5박)</h3><p>알메달렌 성수기 요금 급등 · 숙소 주소 · 예약 팁</p><div class="more">자세히 ›</div></div></div>
   </div>
 </section>
@@ -395,6 +450,12 @@ footer b{color:#fff}
 <section class="tab" id="food">
   <h2 class="sec">먹거리</h2>
   <p class="sec-desc">스웨덴 대표 음식과 고틀란드 특산을 정리했습니다. 카드를 클릭하면 상세 설명이 열립니다.</p>
+  <div class="notice">
+    🍳 <b>식사 계획 — 숙소 자취(직접 조리)가 기본입니다.</b> 스웨덴 외식 물가가 높아(중급 식당 1인 250~350 SEK) 이번 참관단은 <b>아침·저녁을 숙소에서 직접 해 먹는 방식</b>으로 진행합니다.
+    도착 후 가까운 <b>마트에서 장을 봐</b> 식재료·생수·간단한 한식 재료를 준비하세요. 비스뷔 시내·근교 주요 마트: <b>ICA · Coop · Hemköp</b>(구시가 도보권에 분포).
+    <b>한국에서 즉석밥·라면·고추장·김 등 비상 식량을 챙겨오면</b> 자취 식사가 한결 수월합니다.
+    ※ <b>미드솜마르(6/19~20)·일요일</b>에는 마트 영업시간이 단축되니, 첫 장보기는 도착일(6/21)에 영업시간을 확인하고 넉넉히 구매하세요.
+  </div>
   <div class="grid three" id="foodgrid"></div>
   <div class="info-card" style="margin-top:22px"><h3><span class="ic">🔥</span>요즘 핫한 곳 — 고틀란드/비스뷔 (꼭 가볼 곳)</h3><ul>
     <li><b>Vår Fru</b> 배우 리아 보이센 &amp; Fotografiska 창립자가 옛 액자공방을 개조 — 유기농 사워도우 와플·내추럴와인, 오랑제리 정원석이 인기인 비스뷔 핫플</li>
@@ -677,15 +738,19 @@ const D={
   <h4>요금</h4>
   <p><b>승객 1인 편도</b> 최저 약 €25~, 성수기 현실 추정 약 5만~12만원 / 왕복 약 10만~24만원.<br>
   <b>차량 동반</b>은 별도 부과(편도 평균 약 48만원, 밴은 길이별 가산) → 정확액 확인 필요.</p>
-  <div class="warnbox"><b>예약 팁</b> 알메달렌 주간과 겹쳐 좌석·차량 슬롯이 가장 먼저 매진됩니다. 단체 10명은 같은 편으로 묶어 즉시 예약하세요. 멀미약은 승선 전 복용.</div>`},
- cost_car:{kd:'비용 · 렌터카',t:'렌터카 (10명 이동)',img:IMG.arlanda,html:`
-  <p>10명 + 짐은 9인승 1대로 부족 → <b>9인승 밴 2대</b>(또는 밴+소형차) 권장. 픽업은 스톡홀름 알란다공항(ARN).</p>
+  <div class="warnbox"><b>예약 팁</b> 알메달렌 주간과 겹쳐 좌석·차량 슬롯이 가장 먼저 매진됩니다. 단체 11명은 같은 편으로 묶어 즉시 예약하세요. 멀미약은 승선 전 복용.</div>`},
+ cost_car:{kd:'비용 · 렌터카',t:'렌터카 (11명 이동)',img:IMG.arlanda,html:`
+  <p>11명 + 짐은 9인승 1대로 부족 → <b>9인승 밴 2대</b>(또는 밴+소형차) 권장. 픽업은 스톡홀름 알란다공항(ARN).</p>
   <div class="kv"><span class="k">밴 1대</span><span>약 17만~22만원/일 (성수기 공항 픽업)</span></div>
   <div class="kv"><span class="k">주간(7일)</span><span>1대 약 112만~154만원 → 2대 약 224만~308만원</span></div>
   <div class="kv"><span class="k">연료</span><span>휘발유 약 2,500~2,800원/L (확인 필요)</span></div>
   <div class="tipbox"><b>절감 팁</b> 공항 외 시내 픽업이 평균 약 54% 저렴. <b>비스뷔 구시가는 보행 중심</b>이라 차량을 본토(뉘네스함)에 두고 페리 승객으로만 이동하면 차량 페리 운임(왕복 약 100만원/대)을 아낄 수 있습니다.</div>`},
  cost_stay:{kd:'비용 · 숙박',t:'숙박 (비스뷔 5박)',img:IMG.wall,html:`
   <div class="kv"><span class="k">숙소 주소</span><span>Gelbgjutargatan 6, 62153 Visby (일정표 기재 숙소)</span></div>
+  <div class="kv"><span class="k">식사</span><span>주방 있는 숙소에서 자취(직접 조리) — 마트 장보기 필수</span></div>
+  <h4>🍳 식사 — 숙소 자취(직접 조리)</h4>
+  <p>외식 물가가 높아 <b>아침·저녁은 숙소에서 직접 해 먹습니다.</b> 도착 후 가까운 마트(<b>ICA · Coop · Hemköp</b>, 구시가 도보권)에서 식재료·생수·간단한 한식 재료를 장봐 두세요. 즉석밥·라면·고추장·김 등은 한국에서 미리 챙겨오면 편리합니다.</p>
+  <div class="warnbox"><b>마트 영업 주의</b> 미드솜마르(6/19~20)·일요일에는 영업시간이 단축됩니다. 첫 장보기는 도착일(6/21) 영업시간을 확인하고 넉넉히 구매하세요.</div>
   <h4>요금</h4>
   <p><b>평상시</b> 비스뷔 호텔 3성 약 6~12만원/박, 4성+ 약 11~16만원/박.<br>
   <b>알메달렌 성수기(6/22~26)</b> 1박 SEK 3,000~4,500 이상(약 42~63만원↑)으로 급등하며 객실 자체가 희소.</p>
@@ -789,6 +854,7 @@ const TL=[
   {t:'16:00',ttl:'뉘네스함 페리 터미널 도착',ds:'',k:'move'},
   {t:'17:45',ttl:'페리 출발 (뉘네스함→비스뷔, 3h15m)',ds:'Destination Gotland',k:'move',m:'cost_ferry'},
   {t:'21:00',ttl:'비스뷔 터미널 도착 → 숙소',ds:'Gelbgjutargatan 6, 62153 Visby',k:'move',m:'cost_stay'},
+  {t:'21:30',ttl:'마트 장보기 · 식재료 준비 (숙소 자취)',ds:'ICA·Coop·Hemköp 등 — 영업시간 확인 후 넉넉히 구매',k:'meal',m:'cost_stay'},
   {t:'22:00',ttl:'현지워크숍 · 참관계획 점검 및 동선 확인',ds:'',k:'work'}]},
  {d:'6.22',dow:'월',loc:'비스뷔',rows:[
   {t:'09:00',ttl:'문화탐방 · 비스뷔 성벽',ds:'유네스코 세계문화유산, 행사장 현장 점검 겸 산책',k:'cult',m:'wall'},
@@ -911,7 +977,7 @@ function initMap(){
  MAP=L.map('leafmap',{scrollWheelZoom:false}).setView([58,18],5);
  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap'}).addTo(MAP);
  Object.keys(GEO).forEach(k=>{const g=GEO[k];
-  L.marker([g[0],g[1]]).addTo(MAP).bindPopup(`<b>${g[2]}</b><br><a class="gmap" target="_blank" rel="noopener" href="${gurl(g[3])}">📍 구글맵 열기</a>`);
+  L.marker([g[0],g[1]]).addTo(MAP).bindPopup(`<b>${g[2]} <span style="color:var(--sub);font-weight:600">(${g[3]})</span></b><br><a class="gmap" target="_blank" rel="noopener" href="${gurl(g[3])}">📍 구글맵 열기</a>`);
  });
  const A=GEO;
  L.polyline([[A.incheon[0],A.incheon[1]],[A.cph[0],A.cph[1]],[A.arn[0],A.arn[1]]],{color:'#b3433a',dashArray:'8,8',weight:2.5}).addTo(MAP);
