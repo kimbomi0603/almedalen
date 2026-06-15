@@ -262,8 +262,7 @@ footer b{color:#fff}
   <button data-t="map">지도·동선</button>
   <button data-t="schedule">전체일정</button>
   <button data-t="policy">정책투어</button>
-  <button data-t="culture">문화탐방</button>
-  <button data-t="events">한국행사·이벤트</button>
+  <button data-t="culture">문화탐방·한국행사·이벤트</button>
   <button data-t="cost">여행 실용정보</button>
   
   
@@ -529,6 +528,21 @@ footer b{color:#fff}
       <li><b>명함</b>(영문 병기)·발표/연설 자료 백업·노트북·충전기</li>
       <li>소액 현금(SEK)은 비상용 정도 — 결제는 카드 위주</li>
     </ul></div>
+    <div class="info-card"><h3><span class="ic">📲</span>여행 필수 어플 추천 (우선순위)</h3>
+      <p style="font-size:.9rem;color:#5b6b7b;margin:-2px 0 10px">번호 순서대로 <b>출국 전 미리 설치</b>해두면 편리합니다.</p>
+      <ol style="padding-left:22px;line-height:1.75;margin:0">
+        <li><b>유럽 eSIM</b> (Airalo·Holafly 등) — 가장 먼저! 착륙 즉시 데이터. <b>출국 전 설치</b> 후 도착하면 활성화. (또는 현지 유심)</li>
+        <li><b>Google Maps</b> — 길찾기 필수. 스톡홀름·고틀란드 <b>오프라인 지도를 미리 저장</b>. 도보·대중교통·운전 모두 지원.</li>
+        <li><b>파파고 / Google 번역</b> — 스웨덴어 메뉴·표지판은 <b>카메라 번역</b>, 대화는 <b>음성(대화) 모드</b>. <b>스웨덴어 오프라인 언어팩</b>을 받아두면 데이터 없이도 작동.</li>
+        <li><b>Bolt / Uber</b> — <b>택시가 안 잡히거나 안 올 때</b> 차량 호출. 앱에서 목적지·결제까지 끝나 말이 안 통해도 OK (스톡홀름 중심).</li>
+        <li><b>Destination Gotland</b> — 페리 예약·<b>승선 QR</b> 보관.</li>
+        <li><b>SL</b> — 스톡홀름 지하철·버스·트램 모바일 티켓.</li>
+        <li><b>XE / 환율계산기</b> — SEK 환율 즉시 확인 (1 SEK≈140원).</li>
+        <li><b>almedalsveckan.info</b> — 알메달렌 공식 프로그램·세미나 검색.</li>
+      </ol>
+      <div class="stay-warn" style="margin-top:12px"><b>🗣 번역기 100% 활용법</b> ① 식당·상점: 메뉴에 카메라를 비추면 실시간 번역 ② 대화: 파파고 ‘대화’ 모드로 서로 말하면 양방향 통역 ③ 표지판·서류: 사진 번역. ※ 미리 <b>오프라인 언어팩(영어·스웨덴어)</b>을 받아두세요.</div>
+      <div class="stay-warn" style="margin-top:10px;background:#eef4fb;border-left-color:var(--sky,#3b6ea5)"><b>🚕 택시가 안 올 때</b> <b>Bolt</b> 또는 <b>Uber</b> 앱으로 차량을 부르면 됩니다(앱 결제라 현금·언어 불필요). 비스뷔에서는 <b>Taxi Gotland 0498-20 02 00</b>도 함께 이용하세요.</div>
+    </div>
     <div class="info-card"><h3><span class="ic">📱</span>통신 · 유용한 앱</h3><ul>
       <li><b>통신</b> 유럽 eSIM 또는 현지 유심. 호텔·카페 와이파이 보편</li>
       <li><b>Destination Gotland</b> 페리 예약·승선권 앱</li>
@@ -1069,9 +1083,20 @@ document.getElementById('navwrap').addEventListener('click',e=>{
  if(e.target.tagName!=='BUTTON')return;
  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
  e.target.classList.add('active');
+ const t=e.target.dataset.t;
  document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('show'));
- document.getElementById(e.target.dataset.t).classList.add('show');
- if(e.target.dataset.t==='map'){setTimeout(()=>{initMap();if(MAP)MAP.invalidateSize();},80);}
+ document.getElementById(t).classList.add('show');
+ if(t==='map'){
+  /* 지도·동선 클릭 시 완전가이드를 지도 아래에 함께 표시 */
+  const g=document.getElementById('guide'),m=document.getElementById('map');
+  if(g&&m){if(m.nextElementSibling!==g)m.parentNode.insertBefore(g,m.nextElementSibling);g.classList.add('show');}
+  setTimeout(()=>{initMap();if(MAP)MAP.invalidateSize();},80);
+ }
+ if(t==='culture'){
+  /* 문화탐방 클릭 시 한국행사·이벤트를 함께 표시 */
+  const ev=document.getElementById('events'),cu=document.getElementById('culture');
+  if(ev&&cu){if(cu.nextElementSibling!==ev)cu.parentNode.insertBefore(ev,cu.nextElementSibling);ev.classList.add('show');}
+ }
  window.scrollTo({top:0,behavior:'smooth'});
 });
 
