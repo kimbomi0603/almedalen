@@ -243,6 +243,63 @@ footer b{color:#fff}
   <div class="badge">ALMEDALSVECKAN 2026 · SWEDEN</div>
   <h1>2026 스웨덴 알메달렌 정치축제<br>대한민국 참관단 상세 가이드</h1>
   <div class="sub">북유럽 최대 정치축제 · 고틀란드 비스뷔 · 민주주의 · AI전환 · 사회통합 · 복지</div>
+  <style id="clockCss">
+  .clock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  @media(max-width:640px){.clock-grid{grid-template-columns:1fr}}
+  .clk{background:#fff;border:1px solid #e3e9ef;border-radius:14px;padding:14px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .clk.home{border-color:var(--gold,#c8a04a);background:#fff9ec}
+  .clk-flag{font-size:1.7rem;line-height:1}
+  .clk-city{font-weight:800;color:var(--navy,#1f3a5f);font-size:.92rem;margin:6px 0 2px}
+  .clk-tz{font-size:.74rem;color:#7a8794;margin-bottom:6px}
+  .clk-time{font-size:1.85rem;font-weight:800;color:var(--navy,#1f3a5f);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+  .clk-sec{font-size:1.05rem;color:var(--sky,#3b6ea5);font-weight:700}
+  .clk-date{font-size:.8rem;color:#5b6b7b;margin-top:3px}
+  .clk-diff{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;color:#3f7a52;background:#eaf5ee;border-radius:20px;padding:2px 9px}
+  .clk-note{font-size:.84rem;color:#5b6b7b;margin:12px 0 0;line-height:1.6}
+  </style>
+  <div class="info-card" style="margin:16px auto 6px;max-width:620px;text-align:left"><h3><span class="ic">🕐</span>현재 시각 (시차 대비) <span style="margin-left:auto;color:var(--sub);font-size:13px;font-weight:700">실시간</span></h3>
+    <div class="clock-grid">
+      <div class="clk home">
+        <div class="clk-flag">🇰🇷</div><div class="clk-city">한국 · 서울</div><div class="clk-tz">KST (UTC+9)</div>
+        <div class="clk-time" data-tz="Asia/Seoul">--:--<span class="clk-sec"></span></div>
+        <div class="clk-date" data-tzd="Asia/Seoul"></div>
+        <span class="clk-diff">기준</span>
+      </div>
+      <div class="clk">
+        <div class="clk-flag">🇫🇮</div><div class="clk-city">핀란드 · 헬싱키 (경유)</div><div class="clk-tz">EEST (UTC+3)</div>
+        <div class="clk-time" data-tz="Europe/Helsinki">--:--<span class="clk-sec"></span></div>
+        <div class="clk-date" data-tzd="Europe/Helsinki"></div>
+        <span class="clk-diff">한국 −6시간</span>
+      </div>
+      <div class="clk">
+        <div class="clk-flag">🇸🇪</div><div class="clk-city">스웨덴 · 스톡홀름/비스뷔</div><div class="clk-tz">CEST (UTC+2)</div>
+        <div class="clk-time" data-tz="Europe/Stockholm">--:--<span class="clk-sec"></span></div>
+        <div class="clk-date" data-tzd="Europe/Stockholm"></div>
+        <span class="clk-diff">한국 −7시간</span>
+      </div>
+    </div>
+    <p class="clk-note">🇸🇪 <b>현지(스웨덴)는 한국보다 7시간 느립니다</b> — 한국 정오 = 스웨덴 오전 5시. 환승지 🇫🇮 헬싱키는 한국보다 6시간 느림. 서머타임이 자동 반영됩니다.</p>
+  </div>
+  <script>
+  (function(){
+    function tick(){
+      var now=new Date();
+      document.querySelectorAll('.clk-time[data-tz]').forEach(function(elT){
+        var tz=elT.getAttribute('data-tz');
+        var parts=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(now);
+        var o={};parts.forEach(function(p){o[p.type]=p.value;});
+        var hh=o.hour==='24'?'00':o.hour;
+        elT.firstChild.nodeValue=hh+':'+o.minute;
+        var s=elT.querySelector('.clk-sec');if(s)s.textContent=':'+o.second;
+      });
+      document.querySelectorAll('.clk-date[data-tzd]').forEach(function(elD){
+        var tz=elD.getAttribute('data-tzd');
+        elD.textContent=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,month:'long',day:'numeric',weekday:'short'}).format(now);
+      });
+    }
+    tick();setInterval(tick,1000);
+  })();
+  </script>
   <div class="ddayrow">
     <div class="dday" id="dday">출발까지 계산 중…</div>
     <a class="pdfbtn" href="almedalen_schedule.pdf" download="">📄 일정표 PDF 다운로드</a>
@@ -301,66 +358,9 @@ footer b{color:#fff}
         <a class="host-tel" href="tel:01038386218">📞 010-3838-6218</a>
       </div>
     </div>
-    <div class="hosts"><div class="host"><div class="host-ph-ph">곽</div><div class="host-name">곽태영</div><div class="host-role">내일신문 자치행정팀 기자</div><a class="host-tel" href="tel:01025744141">📞 010-2574-4141</a></div><div class="host"><div class="host-ph-ph">김</div><div class="host-name">김보미</div><div class="host-role">강진군의회 의원</div><a class="host-tel" href="tel:01073310179">📞 010-7331-0179</a></div><div class="host"><div class="host-ph-ph">정</div><div class="host-name">정진호</div><div class="host-role">의정부시의원</div><a class="host-tel" href="tel:01041647882">📞 010-4164-7882</a></div><div class="host"><div class="host-ph-ph">광</div><div class="host-name">광명시청 관계자</div><div class="host-role">광명시청</div><span class="host-tel" style="background:#9aa7b4;cursor:default">명단 추후 확정</span></div><div class="host"><div class="host-ph-ph">광</div><div class="host-name">광명시청 관계자</div><div class="host-role">광명시청</div><span class="host-tel" style="background:#9aa7b4;cursor:default">명단 추후 확정</span></div></div>
+    <div class="hosts"><div class="host"><div class="host-name">곽태영</div><div class="host-role">내일신문 자치행정팀 기자</div><a class="host-tel" href="tel:01025744141">📞 010-2574-4141</a></div><div class="host"><div class="host-name">김보미</div><div class="host-role">강진군의회 의원</div><a class="host-tel" href="tel:01073310179">📞 010-7331-0179</a></div><div class="host"><div class="host-name">정진호</div><div class="host-role">의정부시의원</div><a class="host-tel" href="tel:01041647882">📞 010-4164-7882</a></div><div class="host"><div class="host-name">광명시청 관계자</div><div class="host-role">광명시청</div><span class="host-tel" style="background:#9aa7b4;cursor:default">명단 추후 확정</span></div><div class="host"><div class="host-name">광명시청 관계자</div><div class="host-role">광명시청</div><span class="host-tel" style="background:#9aa7b4;cursor:default">명단 추후 확정</span></div></div>
     <p style="font-size:12.5px;color:var(--sub);margin-top:8px;text-align:center">📞 번호를 누르면(모바일) 바로 전화 연결됩니다.</p>
   </div>
-  <style id="clockCss">
-  .clock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
-  @media(max-width:640px){.clock-grid{grid-template-columns:1fr}}
-  .clk{background:#fff;border:1px solid #e3e9ef;border-radius:14px;padding:14px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-  .clk.home{border-color:var(--gold,#c8a04a);background:#fff9ec}
-  .clk-flag{font-size:1.7rem;line-height:1}
-  .clk-city{font-weight:800;color:var(--navy,#1f3a5f);font-size:.92rem;margin:6px 0 2px}
-  .clk-tz{font-size:.74rem;color:#7a8794;margin-bottom:6px}
-  .clk-time{font-size:1.85rem;font-weight:800;color:var(--navy,#1f3a5f);font-variant-numeric:tabular-nums;letter-spacing:.5px}
-  .clk-sec{font-size:1.05rem;color:var(--sky,#3b6ea5);font-weight:700}
-  .clk-date{font-size:.8rem;color:#5b6b7b;margin-top:3px}
-  .clk-diff{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;color:#3f7a52;background:#eaf5ee;border-radius:20px;padding:2px 9px}
-  .clk-note{font-size:.84rem;color:#5b6b7b;margin:12px 0 0;line-height:1.6}
-  </style>
-  <div class="info-card" style="margin-bottom:26px"><h3><span class="ic">🕐</span>현재 시각 (시차 대비) <span style="margin-left:auto;color:var(--sub);font-size:13px;font-weight:700">실시간</span></h3>
-    <div class="clock-grid">
-      <div class="clk home">
-        <div class="clk-flag">🇰🇷</div><div class="clk-city">한국 · 서울</div><div class="clk-tz">KST (UTC+9)</div>
-        <div class="clk-time" data-tz="Asia/Seoul">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Asia/Seoul"></div>
-        <span class="clk-diff">기준</span>
-      </div>
-      <div class="clk">
-        <div class="clk-flag">🇫🇮</div><div class="clk-city">핀란드 · 헬싱키 (경유)</div><div class="clk-tz">EEST (UTC+3)</div>
-        <div class="clk-time" data-tz="Europe/Helsinki">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Europe/Helsinki"></div>
-        <span class="clk-diff">한국 −6시간</span>
-      </div>
-      <div class="clk">
-        <div class="clk-flag">🇸🇪</div><div class="clk-city">스웨덴 · 스톡홀름/비스뷔</div><div class="clk-tz">CEST (UTC+2)</div>
-        <div class="clk-time" data-tz="Europe/Stockholm">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Europe/Stockholm"></div>
-        <span class="clk-diff">한국 −7시간</span>
-      </div>
-    </div>
-    <p class="clk-note">🇸🇪 <b>현지(스웨덴)는 한국보다 7시간 느립니다</b> — 한국 정오 = 스웨덴 오전 5시. 환승지 🇫🇮 헬싱키는 한국보다 6시간 느림. 서머타임이 자동 반영됩니다.</p>
-  </div>
-  <script>
-  (function(){
-    function tick(){
-      var now=new Date();
-      document.querySelectorAll('.clk-time[data-tz]').forEach(function(elT){
-        var tz=elT.getAttribute('data-tz');
-        var parts=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(now);
-        var o={};parts.forEach(function(p){o[p.type]=p.value;});
-        var hh=o.hour==='24'?'00':o.hour;
-        elT.firstChild.nodeValue=hh+':'+o.minute;
-        var s=elT.querySelector('.clk-sec');if(s)s.textContent=':'+o.second;
-      });
-      document.querySelectorAll('.clk-date[data-tzd]').forEach(function(elD){
-        var tz=elD.getAttribute('data-tzd');
-        elD.textContent=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,month:'long',day:'numeric',weekday:'short'}).format(now);
-      });
-    }
-    tick();setInterval(tick,1000);
-  })();
-  </script>
   <div class="notice">
     ⚠️ <b>중요:</b> 알메달렌 주간 2026 공식 개최는 <b>6월 22일(월)~26일(금)</b>으로 본 일정과 겹칩니다.
     이 기간 비스뷔는 스웨덴 전역의 정치인·기관·언론이 모이는 <b>연중 최대 성수기</b>로 숙박·페리가 빠르게 매진되고 요금이 평소의 2~4배로 급등합니다. <b>숙박·페리·항공은 조속히 예약하세요.</b>
