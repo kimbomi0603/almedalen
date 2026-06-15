@@ -244,57 +244,27 @@ footer b{color:#fff}
   <h1>2026 스웨덴 알메달렌 정치축제<br>대한민국 참관단 상세 가이드</h1>
   <div class="sub">북유럽 최대 정치축제 · 고틀란드 비스뷔 · 민주주의 · AI전환 · 사회통합 · 복지</div>
   <style id="clockCss">
-  .clock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
-  @media(max-width:640px){.clock-grid{grid-template-columns:1fr}}
-  .clk{background:#fff;border:1px solid #e3e9ef;border-radius:14px;padding:14px 12px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
-  .clk.home{border-color:var(--gold,#c8a04a);background:#fff9ec}
-  .clk-flag{font-size:1.7rem;line-height:1}
-  .clk-city{font-weight:800;color:var(--navy,#1f3a5f);font-size:.92rem;margin:6px 0 2px}
-  .clk-tz{font-size:.74rem;color:#7a8794;margin-bottom:6px}
-  .clk-time{font-size:1.85rem;font-weight:800;color:var(--navy,#1f3a5f);font-variant-numeric:tabular-nums;letter-spacing:.5px}
-  .clk-sec{font-size:1.05rem;color:var(--sky,#3b6ea5);font-weight:700}
-  .clk-date{font-size:.8rem;color:#5b6b7b;margin-top:3px}
-  .clk-diff{display:inline-block;margin-top:6px;font-size:.74rem;font-weight:700;color:#3f7a52;background:#eaf5ee;border-radius:20px;padding:2px 9px}
-  .clk-note{font-size:.84rem;color:#5b6b7b;margin:12px 0 0;line-height:1.6}
+  .herotime{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px 10px;margin:16px auto 2px;max-width:680px;font-size:.8rem;line-height:1}
+  .herotime .ht-lbl{font-weight:800;color:#fff;opacity:.9}
+  .herotime .ht-clk{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;padding:5px 11px;border-radius:18px;font-weight:600}
+  .herotime .ht-t{font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.3px}
+  .herotime .ht-clk i{font-style:normal;opacity:.72;font-size:.74rem;margin-left:1px}
+  @media(max-width:520px){.herotime{font-size:.75rem;gap:6px 8px}}
   </style>
-  <div class="info-card" style="margin:16px auto 6px;max-width:620px;text-align:left"><h3><span class="ic">🕐</span>현재 시각 (시차 대비) <span style="margin-left:auto;color:var(--sub);font-size:13px;font-weight:700">실시간</span></h3>
-    <div class="clock-grid">
-      <div class="clk home">
-        <div class="clk-flag">🇰🇷</div><div class="clk-city">한국 · 서울</div><div class="clk-tz">KST (UTC+9)</div>
-        <div class="clk-time" data-tz="Asia/Seoul">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Asia/Seoul"></div>
-        <span class="clk-diff">기준</span>
-      </div>
-      <div class="clk">
-        <div class="clk-flag">🇫🇮</div><div class="clk-city">핀란드 · 헬싱키 (경유)</div><div class="clk-tz">EEST (UTC+3)</div>
-        <div class="clk-time" data-tz="Europe/Helsinki">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Europe/Helsinki"></div>
-        <span class="clk-diff">한국 −6시간</span>
-      </div>
-      <div class="clk">
-        <div class="clk-flag">🇸🇪</div><div class="clk-city">스웨덴 · 스톡홀름/비스뷔</div><div class="clk-tz">CEST (UTC+2)</div>
-        <div class="clk-time" data-tz="Europe/Stockholm">--:--<span class="clk-sec"></span></div>
-        <div class="clk-date" data-tzd="Europe/Stockholm"></div>
-        <span class="clk-diff">한국 −7시간</span>
-      </div>
-    </div>
-    <p class="clk-note">🇸🇪 <b>현지(스웨덴)는 한국보다 7시간 느립니다</b> — 한국 정오 = 스웨덴 오전 5시. 환승지 🇫🇮 헬싱키는 한국보다 6시간 느림. 서머타임이 자동 반영됩니다.</p>
+  <div class="herotime" id="herotime">
+    <span class="ht-lbl">🕐 현재 시각</span>
+    <span class="ht-clk">🇰🇷 서울 <span class="ht-t" data-tz="Asia/Seoul">--:--</span></span>
+    <span class="ht-clk">🇫🇮 헬싱키 <span class="ht-t" data-tz="Europe/Helsinki">--:--</span> <i>한국 −6h</i></span>
+    <span class="ht-clk">🇸🇪 스웨덴 <span class="ht-t" data-tz="Europe/Stockholm">--:--</span> <i>한국 −7h</i></span>
   </div>
   <script>
   (function(){
     function tick(){
       var now=new Date();
-      document.querySelectorAll('.clk-time[data-tz]').forEach(function(elT){
-        var tz=elT.getAttribute('data-tz');
-        var parts=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).formatToParts(now);
-        var o={};parts.forEach(function(p){o[p.type]=p.value;});
-        var hh=o.hour==='24'?'00':o.hour;
-        elT.firstChild.nodeValue=hh+':'+o.minute;
-        var s=elT.querySelector('.clk-sec');if(s)s.textContent=':'+o.second;
-      });
-      document.querySelectorAll('.clk-date[data-tzd]').forEach(function(elD){
-        var tz=elD.getAttribute('data-tzd');
-        elD.textContent=new Intl.DateTimeFormat('ko-KR',{timeZone:tz,month:'long',day:'numeric',weekday:'short'}).format(now);
+      document.querySelectorAll('.ht-t[data-tz]').forEach(function(el){
+        var p=new Intl.DateTimeFormat('ko-KR',{timeZone:el.getAttribute('data-tz'),hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(now);
+        var o={};p.forEach(function(x){o[x.type]=x.value;});
+        el.textContent=(o.hour==='24'?'00':o.hour)+':'+o.minute;
       });
     }
     tick();setInterval(tick,1000);
@@ -315,8 +285,7 @@ footer b{color:#fff}
 
 <nav><div class="wrap" id="navwrap">
   <button class="active" data-t="overview">개요</button>
-  <button data-t="guide">🧭 완전가이드</button>
-  <button data-t="map">지도·동선</button>
+  <button data-t="map">🧭 지도·동선·완전가이드</button>
   <button data-t="schedule">전체일정</button>
   <button data-t="policy">정책투어</button>
   <button data-t="culture">문화탐방·한국행사·이벤트</button>
