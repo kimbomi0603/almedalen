@@ -220,6 +220,36 @@ footer b{color:#fff}
   .info-card a[href^="tel:"]{display:inline-block;padding:6px 4px;font-size:15px}
   .gmap{padding:9px 14px;font-size:13.5px}
 }
+/* ===== 모바일 추가 개선 & 실시간 날씨 위젯 ===== */
+*{-webkit-tap-highlight-color:rgba(29,58,95,.12)}
+a,button{touch-action:manipulation}
+.wx-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:4px 0}
+.wx-card{background:linear-gradient(160deg,#eaf2fb,#dde9f7);border:1px solid #c6d9f0;border-radius:14px;padding:14px 12px 12px;text-align:center}
+.wx-city{font-weight:800;color:var(--navy);font-size:15px}
+.wx-sub{font-size:11.5px;color:var(--sub);margin-top:1px}
+.wx-now{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 2px}
+.wx-ico{font-size:30px;line-height:1}
+.wx-temp{font-size:27px;font-weight:800;color:var(--navy2);font-variant-numeric:tabular-nums}
+.wx-desc{font-size:12.5px;color:#46566b}
+.wx-meta{font-size:12px;color:var(--sub);margin-top:3px}
+.wx-fc{display:flex;justify-content:center;gap:12px;margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+.wx-fc div{font-size:11px;color:var(--sub);line-height:1.45}
+.wx-fc .fi{font-size:17px;display:block;margin:1px 0}
+.wx-fc .fd{font-weight:700;color:var(--ink)}
+.wx-note{font-size:11.5px;color:var(--sub);margin-top:8px}
+.wx-loading{grid-column:1/-1;color:var(--sub);font-size:13px;padding:10px;text-align:center}
+@media(max-width:600px){
+  .host{min-width:calc(50% - 8px)}
+  .hosts{gap:10px}
+  .day-h{flex-wrap:wrap}.day-h .loc{margin-left:0;flex-basis:100%;margin-top:2px}
+  .maplegend{gap:9px 14px;font-size:12.5px}
+  .modal .mbd .mgal{grid-template-columns:1fr 1fr}
+  .wx-wrap{grid-template-columns:1fr 1fr}
+  table{font-size:12.5px}
+  .pdfbtn,.host-tel,.map-btn,.gmap{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+}
+@media(max-width:380px){.wx-wrap{grid-template-columns:1fr}.host{min-width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
 <style id="planCss">.plan-sel{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px}.plan-sel button{flex:1;min-width:200px;cursor:pointer;border:1.5px solid #d7dee6;background:#fff;border-radius:14px;padding:12px 14px;text-align:left;font:inherit;color:inherit;transition:.15s}.plan-sel .pn{font-weight:800;font-size:1rem;display:block;color:var(--navy,#1f3a5f)}.plan-sel .pd{font-size:.8rem;color:#5b6b7b;display:block;margin-top:3px;font-weight:600}.plan-sel button.on{border-color:var(--gold,#c8a04a);background:#fff9ec;box-shadow:0 2px 12px rgba(0,0,0,.07)}.plan-note{font-size:.86rem;background:#f4f7fa;border-left:3px solid var(--gold,#c8a04a);padding:9px 12px;border-radius:8px;margin:0 0 14px;line-height:1.55;color:#374251}#timeline.short .plan-basic{display:none!important}#timeline:not(.short) .plan-short{display:none!important}.stay-card{background:#fff;border:1px solid #e3e9ef;border-radius:14px;padding:16px 18px;line-height:1.6}.stay-card h3{margin:0 0 8px;color:var(--navy,#1f3a5f);font-size:1.02rem}.stay-card p{margin:6px 0;font-size:.92rem}.stay-card .addr{font-size:1rem}.muted{color:#7a8794;font-size:.84rem}.map-btn{display:inline-block;margin:8px 6px 2px 0;background:var(--navy,#1f3a5f);color:#fff;font-weight:700;font-size:.86rem;padding:7px 13px;border-radius:9px;text-decoration:none}.map-btn:hover{background:var(--sky,#3b6ea5)}.stay-h{margin:22px 0 10px;color:var(--navy,#1f3a5f)}.stay-dist{line-height:1.95;font-size:.92rem;padding-left:18px}.stay-warn{margin-top:18px;background:#fff7e9;border-left:4px solid var(--gold,#c8a04a);padding:12px 14px;border-radius:10px;font-size:.9rem;line-height:1.6}.stay-card a[href^="tel"]{color:var(--sky,#3b6ea5);font-weight:700;text-decoration:none}</style><style id="guideCss">#guide .gstep{background:#fff;border:1px solid #e3e9ef;border-left:5px solid var(--gold,#c8a04a);border-radius:12px;padding:14px 16px;margin:12px 0;line-height:1.65}#guide .gstep h4{margin:0 0 6px;color:var(--navy,#1f3a5f);font-size:1.05rem;display:flex;align-items:center}#guide .gnum{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;background:var(--navy,#1f3a5f);color:#fff;border-radius:50%;font-weight:800;font-size:.85rem;margin-right:9px;flex:none}#guide .gstep ul{margin:8px 0 0;padding-left:20px}#guide .gstep li{margin:5px 0}#guide .gsay{background:#eef4fb;border-radius:8px;padding:9px 11px;margin:8px 0;font-size:.95rem}#guide .gwarn{background:#fff7e9;border-left:4px solid var(--gold,#c8a04a);border-radius:10px;padding:6px 16px 12px;margin:16px 0}#guide .gwarn b{color:var(--navy,#1f3a5f)}</style></head>
 <body>
@@ -559,7 +589,12 @@ footer b{color:#fff}
     <li><b>D-7</b> 일기예보 확인 후 복장 최종 점검, 사전자료집 숙지, 명함·발표자료 인쇄</li>
     <li><b>D-1</b> 여권·항공권·예약확인서·어댑터 최종 점검, 로밍/eSIM 활성화 테스트</li>
   </ul></div>
-<h2 class="sec">날씨 · 복장 · 주의사항</h2><p class="sec-desc">6월 말 스웨덴은 백야에 가까운 긴 낮과 큰 일교차가 특징입니다. 날짜별 활동에 맞춘 준비를 정리했습니다.</p><div class="grid two">
+<h2 class="sec">날씨 · 복장 · 주의사항</h2><p class="sec-desc">6월 말 스웨덴은 백야에 가까운 긴 낮과 큰 일교차가 특징입니다. 날짜별 활동에 맞춘 준비를 정리했습니다.</p>
+<div class="info-card" style="margin-bottom:16px"><h3><span class="ic">🌡</span>실시간 현지 날씨 <span style="margin-left:auto;font-size:12px;color:var(--sub);font-weight:600">자동 갱신 · Open-Meteo</span></h3>
+  <div class="wx-wrap" id="wxWrap"><div class="wx-loading">현지 날씨를 불러오는 중…</div></div>
+  <p class="wx-note">여행 경유·체류 도시의 <b>현재 날씨와 향후 3일 예보</b>입니다 — 비스뷔(고틀란드)·스톡홀름·헬싱키(환승). 페이지를 열 때마다 자동 갱신됩니다. ※ 출발 임박 시 일기예보로 복장을 최종 점검하세요.</p>
+</div>
+<div class="grid two">
     <div class="info-card"><h3><span class="ic">🌤</span>6월 말 날씨</h3><ul>
       <li><b>비스뷔(고틀란드)</b> 평균 최고 18~19°C / 최저 10~13°C. 맑고 햇빛 강하나 <b>섬이라 바람이 강함</b></li>
       <li><b>스톡홀름</b> 최고 17~21°C / 최저 11°C. 비 오는 날 월 10일 안팎</li>
@@ -1168,12 +1203,13 @@ document.addEventListener('error',function(e){
   requestAnimationFrame(loop);
  }
  loop();
- const fireTimer=setInterval(()=>{burst(W*(0.15+Math.random()*0.7),H*(0.18+Math.random()*0.45));},520);
+ const _sm=window.innerWidth<600, _rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const fireTimer=setInterval(()=>{burst(W*(0.15+Math.random()*0.7),H*(0.18+Math.random()*0.45));},_sm?720:520);
  // initial volley
- burst(W*0.3,H*0.32);burst(W*0.7,H*0.3);setTimeout(()=>burst(W*0.5,H*0.25),350);
+ burst(W*0.3,H*0.32);burst(W*0.7,H*0.3);if(!_sm)setTimeout(()=>burst(W*0.5,H*0.25),350);
  window._introStop=function(){running=false;clearInterval(fireTimer);};
- // auto fade after 6s
- window._introAuto=setTimeout(hideIntro,6000);
+ // auto fade (모바일·접근성 환경에선 더 빠르게)
+ window._introAuto=setTimeout(hideIntro,(_sm||_rm)?3500:5000);
 })();
 function hideIntro(){
  const intro=document.getElementById('intro');
@@ -1220,6 +1256,52 @@ function hideIntro(){
   }
   box.addEventListener('input',run);
   window.goTab=function(t){var map={guide:'map',events:'culture'};t=map[t]||t;var b=document.querySelector('nav button[data-t="'+t+'"]');if(b)b.click();};
+})();
+</script>
+
+<script>
+/* ===== 실시간 현지 날씨 (Open-Meteo · API 키 불필요) ===== */
+(function(){
+ var box=document.getElementById('wxWrap'); if(!box) return;
+ var cities=[
+  {n:'비스뷔',s:'고틀란드 🇸🇪',la:57.64,lo:18.30},
+  {n:'스톡홀름',s:'스웨덴 🇸🇪',la:59.33,lo:18.07},
+  {n:'헬싱키',s:'환승 🇫🇮',la:60.17,lo:24.94}
+ ];
+ function ico(c){
+  if(c===0)return'☀️'; if(c<=2)return'🌤️'; if(c===3)return'☁️';
+  if(c<=48)return'🌫️'; if(c<=57)return'🌦️'; if(c<=65)return'🌧️';
+  if(c<=67)return'🌧️'; if(c<=77)return'🌨️'; if(c<=82)return'🌧️';
+  if(c<=86)return'🌨️'; return'⛈️';
+ }
+ function desc(c){
+  var m={0:'맑음',1:'대체로 맑음',2:'부분 흐림',3:'흐림',45:'안개',48:'착빙 안개',51:'약한 이슬비',53:'이슬비',55:'강한 이슬비',56:'언 이슬비',57:'언 이슬비',61:'약한 비',63:'비',65:'강한 비',66:'언 비',67:'언 비',71:'약한 눈',73:'눈',75:'강한 눈',77:'싸락눈',80:'소나기',81:'소나기',82:'강한 소나기',85:'소낙눈',86:'소낙눈',95:'뇌우',96:'뇌우·우박',99:'뇌우·우박'};
+  return m[c]||'—';
+ }
+ function dow(d){return ['일','월','화','수','목','금','토'][new Date(d).getDay()];}
+ function rnd(x){return Math.round(x);}
+ var la=cities.map(function(c){return c.la;}).join(',');
+ var lo=cities.map(function(c){return c.lo;}).join(',');
+ var url='https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+
+   '&current=temperature_2m,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=4';
+ fetch(url).then(function(r){return r.json();}).then(function(data){
+  var arr=Array.isArray(data)?data:[data];
+  var html=cities.map(function(c,i){
+   var d=arr[i]; if(!d||!d.current) return '';
+   var cur=d.current, dl=d.daily, fc='';
+   if(dl&&dl.time){for(var k=1;k<=3&&k<dl.time.length;k++){
+    fc+='<div><span class="fd">'+dow(dl.time[k])+'</span><span class="fi">'+ico(dl.weather_code[k])+'</span>'+rnd(dl.temperature_2m_max[k])+'°/'+rnd(dl.temperature_2m_min[k])+'°</div>';
+   }}
+   return '<div class="wx-card"><div class="wx-city">'+c.n+'</div><div class="wx-sub">'+c.s+'</div>'+
+    '<div class="wx-now"><span class="wx-ico">'+ico(cur.weather_code)+'</span><span class="wx-temp">'+rnd(cur.temperature_2m)+'°</span></div>'+
+    '<div class="wx-desc">'+desc(cur.weather_code)+'</div>'+
+    '<div class="wx-meta">💨 '+rnd(cur.wind_speed_10m)+' km/h</div>'+
+    '<div class="wx-fc">'+fc+'</div></div>';
+  }).join('');
+  box.innerHTML=html||'<div class="wx-loading">날씨 정보를 표시할 수 없습니다.</div>';
+ }).catch(function(){
+  box.innerHTML='<div class="wx-loading">⚠️ 날씨를 불러오지 못했습니다. 네트워크 확인 후 새로고침해 주세요.</div>';
+ });
 })();
 </script>
 
