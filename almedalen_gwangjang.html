@@ -170,72 +170,154 @@ footer b{color:#33404f}
     </div>
   </div></section>
 
-  <section class="block swwrap"><div class="wrap">
+  <section class="block pl-wrap"><div class="wrap">
     <style>
-.swwrap .swnote{color:#5b6675;font-size:14px;margin:-6px 0 16px}
-.swwrap .swnote span{color:#8893a3;font-size:12.5px}
-.sw-list{display:flex;flex-direction:column;gap:9px}
-.sw-row{display:grid;grid-template-columns:84px 1fr auto;gap:12px;align-items:center;background:#fff;
-  border:1px solid #e6eaf0;border-radius:13px;padding:12px 14px;box-shadow:0 4px 14px rgba(20,40,80,.05)}
-.sw-when{text-align:center;line-height:1.25}
-.sw-when b{display:block;font-size:13px;color:#10477e;font-weight:800}
-.sw-when span{font-size:12px;color:#8893a3}
-.sw-who b{font-size:15.5px;font-weight:800;display:block}
-.sw-who span{font-size:12.5px;color:#5b6675}
-.sw-who .sb{display:inline-block;margin-top:5px;font-size:11px;font-weight:800;border-radius:6px;padding:2px 8px}
-.sw-who .sb.done{background:#e3f6ec;color:#16794f}
-.sw-who .sb.today{background:#fde8e8;color:#b42318}
-.sw-who .sb.live{background:#fdeede;color:#a05a0a}
-.sw-who .sb.soon{background:#eef1f6;color:#5b6675}
-.sw-act .yt{display:inline-block;white-space:nowrap;font-size:13px;font-weight:800;text-decoration:none;
-  background:#ff3b30;color:#fff;border-radius:9px;padding:9px 13px}
-.sw-act .yt.search{background:#10477e}
-.sw-act .yt.live{background:#c4365f}
-.sw-act .yt:hover{filter:brightness(.93)}
-@media(max-width:560px){.sw-row{grid-template-columns:70px 1fr;gap:8px}
- .sw-act{grid-column:1 / -1}.sw-act .yt{display:block;text-align:center}}
+.pl-wrap .pl-intro{color:#41506a;font-size:15px;margin:-4px 0 14px}
+.young-box{background:linear-gradient(135deg,#0f3d6e,#1c6dd0);color:#fff;border-radius:16px;padding:18px 18px 16px;margin:0 0 20px}
+.young-box h3{margin:0 0 8px;font-size:17px;font-weight:800}.young-box p{margin:0 0 13px;font-size:14px;color:#e7f1fb;line-height:1.7}
+.young-box .yk{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 13px}.young-box .yk b{display:block;font-size:22px;font-weight:800}
+.young-box .yk div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:11px;padding:8px 13px;font-size:12px;color:#dce9f7}
+.age-row{display:flex;gap:6px;flex-wrap:wrap}.ac{flex:1;min-width:74px;border-radius:10px;padding:8px 6px;text-align:center;color:#fff}
+.ac b{display:block;font-size:18px;font-weight:800;line-height:1.1}.ac span{font-size:11px;opacity:.95}
+.c30{background:#e8527a}.c40{background:#e8a91d}.c50{background:#2aa784}.c60{background:#5775c9}
+.pl-list{display:grid;grid-template-columns:1fr;gap:14px}@media(min-width:660px){.pl-list{grid-template-columns:1fr 1fr}}
+.pl-card{display:flex;gap:13px;background:#fff;border:1px solid #e6eaf0;border-radius:15px;padding:14px;box-shadow:0 5px 16px rgba(20,40,80,.06)}
+.pl-photo-wrap{position:relative;width:80px;height:98px;flex:none;border-radius:10px;overflow:hidden}
+.pl-avatar{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:26px;letter-spacing:1px}
+.pl-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pl-main{flex:1;min-width:0}.pl-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.pl-party{font-size:11.5px;font-weight:700;color:#10477e}.pl-name{font-size:16px;font-weight:800;line-height:1.25;margin-top:2px}
+.pl-sv{font-size:11.5px;color:#8893a3;font-weight:600;display:block}
+.pl-age{flex:none;text-align:center;border-radius:10px;padding:5px 9px;color:#fff;min-width:48px}
+.pl-age b{font-size:19px;font-weight:800}.pl-age span{font-size:11px}.pl-age i{display:block;font-size:9.5px;font-style:normal;opacity:.9;margin-top:1px}
+.pl-bio{font-size:12.7px;color:#41506a;line-height:1.55;margin:8px 0 6px}
+.pl-theme{font-size:12.5px;color:#33404f;margin:0 0 10px}.pl-theme b{color:#127a66;font-weight:800;margin-right:4px}
+.pl-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #eef1f5;padding-top:9px}
+.pl-when{font-size:11.5px;color:#5b6675;font-weight:600}
+.plb{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px;margin-left:2px}
+.plb.done{background:#e3f6ec;color:#16794f}.plb.live{background:#fdeede;color:#a05a0a}.plb.soon{background:#eef1f6;color:#5b6675}
+.pl-foot a{display:inline-flex;flex-direction:column;align-items:center;line-height:1.15;white-space:nowrap;font-size:12.5px;font-weight:800;text-decoration:none;background:#ff3b30;color:#fff;border-radius:9px;padding:7px 12px}
+.pl-foot a.live{background:#c4365f}.pl-foot a.chan{background:#10477e}
+.pl-foot a .vn{font-size:9px;font-weight:600;font-style:normal;opacity:.92;margin-top:1px}
+.pl-credit{font-size:11px;color:#9aa3b0;margin:14px 0 0}
 </style>
-    <h2 class="h">🎤 스웨덴 8개 정당 대표 연설 다시보기</h2>
-    <p class="swnote">알메달렌 주간의 하이라이트 — 의회 8개 정당 대표의 연설(Partiledartal)입니다. 종료된 연설은 유튜브 영상으로 바로 볼 수 있어요. <span>스웨덴 현지시간 6/25(목) 오전 기준 · 시간은 변동될 수 있습니다.</span></p>
-    <div class="sw-list">
-      <div class="sw-row">
-      <div class="sw-when"><b>6/23 화</b><span>12:00</span></div>
-      <div class="sw-who"><b>Ebba Busch</b><span>기독민주당 · <i lang="sv">KD · Kristdemokraterna</i></span><span class="sb done">✅ 종료</span></div>
-      <div class="sw-act"><a class="yt search" href="https://www.youtube.com/results?search_query=Ebba%20Busch%20Almedalen%202026%20tal" target="_blank" rel="noopener">🔎 유튜브에서 보기</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/23 화</b><span>19:00</span></div>
-      <div class="sw-who"><b>Simona Mohamsson</b><span>자유당 · <i lang="sv">L · Liberalerna</i></span><span class="sb done">✅ 종료</span></div>
-      <div class="sw-act"><a class="yt" href="https://www.youtube.com/watch?v=WYYyHh2ZfMY" target="_blank" rel="noopener">▶ 연설 영상</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/24 수</b><span>12:00</span></div>
-      <div class="sw-who"><b>Jimmie Åkesson</b><span>스웨덴민주당 · <i lang="sv">SD · Sverigedemokraterna</i></span><span class="sb done">✅ 종료</span></div>
-      <div class="sw-act"><a class="yt" href="https://www.youtube.com/watch?v=NZyztg_ESaY" target="_blank" rel="noopener">▶ 연설 영상</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/24 수</b><span>19:00</span></div>
-      <div class="sw-who"><b>Elisabeth Thand Ringqvist</b><span>중앙당 · <i lang="sv">C · Centerpartiet</i></span><span class="sb done">✅ 종료</span></div>
-      <div class="sw-act"><a class="yt" href="https://www.youtube.com/watch?v=iwXT2XAad-w" target="_blank" rel="noopener">▶ 연설 영상</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/25 목</b><span>12:00</span></div>
-      <div class="sw-who"><b>Daniel Helldén</b><span>녹색당 · <i lang="sv">MP · Miljöpartiet</i></span><span class="sb today">🔴 오늘 12:00</span></div>
-      <div class="sw-act"><a class="yt search" href="https://www.youtube.com/results?search_query=Daniel%20Helld%C3%A9n%20Almedalen%202026%20tal" target="_blank" rel="noopener">🔎 유튜브에서 보기</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/25 목</b><span>19:00</span></div>
-      <div class="sw-who"><b>Magdalena Andersson</b><span>사회민주당 · <i lang="sv">S · Socialdemokraterna</i></span><span class="sb live">🗓 오늘 19:00 · 라이브</span></div>
-      <div class="sw-act"><a class="yt live" href="https://www.youtube.com/watch?v=TBHUne2xwvs" target="_blank" rel="noopener">🔴 라이브 보기</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/26 금</b><span>12:00</span></div>
-      <div class="sw-who"><b>Ulf Kristersson</b><span>온건당·총리 · <i lang="sv">M · Moderaterna</i></span><span class="sb soon">🗓 예정</span></div>
-      <div class="sw-act"><a class="yt search" href="https://www.youtube.com/results?search_query=Ulf%20Kristersson%20Almedalen%202026%20tal" target="_blank" rel="noopener">🔎 유튜브에서 보기</a></div>
-    </div><div class="sw-row">
-      <div class="sw-when"><b>6/26 금</b><span>19:00</span></div>
-      <div class="sw-who"><b>Nooshi Dadgostar</b><span>좌파당 · <i lang="sv">V · Vänsterpartiet</i></span><span class="sb soon">🗓 예정</span></div>
-      <div class="sw-act"><a class="yt search" href="https://www.youtube.com/results?search_query=Nooshi%20Dadgostar%20Almedalen%202026%20tal" target="_blank" rel="noopener">🔎 유튜브에서 보기</a></div>
+    <h2 class="h">🎤 스웨덴 8개 정당 대표 — 프로필·나이·연설</h2>
+    <p class="pl-intro">알메달렌 주간의 하이라이트, 의회 8개 정당 대표의 연설(Partiledartal)입니다. 각 대표의 이름·나이·약력과 연설 핵심, 그리고 <b>전체 연설 영상(공식)</b>을 함께 담았습니다.</p>
+    <div class="young-box">
+      <h3>📊 “젊은 비중” — 8명 중 4명이 40대 이하</h3>
+      <p>평균 약 <b>49세</b>. 최연소 <b>시모나 모함손(자유당) 31세</b>, 최고령 <b>울프 크리스테르손(온건당·총리) 62세</b>. 30·40·50·60대가 각 2명씩 고르게 분포하고, 31세·39세가 주요 정당을 이끕니다 — 한국 정치와 뚜렷이 대비됩니다.</p>
+      <div class="yk"><div><b>49세</b>평균 연령</div><div><b>4명</b>40대 이하 (절반)</div><div><b>31–62세</b>나이 폭</div></div>
+      <div class="age-row"><div class="ac c30"><b>31</b><span>시모나 L</span></div><div class="ac c30"><b>39</b><span>에바 KD</span></div><div class="ac c40"><b>41</b><span>누시 V</span></div><div class="ac c40"><b>47</b><span>이미에 SD</span></div><div class="ac c50"><b>54</b><span>엘리사베트 C</span></div><div class="ac c50"><b>59</b><span>막달레나 S</span></div><div class="ac c60"><b>60</b><span>다니엘 MP</span></div><div class="ac c60"><b>62</b><span>울프 M</span></div></div>
     </div>
-    </div>
-    <p class="swnote" style="margin-top:14px">공식 영상이 아직 안 올라온 연설은 <b>🔎 유튜브 검색</b> 버튼으로 연결됩니다. 공식 채널(각 정당·SVT)에 곧 업로드됩니다.</p>
+    <div class="pl-list"><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#1d4f91"><div class="pl-avatar">EB</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Competitiveness_Council_Roundtable_%28Internal_Market_%26_Industry%29_%28Ebba_Busch_cropped%29.jpg/360px-Competitiveness_Council_Roundtable_%28Internal_Market_%26_Industry%29_%28Ebba_Busch_cropped%29.jpg" alt="에바 부시" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">기독민주당 · KD · <span lang="sv">Kristdemokraterna</span></div>
+          <div class="pl-name">에바 부시 <span class="pl-sv" lang="sv">Ebba Busch</span></div></div>
+          <div class="pl-age c30"><b>39</b><span>세</span><i>1987년생</i></div>
+        </div>
+        <p class="pl-bio">기독민주당 대표(2015~) · 현 부총리 겸 에너지·산업장관. 원전 확대와 경제·가정 가치를 앞세운 강성 보수 리더.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 에너지(원전)·경제·기독교적 가정 가치</p>
+        <div class="pl-foot"><span class="pl-when">6/23 화 12:00 &nbsp;<span class="plb done">✅ 종료</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=9YXEQ5bxZPg" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">SvD 풀영상</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#4f9ad6"><div class="pl-avatar">SM</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Simona_Mohamsson_2026.jpg/360px-Simona_Mohamsson_2026.jpg" alt="시모나 모함손" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">자유당 · L · <span lang="sv">Liberalerna</span></div>
+          <div class="pl-name">시모나 모함손 <span class="pl-sv" lang="sv">Simona Mohamsson</span></div></div>
+          <div class="pl-age c30"><b>31</b><span>세</span><i>1994년생</i></div>
+        </div>
+        <p class="pl-bio">자유당 대표(2025~) · 주요 정당 사상 최연소급(31세) 당대표. 자유주의·교육·사회통합을 강조하는 세대교체 주자.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 자유주의·교육·사회통합, 세대교체</p>
+        <div class="pl-foot"><span class="pl-when">6/23 화 19:00 &nbsp;<span class="plb done">✅ 종료</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=aZ_kkQj3JRA" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">Liberalerna 공식</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#15314f"><div class="pl-avatar">JÅ</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Frihamnsdagarna_2022_Foto_Tommy_Winterski%C3%B6ld_Vestlie_%2852361661771%29_%28cropped%29.jpg/360px-Frihamnsdagarna_2022_Foto_Tommy_Winterski%C3%B6ld_Vestlie_%2852361661771%29_%28cropped%29.jpg" alt="이미에 오케손" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">스웨덴민주당 · SD · <span lang="sv">Sverigedemokraterna</span></div>
+          <div class="pl-name">이미에 오케손 <span class="pl-sv" lang="sv">Jimmie Åkesson</span></div></div>
+          <div class="pl-age c40"><b>47</b><span>세</span><i>1979년생</i></div>
+        </div>
+        <p class="pl-bio">스웨덴민주당 대표(2005~, 20년) · 원내 최대 우파 세력으로 키운 리더. 이민 통제·법질서·국가안보가 핵심.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 이민 통제·법질서·국가안보</p>
+        <div class="pl-foot"><span class="pl-when">6/24 수 12:00 &nbsp;<span class="plb done">✅ 종료</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=NZyztg_ESaY" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">SD 공식</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#2a8a3e"><div class="pl-avatar">ET</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/ElisabethTR2.jpg/360px-ElisabethTR2.jpg" alt="엘리사베트 탄드 링크비스트" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">중앙당 · C · <span lang="sv">Centerpartiet</span></div>
+          <div class="pl-name">엘리사베트 탄드 링크비스트 <span class="pl-sv" lang="sv">Elisabeth Thand Ringqvist</span></div></div>
+          <div class="pl-age c50"><b>54</b><span>세</span><i>1972년생</i></div>
+        </div>
+        <p class="pl-bio">중앙당 대표 · 리크스다그 의원(2022~). 벤처·기업가 출신으로 지방분권·농촌·기업환경·녹색성장을 강조.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 지방분권·농촌·기업환경·녹색성장</p>
+        <div class="pl-foot"><span class="pl-when">6/24 수 19:00 &nbsp;<span class="plb done">✅ 종료</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=iwXT2XAad-w" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">Centerpartiet 공식</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#5a9e2f"><div class="pl-avatar">DH</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Daniel_helld%C3%A9n_mp.jpg/360px-Daniel_helld%C3%A9n_mp.jpg" alt="다니엘 헬덴" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">녹색당 · MP · <span lang="sv">Miljöpartiet</span></div>
+          <div class="pl-name">다니엘 헬덴 <span class="pl-sv" lang="sv">Daniel Helldén</span></div></div>
+          <div class="pl-age c60"><b>60</b><span>세</span><i>1965년생</i></div>
+        </div>
+        <p class="pl-bio">녹색당 공동대표(2023~) · 스톡홀름 교통정책가 출신. 기후위기·철도·에너지 전환이 핵심 의제.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 기후위기·철도·에너지 전환</p>
+        <div class="pl-foot"><span class="pl-when">6/25 목 12:00 &nbsp;<span class="plb done">✅ 종료</span></span>
+          <a class="yt chan" href="https://www.youtube.com/channel/UC0fLpFcjZBHW5vLBXDrZBIg/videos" target="_blank" rel="noopener">MP 공식 채널<i class="vn">풀영상 업로드 대기</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#d6243a"><div class="pl-avatar">MA</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Magdalena_Andersson_Gothenburg_2026-04-10_02_%28cropped%29.jpg/360px-Magdalena_Andersson_Gothenburg_2026-04-10_02_%28cropped%29.jpg" alt="막달레나 안데르손" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">사회민주당 · S · <span lang="sv">Socialdemokraterna</span></div>
+          <div class="pl-name">막달레나 안데르손 <span class="pl-sv" lang="sv">Magdalena Andersson</span></div></div>
+          <div class="pl-age c50"><b>59</b><span>세</span><i>1967년생</i></div>
+        </div>
+        <p class="pl-bio">사회민주당 대표 · 스웨덴 첫 여성 총리(2021~2022). 현 야당 지도자로 복지·일자리·평등을 강조.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 복지·일자리·평등, 정부 비판</p>
+        <div class="pl-foot"><span class="pl-when">6/25 목 19:00 &nbsp;<span class="plb live">🔴 오늘 19:00 라이브</span></span>
+          <a class="yt live" href="https://www.youtube.com/watch?v=TBHUne2xwvs" target="_blank" rel="noopener">🔴 라이브 보기<i class="vn">S 공식 라이브</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#1a64b0"><div class="pl-avatar">UK</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ulf_Kristersson_June_2025_%28cropped%29.jpg/360px-Ulf_Kristersson_June_2025_%28cropped%29.jpg" alt="울프 크리스테르손" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">온건당·총리 · M · <span lang="sv">Moderaterna</span></div>
+          <div class="pl-name">울프 크리스테르손 <span class="pl-sv" lang="sv">Ulf Kristersson</span></div></div>
+          <div class="pl-age c60"><b>62</b><span>세</span><i>1963년생</i></div>
+        </div>
+        <p class="pl-bio">온건당 대표(2017~) · 현 총리(2022~). 우파연정을 이끌며 경제·치안·국방(NATO 가입)을 강조.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 경제·치안·국방, 국정 비전</p>
+        <div class="pl-foot"><span class="pl-when">6/26 금 12:00 &nbsp;<span class="plb soon">🗓 6/26 예정</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=1CMViR4Xwuk" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">Moderaterna 공식</i></a></div>
+      </div>
+    </div><div class="pl-card">
+      <div class="pl-photo-wrap" style="background:#97121f"><div class="pl-avatar">ND</div><img class="pl-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nooshi_Dadgostar_-_42794852001.jpg/360px-Nooshi_Dadgostar_-_42794852001.jpg" alt="누시 다드고스타르" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div>
+      <div class="pl-main">
+        <div class="pl-head">
+          <div class="pl-id"><div class="pl-party">좌파당 · V · <span lang="sv">Vänsterpartiet</span></div>
+          <div class="pl-name">누시 다드고스타르 <span class="pl-sv" lang="sv">Nooshi Dadgostar</span></div></div>
+          <div class="pl-age c40"><b>41</b><span>세</span><i>1985년생</i></div>
+        </div>
+        <p class="pl-bio">좌파당 대표(2020~) · 복지 확대·임대주택·노동·불평등 해소를 내세운 좌파 리더.</p>
+        <p class="pl-theme"><b>연설 핵심</b> 복지 확대·주거·불평등 해소</p>
+        <div class="pl-foot"><span class="pl-when">6/26 금 19:00 &nbsp;<span class="plb soon">🗓 6/26 예정</span></span>
+          <a class="yt" href="https://www.youtube.com/watch?v=-nSJfK7d91g" target="_blank" rel="noopener">▶ 전체 연설<i class="vn">Vänsterpartiet 공식</i></a></div>
+      </div>
+    </div></div>
+    <p class="pl-credit">인물 사진 © Wikimedia Commons(네트워크에서 차단 시 약자 아바타로 표시) · 약력 출처 Wikipedia · 연설 영상은 각 정당 공식 유튜브(일부 공영·언론). 스웨덴 현지시간 6/25(목) 저녁 기준.</p>
   </div></section>
 
-  <footer><div class="wrap">
+<footer><div class="wrap">
     <b>2026 스웨덴 알메달렌 정치축제 대한민국 참관단</b><br>
     주최 브레인파크 · 노민호아카데미 · 자치분권연구소 · 담당 박동완 010-3838-6218
   </div></footer>
