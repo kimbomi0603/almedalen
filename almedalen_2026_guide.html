@@ -19,7 +19,7 @@ a{color:var(--sky)}
 
 header.hero{position:relative;color:#fff;text-align:center;padding:64px 20px 56px;
   background:linear-gradient(160deg,rgba(26,66,135,.90),rgba(15,42,90,.95)),
-  url('https://upload.wikimedia.org/wikipedia/commons/6/6c/Visby_ringmur_September_2020_01.jpg') center/cover}
+  url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Visby_ringmur_September_2020_01.jpg/1280px-Visby_ringmur_September_2020_01.jpg') center/cover}
 .hero .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);
   padding:5px 16px;border-radius:30px;font-size:13px;letter-spacing:2px;margin-bottom:18px}
 .hero h1{font-size:34px;font-weight:800;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.4)}
@@ -453,8 +453,8 @@ a,button{touch-action:manipulation}
   
   <p class="sec-desc" style="margin-bottom:26px">※ 차량을 고틀란드까지 페리로 가져가면 차량 운임(왕복 약 100만원/대) 추가. 비스뷔 구시가는 보행 중심이라 <b>차량은 본토 뉘네스함에 두고 페리 승객으로만 이동</b>하는 편이 비용·편의 모두 유리할 수 있습니다.</p>
   <div class="grid two">
-    <div class="card" onclick="openModal('cost_air')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg')"><span class="tag">항공</span></div><div class="bd"><h3>항공편 (인천→스톡홀름)</h3><p>핀에어(AY) 헬싱키 경유 · 발권 완료. 편명·소요시간</p><div class="more">자세히 ›</div></div></div>
-    <div class="card" onclick="openModal('cost_ferry')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg')"><span class="tag">페리</span></div><div class="bd"><h3>페리 (뉘네스함→비스뷔)</h3><p>Destination Gotland · 약 3시간 15분 · 요금·예약 팁</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_air')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg/1280px-Stockholm-Arlanda_Airport_Terminal_5_c.jpg')"><span class="tag">항공</span></div><div class="bd"><h3>항공편 (인천→스톡홀름)</h3><p>핀에어(AY) 헬싱키 경유 · 발권 완료. 편명·소요시간</p><div class="more">자세히 ›</div></div></div>
+    <div class="card" onclick="openModal('cost_ferry')"><div class="ph" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg/1280px-Destination_Gotland_Nyn%C3%A4shamn.jpg')"><span class="tag">페리</span></div><div class="bd"><h3>페리 (뉘네스함→비스뷔)</h3><p>Destination Gotland · 약 3시간 15분 · 요금·예약 팁</p><div class="more">자세히 ›</div></div></div>
     <div class="card" onclick="openModal('cost_car')"><div class="ph" style="background:linear-gradient(135deg,#27496d,#3a7ca5)"><span class="tag">렌터카</span></div><div class="bd"><h3>렌터카 (7명 이동)</h3><p>알란다공항 픽업 · 9인승 밴 1대 · 요금·연료·차량 페리</p><div class="more">자세히 ›</div></div></div>
     <div class="card" onclick="openModal('cost_stay')"><div class="ph" style="background:linear-gradient(135deg,#1d3a5f,#27496d)"><span class="tag">숙박</span></div><div class="bd"><h3>숙박 (비스뷔 5박)</h3><p>알메달렌 성수기 요금 급등 · 숙소 주소 · 예약 팁</p><div class="more">자세히 ›</div></div></div>
   </div>
@@ -637,22 +637,22 @@ a,button{touch-action:manipulation}
 
 <script>
 const IMG={
- gamlastan:'https://upload.wikimedia.org/wikipedia/commons/7/78/Stortorget_i_Gamla_Stan_i_Stockholm-2.JPG',
- palace:'https://upload.wikimedia.org/wikipedia/commons/4/47/Kungliga_Slottet_%2812820900495%29.jpg',
- wall:'https://upload.wikimedia.org/wikipedia/commons/6/6c/Visby_ringmur_September_2020_01.jpg',
- powder:'https://upload.wikimedia.org/wikipedia/commons/2/26/Visby-Kruttornet.jpg',
- jungfrun:'https://upload.wikimedia.org/wikipedia/commons/1/19/Jungfrun_rauk_Lickershamn.JPG',
- brucebo:'https://upload.wikimedia.org/wikipedia/commons/f/fc/Brucebo_naturreservat_September_2021_01.jpg',
- almedalen:'https://upload.wikimedia.org/wikipedia/commons/0/07/Almedalen_July_2019.jpg',
- ferry:'https://upload.wikimedia.org/wikipedia/commons/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg',
- vasa:'https://upload.wikimedia.org/wikipedia/commons/1/15/The_Vasa_from_the_Bow.jpg',
- cityhall:'https://upload.wikimedia.org/wikipedia/commons/e/e6/Stockholms_stadshus_september_2011.jpg',
- skansen:'https://upload.wikimedia.org/wikipedia/commons/e/e8/Skansen%2C_Stockholm_%28by_Pudelek%29_1.JPG',
- meatball:'https://upload.wikimedia.org/wikipedia/commons/3/30/K%C3%B6ttbullar_-_Swedish_meatballs.jpg',
- cinnamon:'https://upload.wikimedia.org/wikipedia/commons/0/0e/Cinnamon_bun_-_Black_Mocha_2024-01-08.jpg',
- saffron:'https://upload.wikimedia.org/wikipedia/commons/d/df/Saffranspannkaka.jpg',
- skagen:'https://upload.wikimedia.org/wikipedia/commons/2/27/Toast_Skagen_on_a_plate.jpg',
- arlanda:'https://upload.wikimedia.org/wikipedia/commons/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg'
+ gamlastan:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Stortorget_i_Gamla_Stan_i_Stockholm-2.JPG/1280px-Stortorget_i_Gamla_Stan_i_Stockholm-2.JPG',
+ palace:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Kungliga_Slottet_%2812820900495%29.jpg/1280px-Kungliga_Slottet_%2812820900495%29.jpg',
+ wall:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Visby_ringmur_September_2020_01.jpg/1280px-Visby_ringmur_September_2020_01.jpg',
+ powder:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Visby-Kruttornet.jpg/1280px-Visby-Kruttornet.jpg',
+ jungfrun:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Jungfrun_rauk_Lickershamn.JPG/1280px-Jungfrun_rauk_Lickershamn.JPG',
+ brucebo:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Brucebo_naturreservat_September_2021_01.jpg/1280px-Brucebo_naturreservat_September_2021_01.jpg',
+ almedalen:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Almedalen_July_2019.jpg/1280px-Almedalen_July_2019.jpg',
+ ferry:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Destination_Gotland_Nyn%C3%A4shamn.jpg/1280px-Destination_Gotland_Nyn%C3%A4shamn.jpg',
+ vasa:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/The_Vasa_from_the_Bow.jpg/1280px-The_Vasa_from_the_Bow.jpg',
+ cityhall:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Stockholms_stadshus_september_2011.jpg/1280px-Stockholms_stadshus_september_2011.jpg',
+ skansen:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Skansen%2C_Stockholm_%28by_Pudelek%29_1.JPG/1280px-Skansen%2C_Stockholm_%28by_Pudelek%29_1.JPG',
+ meatball:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/K%C3%B6ttbullar_-_Swedish_meatballs.jpg/1280px-K%C3%B6ttbullar_-_Swedish_meatballs.jpg',
+ cinnamon:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Cinnamon_bun_-_Black_Mocha_2024-01-08.jpg/1280px-Cinnamon_bun_-_Black_Mocha_2024-01-08.jpg',
+ saffron:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Saffranspannkaka.jpg/1280px-Saffranspannkaka.jpg',
+ skagen:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Toast_Skagen_on_a_plate.jpg/1280px-Toast_Skagen_on_a_plate.jpg',
+ arlanda:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Stockholm-Arlanda_Airport_Terminal_5_c.jpg/1280px-Stockholm-Arlanda_Airport_Terminal_5_c.jpg'
 };
 
 const D={
@@ -678,12 +678,12 @@ const D={
   <p>공식 개최 <b>6월 22일(월)~26일(금)</b>. 6/23(화)부터 의회 정당들이 순서대로 알메달렌 무대를 차지합니다.</p>
   <h4>📸 축제 현장 사진 (이해를 돕기 위한 실제 모습)</h4>
   <div class="mgal">
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/0/07/Almedalen_July_2019.jpg" alt="알메달렌 공원"><figcaption>알메달렌 공원 전경 (행사 무대가 설치되는 곳)</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Almedalen_Park%2C_juli_2018.jpg" alt="알메달렌 세미나"><figcaption>공원에 모인 시민·참가자들</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Almedalen_2016.jpg" alt="알메달렌 2016"><figcaption>축제 주간의 비스뷔 거리</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Almedalen_2014_%2816932174943%29.jpg" alt="알메달렌 2014"><figcaption>야외 정당 행사 부스</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Almedalen_20150630_185731.jpg" alt="알메달렌 저녁 연설"><figcaption>저녁 시간대 연설 무대</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Regnb%C3%A5ge_%C3%B6ver_Almedalen.jpg" alt="알메달렌 무지개"><figcaption>알메달렌 위로 뜬 무지개 ('다양성'의 상징)</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Almedalen_July_2019.jpg/1280px-Almedalen_July_2019.jpg" alt="알메달렌 공원"><figcaption>알메달렌 공원 전경 (행사 무대가 설치되는 곳)</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Almedalen_Park%2C_juli_2018.jpg/1280px-Almedalen_Park%2C_juli_2018.jpg" alt="알메달렌 세미나"><figcaption>공원에 모인 시민·참가자들</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Almedalen_2016.jpg/1280px-Almedalen_2016.jpg" alt="알메달렌 2016"><figcaption>축제 주간의 비스뷔 거리</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Almedalen_2014_%2816932174943%29.jpg/1280px-Almedalen_2014_%2816932174943%29.jpg" alt="알메달렌 2014"><figcaption>야외 정당 행사 부스</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Almedalen_20150630_185731.jpg/1280px-Almedalen_20150630_185731.jpg" alt="알메달렌 저녁 연설"><figcaption>저녁 시간대 연설 무대</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Regnb%C3%A5ge_%C3%B6ver_Almedalen.jpg/1280px-Regnb%C3%A5ge_%C3%B6ver_Almedalen.jpg" alt="알메달렌 무지개"><figcaption>알메달렌 위로 뜬 무지개 ('다양성'의 상징)</figcaption></figure>
   </div>
   <h4>📰 작년(2025) 관련 기사·영상</h4>
   <ul class="links">
@@ -708,10 +708,10 @@ const D={
   <b>모르텐 트로치그스 그랜드</b> 스톡홀름에서 가장 좁은 골목(폭 약 90cm).</p>
   <h4>📸 현장 사진</h4>
   <div class="mgal">
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Gamla_stan_September_2014_01.jpg" alt="감라스탄 거리"><figcaption>중세 구시가지 거리</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Alley_in_Gamla_Stan%2C_Stockholm.jpg" alt="감라스탄 골목"><figcaption>좁은 자갈길 골목</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Storkyrkan_and_Kungliga_slottet_Stockholm_2016_01.jpg" alt="대성당과 왕궁"><figcaption>대성당(Storkyrkan)과 왕궁</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Stockholms_slott_December_2012.jpg" alt="스톡홀름 왕궁"><figcaption>스톡홀름 왕궁 외관</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gamla_stan_September_2014_01.jpg/1280px-Gamla_stan_September_2014_01.jpg" alt="감라스탄 거리"><figcaption>중세 구시가지 거리</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Alley_in_Gamla_Stan%2C_Stockholm.jpg/1280px-Alley_in_Gamla_Stan%2C_Stockholm.jpg" alt="감라스탄 골목"><figcaption>좁은 자갈길 골목</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Storkyrkan_and_Kungliga_slottet_Stockholm_2016_01.jpg/1280px-Storkyrkan_and_Kungliga_slottet_Stockholm_2016_01.jpg" alt="대성당과 왕궁"><figcaption>대성당(Storkyrkan)과 왕궁</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Stockholms_slott_December_2012.jpg/1280px-Stockholms_slott_December_2012.jpg" alt="스톡홀름 왕궁"><figcaption>스톡홀름 왕궁 외관</figcaption></figure>
   </div>
   <div class="tipbox"><b>관람 팁</b> 자갈길이 많아 편한 신발 필수. 메인 골목은 한낮 혼잡 → 이른 오전이 한적. 근위병 교대식 시간을 일정 중심으로 배치하면 효율적.</div>`},
 
@@ -727,11 +727,11 @@ const D={
   <p>원래 약 3.6km 중 약 3.44km 현존(≈3.5km). 탑은 대형 27개·소형 9개가 남아 있습니다. 스칸디나비아에서 가장 강력하고 잘 보존된 중세 성벽입니다.</p>
   <h4>📸 현장 사진</h4>
   <div class="mgal">
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Visby_ringmur_July_2019_01.jpg" alt="비스뷔 성벽"><figcaption>성벽 외곽 전경</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Visby_ringmur_September_2020_03.jpg" alt="비스뷔 성벽과 탑"><figcaption>성벽과 방어탑</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Visby-Kruttornet.jpg" alt="화약탑"><figcaption>크루트토르네트(화약탑) — 최고(最古)</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Visby_Sankta_Maria_domkyrka_August_2020_01.jpg" alt="비스뷔 대성당"><figcaption>성마리아 대성당</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/VIsby_ringmur_November_2025_01.jpg" alt="비스뷔 성벽 2025"><figcaption>성벽 최근 모습(2025)</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Visby_ringmur_July_2019_01.jpg/1280px-Visby_ringmur_July_2019_01.jpg" alt="비스뷔 성벽"><figcaption>성벽 외곽 전경</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Visby_ringmur_September_2020_03.jpg/1280px-Visby_ringmur_September_2020_03.jpg" alt="비스뷔 성벽과 탑"><figcaption>성벽과 방어탑</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Visby-Kruttornet.jpg/1280px-Visby-Kruttornet.jpg" alt="화약탑"><figcaption>크루트토르네트(화약탑) — 최고(最古)</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Visby_Sankta_Maria_domkyrka_August_2020_01.jpg/1280px-Visby_Sankta_Maria_domkyrka_August_2020_01.jpg" alt="비스뷔 대성당"><figcaption>성마리아 대성당</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/VIsby_ringmur_November_2025_01.jpg/1280px-VIsby_ringmur_November_2025_01.jpg" alt="비스뷔 성벽 2025"><figcaption>성벽 최근 모습(2025)</figcaption></figure>
   </div>
   <div class="tipbox"><b>관람 팁</b> 성벽은 야외 무료. 식물원(Botaniska) 쪽 외곽 산책로에서 성벽·탑 전경이 좋습니다. 비스뷔는 "장미와 폐허의 도시"로 불리며, 6월 백야로 저녁 산책에도 유리합니다.</div>`},
 
@@ -747,10 +747,10 @@ const D={
   <p>융프룬 자연보호구역은 가파른 해안 절벽 약 700m 구간을 포함합니다. 장거리 트레일 <b>클린트쿠스트레덴</b>(약 30km, 주황색 표식)이 일대를 통과합니다.</p>
   <h4>📸 현장 사진</h4>
   <div class="mgal">
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Rauken_Jungfrun_med_Lickershamn_i_bakgrunden.JPG" alt="융프룬 라우크"><figcaption>융프룬 라우크와 리케르스함</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Jungfrun_Lickershamn.jpg" alt="융프룬"><figcaption>고틀란드 최대 라우크 융프룬</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Jungfrun_rauk_2019.jpg" alt="융프룬 라우크 2019"><figcaption>해식 기둥 절경</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Jungfrun_rauk_Lickershamn.JPG" alt="융프룬 라우크"><figcaption>발트해 해안 라우카르</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rauken_Jungfrun_med_Lickershamn_i_bakgrunden.JPG/1280px-Rauken_Jungfrun_med_Lickershamn_i_bakgrunden.JPG" alt="융프룬 라우크"><figcaption>융프룬 라우크와 리케르스함</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Jungfrun_Lickershamn.jpg/1280px-Jungfrun_Lickershamn.jpg" alt="융프룬"><figcaption>고틀란드 최대 라우크 융프룬</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Jungfrun_rauk_2019.jpg/1280px-Jungfrun_rauk_2019.jpg" alt="융프룬 라우크 2019"><figcaption>해식 기둥 절경</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Jungfrun_rauk_Lickershamn.JPG/1280px-Jungfrun_rauk_Lickershamn.JPG" alt="융프룬 라우크"><figcaption>발트해 해안 라우카르</figcaption></figure>
   </div>
   <div class="warnbox"><b>주의</b> 절벽 가장자리이므로 안전 유의, 미끄럼 방지 신발 권장. 6월 일몰이 밤 9시 이후로 매우 늦으니 일몰 관람 시 <b>귀가 동선을 사전 점검</b>하세요. 해안 바람이 강해 방풍 필수.</div>`},
 
@@ -765,10 +765,10 @@ const D={
   <p>브루스 사후 카롤리나가 머물며 예술가·음악가·과학자의 사교 거점이 됐고, 유언에 따라 1972년 <b>브루세보 미술 장학재단</b>이 설립돼 캐나다·스웨덴 젊은 예술가 레지던시로 운영됩니다. 본채는 2012년 미술관으로 개관.</p>
   <h4>📸 현장 사진</h4>
   <div class="mgal">
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Brucebo_naturreservat_September_2021_01.jpg" alt="브루세보 해안"><figcaption>석회암 해안과 발트해 전망</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/Brucebo_20170610_04.jpg" alt="브루세보 숲"><figcaption>침엽수림 산책로</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Brucebo_20170611_02.jpg" alt="브루세보 자연"><figcaption>숲과 바다가 만나는 풍경</figcaption></figure>
-    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Brucebo_20170611_05.jpg" alt="브루세보 해변"><figcaption>돌·모래 해변</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Brucebo_naturreservat_September_2021_01.jpg/1280px-Brucebo_naturreservat_September_2021_01.jpg" alt="브루세보 해안"><figcaption>석회암 해안과 발트해 전망</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Brucebo_20170610_04.jpg/1280px-Brucebo_20170610_04.jpg" alt="브루세보 숲"><figcaption>침엽수림 산책로</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Brucebo_20170611_02.jpg/1280px-Brucebo_20170611_02.jpg" alt="브루세보 자연"><figcaption>숲과 바다가 만나는 풍경</figcaption></figure>
+    <figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Brucebo_20170611_05.jpg/1280px-Brucebo_20170611_05.jpg" alt="브루세보 해변"><figcaption>돌·모래 해변</figcaption></figure>
   </div>
   <div class="tipbox"><b>관람 팁</b> 미술관(Konstnärshemmet Brucebo) 내부 관람은 단체 사전예약 필수. 자연 그대로의 해안·숲이므로 표식을 따라 이동하고 우천 시 미끄럼 주의.</div>`},
 
